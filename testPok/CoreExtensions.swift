@@ -34,12 +34,6 @@ extension Int {
     }
 }
 extension Array {
-    /**
-    Returns all permutations of a given length within an array
-
-    :param: length The length of each permutation
-    :returns: All permutations of a given length within an array
-    */
     func permutation (length: Int) -> [[T]] {
         var selfCopy = self
         if length < 0 || length > self.count {
@@ -57,11 +51,6 @@ extension Array {
             return permutations
         }
     }
-
-    /**
-    Recursive helper method where all of the permutation-generating work is done
-    This is Heap's algorithm
-    */
     private func permutationHelper(n: Int, inout array: [T], inout endArray: [[T]]) -> [[T]] {
         if n == 1 {
             endArray += [array]
@@ -69,19 +58,12 @@ extension Array {
         for var i = 0; i < n; i++ {
             permutationHelper(n - 1, array: &array, endArray: &endArray)
             var j = n % 2 == 0 ? i : 0;
-            //(array[j], array[n - 1]) = (array[n - 1], array[j])
             var temp: T = array[j]
             array[j] = array[n - 1]
             array[n - 1] = temp
         }
         return endArray
     }
-    /**
-    Returns all of the combinations in the array of the given length
-
-    :param: length
-    :returns: Combinations
-    */
     func combination (length: Int) -> [[Element]] {
         if length < 0 || length > self.count {
             return []

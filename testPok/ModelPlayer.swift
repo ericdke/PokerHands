@@ -18,6 +18,8 @@ struct Player {
 
     var historyOfDealtHoldemCards = [(Card, Card)]()
 
+    var holdemHand: (HandRank, [String])?
+
     var cardsHistory: String { get {
         let n = name ?? "Player"
         let c = join(", ", historyOfDealtHoldemCards.map({ $0.0.description + " " + $0.1.description }))
