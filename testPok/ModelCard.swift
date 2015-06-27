@@ -26,13 +26,13 @@ struct Card {
         get {
             var s = ""
             switch suit {
-            case "♠︎":
+            case "♠":
                 s = "Spades"
-            case "♣︎":
+            case "♣":
                 s = "Clubs"
-            case "♥︎":
+            case "♥":
                 s = "Hearts"
-            case "♦︎":
+            case "♦":
                 s = "Diamonds"
             default:
                 println("Error")
@@ -47,6 +47,8 @@ struct Card {
                 r = "Queen"
             case "J":
                 r = "Jack"
+            case "T":
+                r = "10"
             default:
                 r = rank
             }
