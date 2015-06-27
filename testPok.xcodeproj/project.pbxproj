@@ -11,6 +11,14 @@
 		C7BACD251B3EE4F700B9BF06 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C7BACD241B3EE4F700B9BF06 /* Images.xcassets */; };
 		C7BACD281B3EE4F700B9BF06 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7BACD261B3EE4F700B9BF06 /* MainMenu.xib */; };
 		C7BACD341B3EE4F700B9BF06 /* testPokTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7BACD331B3EE4F700B9BF06 /* testPokTests.swift */; };
+		C7BACD3F1B3EE50C00B9BF06 /* Evaluator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7BACD3D1B3EE50C00B9BF06 /* Evaluator.swift */; };
+		C7BACD401B3EE50C00B9BF06 /* Lookups.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7BACD3E1B3EE50C00B9BF06 /* Lookups.swift */; };
+		C7BACD421B3EE66400B9BF06 /* CoreExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7BACD411B3EE66400B9BF06 /* CoreExtensions.swift */; };
+		C7BACD441B3EE69300B9BF06 /* ModelCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7BACD431B3EE69300B9BF06 /* ModelCard.swift */; };
+		C7BACD461B3EE6C400B9BF06 /* ModelDeck.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7BACD451B3EE6C400B9BF06 /* ModelDeck.swift */; };
+		C7BACD481B3EE6DA00B9BF06 /* ModelPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7BACD471B3EE6DA00B9BF06 /* ModelPlayer.swift */; };
+		C7BACD4A1B3EE6F200B9BF06 /* ModelTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7BACD491B3EE6F200B9BF06 /* ModelTable.swift */; };
+		C7BACD4C1B3EE70800B9BF06 /* ModelDealer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7BACD4B1B3EE70800B9BF06 /* ModelDealer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,6 +40,14 @@
 		C7BACD2D1B3EE4F700B9BF06 /* testPokTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = testPokTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7BACD321B3EE4F700B9BF06 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C7BACD331B3EE4F700B9BF06 /* testPokTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testPokTests.swift; sourceTree = "<group>"; };
+		C7BACD3D1B3EE50C00B9BF06 /* Evaluator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Evaluator.swift; sourceTree = "<group>"; };
+		C7BACD3E1B3EE50C00B9BF06 /* Lookups.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Lookups.swift; sourceTree = "<group>"; };
+		C7BACD411B3EE66400B9BF06 /* CoreExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreExtensions.swift; sourceTree = "<group>"; };
+		C7BACD431B3EE69300B9BF06 /* ModelCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelCard.swift; sourceTree = "<group>"; };
+		C7BACD451B3EE6C400B9BF06 /* ModelDeck.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelDeck.swift; sourceTree = "<group>"; };
+		C7BACD471B3EE6DA00B9BF06 /* ModelPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelPlayer.swift; sourceTree = "<group>"; };
+		C7BACD491B3EE6F200B9BF06 /* ModelTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelTable.swift; sourceTree = "<group>"; };
+		C7BACD4B1B3EE70800B9BF06 /* ModelDealer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelDealer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,8 +90,16 @@
 			isa = PBXGroup;
 			children = (
 				C7BACD221B3EE4F700B9BF06 /* AppDelegate.swift */,
+				C7BACD411B3EE66400B9BF06 /* CoreExtensions.swift */,
+				C7BACD431B3EE69300B9BF06 /* ModelCard.swift */,
+				C7BACD451B3EE6C400B9BF06 /* ModelDeck.swift */,
+				C7BACD471B3EE6DA00B9BF06 /* ModelPlayer.swift */,
+				C7BACD491B3EE6F200B9BF06 /* ModelTable.swift */,
+				C7BACD4B1B3EE70800B9BF06 /* ModelDealer.swift */,
 				C7BACD241B3EE4F700B9BF06 /* Images.xcassets */,
 				C7BACD261B3EE4F700B9BF06 /* MainMenu.xib */,
+				C7BACD3D1B3EE50C00B9BF06 /* Evaluator.swift */,
+				C7BACD3E1B3EE50C00B9BF06 /* Lookups.swift */,
 				C7BACD201B3EE4F700B9BF06 /* Supporting Files */,
 			);
 			path = testPok;
@@ -205,7 +229,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C7BACD461B3EE6C400B9BF06 /* ModelDeck.swift in Sources */,
+				C7BACD421B3EE66400B9BF06 /* CoreExtensions.swift in Sources */,
+				C7BACD481B3EE6DA00B9BF06 /* ModelPlayer.swift in Sources */,
 				C7BACD231B3EE4F700B9BF06 /* AppDelegate.swift in Sources */,
+				C7BACD4A1B3EE6F200B9BF06 /* ModelTable.swift in Sources */,
+				C7BACD441B3EE69300B9BF06 /* ModelCard.swift in Sources */,
+				C7BACD3F1B3EE50C00B9BF06 /* Evaluator.swift in Sources */,
+				C7BACD4C1B3EE70800B9BF06 /* ModelDealer.swift in Sources */,
+				C7BACD401B3EE50C00B9BF06 /* Lookups.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
