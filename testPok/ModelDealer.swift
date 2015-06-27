@@ -141,12 +141,10 @@ struct Dealer {
 
     func findHeadsUpWinner(#player1: Player, player2: Player) -> Player {
         if player1.holdemHand!.0.rank < player2.holdemHand!.0.rank {
-            println("\nWinner: \(player1.name!) with \(player1.holdemHand!.0.name.rawValue) \(player1.holdemHand!.1)\n")
             return player1 }
         else if player1.holdemHand!.0.rank == player2.holdemHand!.0.rank {
             return Player(name: "SPLIT") }
         else {
-            println("\nWinner: \(player2.name!) with \(player2.holdemHand!.0.name.rawValue) \(player2.holdemHand!.1)\n")
             return player2
         }
     }
