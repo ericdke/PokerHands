@@ -89,7 +89,7 @@ class AppController: NSObject, NSTableViewDataSource, NSTableViewDelegate {
         self.player1ScoreNameLabel.stringValue = name1
         self.player2ScoreNameLabel.stringValue = name2
         // TODO: create some sort of dispatch groups to avoid choke if numberOfHands is big
-        for i in 1...numberOfHands {
+        for _ in 1...numberOfHands {
             dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)) {
                 var dealer = Dealer()
                 var player1 = Player(name: name1)

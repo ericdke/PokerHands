@@ -16,7 +16,7 @@ struct Table {
 
     var burntCards: String { get {
         if burnt.count > 0 {
-            let b = join(" ", cardsDescriptions(burnt))
+            let b = " ".join(cardsDescriptions(burnt))
             return "\nBurnt cards: \(b)" }
         return "NO CARD BURNT YET"
         }
@@ -24,14 +24,14 @@ struct Table {
 
     var currentGame: String { get {
         if dealtCards.count > 0 {
-            return join(" ", cardsDescriptions(dealtCards)) }
+            return " ".join(cardsDescriptions(dealtCards)) }
         return "GAME CLOSED"
         }
     }
 
     var flop: String { get {
         if dealtCards.count > 2 {
-            return join(" ", cardsDescriptions(dealtCards)[0...2]) }
+            return " ".join(cardsDescriptions(dealtCards)[0...2]) }
         return "NO FLOP"
         }
     }

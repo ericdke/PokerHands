@@ -35,7 +35,7 @@ struct Card {
             case "♦":
                 s = "Diamonds"
             default:
-                println("Error")
+                print("Error")
             }
             var r = ""
             switch rank {

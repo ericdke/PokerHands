@@ -82,7 +82,7 @@ class HandRank: Equatable {
     var name:RankName
     init(rank:Int) {
         self.rank = rank
-        let start = rankStarts.keys.filter {$0 >= rank}.array.sorted { $0 < $1 }.first!
+        let start = rankStarts.keys.filter {$0 >= rank}.array.sort { $0 < $1 }.first!
         self.name = rankStarts[start]!
     }
 }
@@ -118,7 +118,7 @@ public class Evaluator {
 
         let primeProduct = cardValues.map { $0 & 0xFF }.reduce(1, combine:*)
 
-        let combination = find(primeProductToCombination, primeProduct)!
+        let combination = primeProductToCombination.indexOf(primeProduct)!
         return HandRank(rank:combinationToRank[combination])
     }
 }

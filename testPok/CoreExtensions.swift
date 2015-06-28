@@ -26,7 +26,7 @@ extension Int {
         var shuffledIndex:[Int] = []
         while shuffledIndex.count < self {
             newIndex = Int(arc4random_uniform(UInt32(self)))
-            if !(find(shuffledIndex,newIndex) > -1 ) {
+            if !(shuffledIndex.indexOf(newIndex) > -1 ) {
                 shuffledIndex.append(newIndex)
             }
         }
@@ -35,7 +35,7 @@ extension Int {
 }
 extension Array {
     func permutation (length: Int) -> [[T]] {
-        var selfCopy = self
+//        var selfCopy = self
         if length < 0 || length > self.count {
             return []
         } else if length == 0 {
@@ -57,8 +57,8 @@ extension Array {
         }
         for var i = 0; i < n; i++ {
             permutationHelper(n - 1, array: &array, endArray: &endArray)
-            var j = n % 2 == 0 ? i : 0;
-            var temp: T = array[j]
+            let j = n % 2 == 0 ? i : 0;
+            let temp: T = array[j]
             array[j] = array[n - 1]
             array[n - 1] = temp
         }
@@ -70,7 +70,7 @@ extension Array {
         }
         var indexes: [Int] = (0..<length).toArray()
         var combinations: [[Element]] = []
-        var offset = self.count - indexes.count
+        let offset = self.count - indexes.count
         while true {
             var combination: [Element] = []
             for index in indexes {
@@ -85,7 +85,7 @@ extension Array {
                 break
             }
             i++
-            var start = indexes[i-1] + 1
+            let start = indexes[i-1] + 1
             for j in (i-1)..<indexes.count {
                 indexes[j] = start + j - i + 1
             }

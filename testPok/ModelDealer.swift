@@ -49,12 +49,12 @@ struct Dealer {
 
     mutating func changeDeck() {
         currentDeck = Deck()
-        if verbose { println("\nChanged deck of cards for a new one.\n") }
+        if verbose { print("\nChanged deck of cards for a new one.\n") }
     }
 
     mutating func shuffleDeck() {
         currentDeck.shuffle()
-        if verbose { println("\nCards in the deck have been shuffled.\n") }
+        if verbose { print("\nCards in the deck have been shuffled.\n") }
     }
 
     mutating func deal(numberOfCards: Int) -> [Card] {
@@ -129,21 +129,21 @@ struct Dealer {
         // very slow without NSSet
         // unbearably slow without sorting "perms" before converting to set
         // TODO: do the permutations with rank/else instead of literal cards descriptions
-        let uniqs = Array(NSSet(array: perms.map({ $0.sorted(<) }))).map({ $0 as! [String] })
+        let uniqs = Array(NSSet(array: perms.map({ $0.sort(<) }))).map({ $0 as! [String] })
         var handsResult = [(HandRank, [String])]()
         for hand in uniqs {
             let h = evaluator.evaluate(hand)
             handsResult.append((h, hand)) }
-        handsResult.sort({ $0.0 < $1.0 })
+        handsResult.sortInPlace({ $0.0 < $1.0 })
         let bestHand = handsResult.first
         return bestHand!
     }
 
-    mutating func updateHeadsUpWinner(#player1: Player, player2: Player) {
+    mutating func updateHeadsUpWinner(player1 player1: Player, player2: Player) {
         currentHandWinner = findHeadsUpWinner(player1: player1, player2: player2)
     }
 
-    func findHeadsUpWinner(#player1: Player, player2: Player) -> Player {
+    func findHeadsUpWinner(player1 player1: Player, player2: Player) -> Player {
         if player1.holdemHand!.0 < player2.holdemHand!.0 {
             return player1 }
         else if player1.holdemHand!.0 == player2.holdemHand!.0 {
