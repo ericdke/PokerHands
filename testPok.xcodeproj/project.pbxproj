@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C725A5411B405394005FFA52 /* combinationToRank_bytes.json in Resources */ = {isa = PBXBuildFile; fileRef = C725A53D1B405394005FFA52 /* combinationToRank_bytes.json */; };
+		C725A5421B405394005FFA52 /* combinationToRank_bytes.json in Resources */ = {isa = PBXBuildFile; fileRef = C725A53D1B405394005FFA52 /* combinationToRank_bytes.json */; };
+		C725A5431B405394005FFA52 /* primeProductToCombination_bytes.json in Resources */ = {isa = PBXBuildFile; fileRef = C725A53E1B405394005FFA52 /* primeProductToCombination_bytes.json */; };
+		C725A5441B405394005FFA52 /* primeProductToCombination_bytes.json in Resources */ = {isa = PBXBuildFile; fileRef = C725A53E1B405394005FFA52 /* primeProductToCombination_bytes.json */; };
+		C725A5451B405394005FFA52 /* uniqueToRanks_bytes.json in Resources */ = {isa = PBXBuildFile; fileRef = C725A53F1B405394005FFA52 /* uniqueToRanks_bytes.json */; };
+		C725A5461B405394005FFA52 /* uniqueToRanks_bytes.json in Resources */ = {isa = PBXBuildFile; fileRef = C725A53F1B405394005FFA52 /* uniqueToRanks_bytes.json */; };
+		C725A5471B405394005FFA52 /* flushes_bytes.json in Resources */ = {isa = PBXBuildFile; fileRef = C725A5401B405394005FFA52 /* flushes_bytes.json */; };
+		C725A5481B405394005FFA52 /* flushes_bytes.json in Resources */ = {isa = PBXBuildFile; fileRef = C725A5401B405394005FFA52 /* flushes_bytes.json */; };
 		C7BACD231B3EE4F700B9BF06 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7BACD221B3EE4F700B9BF06 /* AppDelegate.swift */; };
 		C7BACD251B3EE4F700B9BF06 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C7BACD241B3EE4F700B9BF06 /* Images.xcassets */; };
 		C7BACD281B3EE4F700B9BF06 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7BACD261B3EE4F700B9BF06 /* MainMenu.xib */; };
@@ -34,6 +42,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C725A53D1B405394005FFA52 /* combinationToRank_bytes.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = combinationToRank_bytes.json; path = testPokTests/combinationToRank_bytes.json; sourceTree = SOURCE_ROOT; };
+		C725A53E1B405394005FFA52 /* primeProductToCombination_bytes.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = primeProductToCombination_bytes.json; path = testPokTests/primeProductToCombination_bytes.json; sourceTree = SOURCE_ROOT; };
+		C725A53F1B405394005FFA52 /* uniqueToRanks_bytes.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = uniqueToRanks_bytes.json; path = testPokTests/uniqueToRanks_bytes.json; sourceTree = SOURCE_ROOT; };
+		C725A5401B405394005FFA52 /* flushes_bytes.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = flushes_bytes.json; path = testPokTests/flushes_bytes.json; sourceTree = SOURCE_ROOT; };
 		C7BACD1D1B3EE4F700B9BF06 /* testPok.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = testPok.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7BACD211B3EE4F700B9BF06 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C7BACD221B3EE4F700B9BF06 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -114,6 +126,10 @@
 		C7BACD201B3EE4F700B9BF06 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				C725A53D1B405394005FFA52 /* combinationToRank_bytes.json */,
+				C725A53E1B405394005FFA52 /* primeProductToCombination_bytes.json */,
+				C725A53F1B405394005FFA52 /* uniqueToRanks_bytes.json */,
+				C725A5401B405394005FFA52 /* flushes_bytes.json */,
 				C7BACD211B3EE4F700B9BF06 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -181,7 +197,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0700;
-				LastUpgradeCheck = 0630;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Eric Dejonckheere";
 				TargetAttributes = {
 					C7BACD1C1B3EE4F700B9BF06 = {
@@ -217,8 +233,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C725A5451B405394005FFA52 /* uniqueToRanks_bytes.json in Resources */,
 				C7BACD251B3EE4F700B9BF06 /* Images.xcassets in Resources */,
+				C725A5471B405394005FFA52 /* flushes_bytes.json in Resources */,
 				C7BACD281B3EE4F700B9BF06 /* MainMenu.xib in Resources */,
+				C725A5431B405394005FFA52 /* primeProductToCombination_bytes.json in Resources */,
+				C725A5411B405394005FFA52 /* combinationToRank_bytes.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -226,6 +246,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C725A5461B405394005FFA52 /* uniqueToRanks_bytes.json in Resources */,
+				C725A5441B405394005FFA52 /* primeProductToCombination_bytes.json in Resources */,
+				C725A5481B405394005FFA52 /* flushes_bytes.json in Resources */,
+				C725A5421B405394005FFA52 /* combinationToRank_bytes.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -301,6 +325,7 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -367,6 +392,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = testPok/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ericdke.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = testPok;
 			};
 			name = Debug;
@@ -378,6 +404,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = testPok/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ericdke.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = testPok;
 			};
 			name = Release;
@@ -397,6 +424,7 @@
 				);
 				INFOPLIST_FILE = testPokTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ericdke.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = testPokTests;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/testPok.app/Contents/MacOS/testPok";
 			};
@@ -413,6 +441,7 @@
 				);
 				INFOPLIST_FILE = testPokTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ericdke.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = testPokTests;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/testPok.app/Contents/MacOS/testPok";
 			};
