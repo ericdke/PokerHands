@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class SPKHandTableCellView: NSTableCellView {
+final class SPKHandTableCellView: NSTableCellView {
 
     override func drawRect(dirtyRect: NSRect) {
         super.drawRect(dirtyRect)

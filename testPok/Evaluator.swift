@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class CardsDeck {
+final public class CardsDeck {
     var cards:[String:Int]
     var count: Int {
         get {
@@ -77,7 +77,7 @@ private var rankStarts:[Int:RankName] = [
     10: RankName.StraightFlush
 ]
 
-class HandRank: Equatable {
+final class HandRank: Equatable {
     var rank:Int
     var name:RankName
     init(rank:Int) {
@@ -95,7 +95,7 @@ func < (lhs: HandRank, rhs: HandRank) -> Bool {
     return lhs.rank < rhs.rank
 }
 
-public class Evaluator {
+final public class Evaluator {
     var deck = CardsDeck()
 
     func evaluate(cards:[String]) -> HandRank {

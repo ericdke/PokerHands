@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class AppController: NSObject, NSTableViewDataSource, NSTableViewDelegate {
+final class AppController: NSObject, NSTableViewDataSource, NSTableViewDelegate {
 
     @IBOutlet weak var handsTableView: NSTableView!
     @IBOutlet weak var player1TextField: NSTextField!
@@ -21,9 +21,9 @@ class AppController: NSObject, NSTableViewDataSource, NSTableViewDelegate {
     @IBOutlet weak var player2ScoreLabel: NSTextField!
     @IBOutlet weak var gobutton: NSButton!
 
-    typealias TypeForTable = (dealer: Dealer, player1: Player, player2: Player)
+    typealias DealerAndPlayers = (dealer: Dealer, player1: Player, player2: Player)
 
-    var results = [TypeForTable]()
+    var results = [DealerAndPlayers]()
     var cardsImages = [String:NSImage]()
 
     override init() {
@@ -39,8 +39,7 @@ class AppController: NSObject, NSTableViewDataSource, NSTableViewDelegate {
         
         let result = results[row]
         
-        let p1hc = result.player1.holeCards
-        let p2hc = result.player2.holeCards
+        let (p1hc, p2hc) = (result.player1.holeCards, result.player2.holeCards)
         let p1 = "\(result.player1.name!):\t\(p1hc)"
         let p2 = "\(result.player2.name!):\t\(p2hc)"
         let g = "Cards:\t\(result.dealer.table.currentGame)"
@@ -100,13 +99,13 @@ class AppController: NSObject, NSTableViewDataSource, NSTableViewDelegate {
 
     @IBAction func goButtonClicked(sender: NSButton) {
         if !roundsTextField.stringValue.isEmpty && roundsTextField.integerValue != 0 {
-            playP(roundsTextField.integerValue)
+            playGCD(roundsTextField.integerValue)
         } else {
-            playP(10)
+            playGCD(10)
         }
     }
 
-    func playP(numberOfHands: Int) {
+    func playGCD(numberOfHands: Int) {
         gobutton.enabled = false
         results = []
         roundsCountLabel.integerValue = 0
@@ -115,15 +114,13 @@ class AppController: NSObject, NSTableViewDataSource, NSTableViewDelegate {
         let (name1, name2) = playerNames()
         player1ScoreNameLabel.stringValue = name1
         player2ScoreNameLabel.stringValue = name2
-        let dgen = Dealer()
-        let deck = dgen.currentDeck
+        let deck = Dealer().currentDeck
         // TODO: create some sort of dispatch groups to avoid choke if numberOfHands is big
         for i in 1...numberOfHands {
             // TODO: in this example we create new players and dealer each time because of race conditions otherwise, but we should refactor to use a safe-thread version of one single instance of each object so we can have player statistics, dealer and table stats, etc (will probably have to implement read-write barrier in our structs)
-            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0)) {
                 var dealer = Dealer(deck: deck)
-                var player1 = Player(name: name1)
-                var player2 = Player(name: name2)
+                var (player1, player2) = (Player(name: name1), Player(name: name2))
                 dealer.dealHoldemHandTo(&player1)
                 dealer.dealHoldemHandTo(&player2)
                 dealer.dealFlop()
@@ -134,16 +131,7 @@ class AppController: NSObject, NSTableViewDataSource, NSTableViewDelegate {
                 dealer.updateHeadsUpWinner(player1: player1, player2: player2)
                 self.results.append((dealer, player1, player2))
                 dispatch_async(dispatch_get_main_queue()) {
-                    for (k, v) in dealer.scores {
-                        if k == player1.name! {
-                            self.player1ScoreLabel.integerValue += v
-                        } else if k == player2.name! {
-                            self.player2ScoreLabel.integerValue += v
-                        }
-                    }
-                    self.roundsCountLabel.integerValue++
-                    self.handsTableView.reloadData()
-                    self.handsTableView.scrollRowToVisible(self.results.count - 1)
+                    self.endOfHand((dealer, player1, player2))
                     if i == numberOfHands {
                         self.gobutton.enabled = true
                     }
@@ -152,18 +140,31 @@ class AppController: NSObject, NSTableViewDataSource, NSTableViewDelegate {
         }
     }
     
-    func playerNames() -> (String, String) {
-        let name1: String
-        let name2: String
-        if !self.player1TextField.stringValue.isEmpty {
-            name1 = self.player1TextField.stringValue
-        } else {
-            name1 = "Johnny"
+    func endOfHand(people: DealerAndPlayers) {
+        let (p1, p2) = (people.1.name!, people.2.name!)
+        for (k, v) in people.0.scores {
+            if k == p1 {
+                self.player1ScoreLabel.integerValue += v
+            } else if k == p2 {
+                self.player2ScoreLabel.integerValue += v
+            }
         }
-        if !self.player2TextField.stringValue.isEmpty {
-            name2 = self.player2TextField.stringValue
+        self.roundsCountLabel.integerValue++
+        self.handsTableView.reloadData()
+        self.handsTableView.scrollRowToVisible(self.results.count - 1)
+    }
+    
+    func playerNames() -> (String, String) {
+        let (name1, name2): (String,String)
+        if self.player1TextField.stringValue.isEmpty {
+            name1 = "Johnny"
         } else {
+            name1 = self.player1TextField.stringValue
+        }
+        if self.player2TextField.stringValue.isEmpty {
             name2 = "Annette"
+        } else {
+            name2 = self.player2TextField.stringValue
         }
         return (name1, name2)
     }
