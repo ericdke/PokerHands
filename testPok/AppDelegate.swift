@@ -15,7 +15,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
 
     func applicationDidFinishLaunching(aNotification: NSNotification) {
-
+        window.title = "Swifty Poker Hands"
     }
 
     func applicationWillTerminate(aNotification: NSNotification) {
