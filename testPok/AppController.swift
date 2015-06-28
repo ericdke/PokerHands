@@ -20,9 +20,9 @@ class AppController: NSObject, NSTableViewDataSource, NSTableViewDelegate {
     @IBOutlet weak var player1ScoreLabel: NSTextField!
     @IBOutlet weak var player2ScoreLabel: NSTextField!
 
-    typealias resultForTable = (dealer: Dealer, player1: Player, player2: Player)
+    typealias ResultForTable = (dealer: Dealer, player1: Player, player2: Player)
 
-    var results = [resultForTable]()
+    var results = [ResultForTable]()
 
     override init() {
         super.init()
