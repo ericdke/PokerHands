@@ -15,10 +15,18 @@ class AppController: NSObject, NSTableViewDataSource, NSTableViewDelegate {
     @IBOutlet weak var player2TextField: NSTextField!
     @IBOutlet weak var roundsTextField: NSTextField!
     @IBOutlet weak var roundsCountLabel: NSTextField!
+    @IBOutlet weak var player1ScoreNameLabel: NSTextField!
+    @IBOutlet weak var player2ScoreNameLabel: NSTextField!
+    @IBOutlet weak var player1ScoreLabel: NSTextField!
+    @IBOutlet weak var player2ScoreLabel: NSTextField!
 
     typealias resultForTable = (dealer: Dealer, player1: Player, player2: Player)
 
     var results = [resultForTable]()
+
+    override init() {
+        super.init()
+    }
 
     func numberOfRowsInTableView(tableView: NSTableView) -> Int {
         return results.count
@@ -64,6 +72,8 @@ class AppController: NSObject, NSTableViewDataSource, NSTableViewDelegate {
     func playP(numberOfHands: Int) {
         self.results = []
         self.roundsCountLabel.integerValue = 0
+        self.player1ScoreLabel.integerValue = 0
+        self.player2ScoreLabel.integerValue = 0
         var name1: String
         var name2: String
         if !self.player1TextField.stringValue.isEmpty {
@@ -74,9 +84,11 @@ class AppController: NSObject, NSTableViewDataSource, NSTableViewDelegate {
         if !self.player2TextField.stringValue.isEmpty {
             name2 = self.player2TextField.stringValue
         } else {
-            name2 = "Johnny"
+            name2 = "Annette"
         }
-        // TODO: creer groupes de 10 operations simultanees max
+        self.player1ScoreNameLabel.stringValue = name1
+        self.player2ScoreNameLabel.stringValue = name2
+        // TODO: create some sort of dispatch groups to avoid choke if numberOfHands is big
         for i in 1...numberOfHands {
             dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)) {
                 var dealer = Dealer()
@@ -93,36 +105,16 @@ class AppController: NSObject, NSTableViewDataSource, NSTableViewDelegate {
                 dealer.changeDeck()
                 self.results.append((dealer, player1, player2))
                 dispatch_async(dispatch_get_main_queue()) {
+                    for (k, v) in dealer.scores {
+                        if k == player1.name! {
+                            self.player1ScoreLabel.integerValue += v
+                        } else if k == player2.name! {
+                            self.player2ScoreLabel.integerValue += v
+                        }
+                    }
                     self.roundsCountLabel.integerValue++
                     self.handsTableView.reloadData()
                     self.handsTableView.scrollRowToVisible(self.results.count - 1)
-                }
-            }
-        }
-        // TODO: create a way to sum up scores in dealers then call endOfGame
-    }
-
-    func endOfGame(dealer: Dealer, numberOfHands: Int) {
-        let total: Int
-        if let handsSplit = dealer.scores["SPLIT"] {
-            total = numberOfHands - handsSplit
-            if handsSplit > 0 {
-                dispatch_async(dispatch_get_main_queue()) {
-                    println("\(handsSplit) hands split")
-                }
-            }
-        } else {
-            total = numberOfHands
-        }
-
-        for (k, v) in dealer.scores {
-            if k == "SPLIT" {
-                continue
-            } else {
-                let percent = Double(v) / Double(total) * Double(100)
-                let formatted = String(format: "%.2f", percent)
-                dispatch_async(dispatch_get_main_queue()) {
-                    println("\(k) won \(v) hands (\(formatted)%)")
                 }
             }
         }
