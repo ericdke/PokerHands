@@ -366,7 +366,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = testPok/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = testPok;
 			};
 			name = Debug;
 		};
@@ -377,7 +377,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = testPok/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = testPok;
 			};
 			name = Release;
 		};
@@ -396,7 +396,7 @@
 				);
 				INFOPLIST_FILE = testPokTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = testPokTests;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/testPok.app/Contents/MacOS/testPok";
 			};
 			name = Debug;
@@ -412,7 +412,7 @@
 				);
 				INFOPLIST_FILE = testPokTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = testPokTests;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/testPok.app/Contents/MacOS/testPok";
 			};
 			name = Release;
@@ -436,6 +436,7 @@
 				C7BACD391B3EE4F700B9BF06 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C7BACD3A1B3EE4F700B9BF06 /* Build configuration list for PBXNativeTarget "testPokTests" */ = {
 			isa = XCConfigurationList;
@@ -444,6 +445,7 @@
 				C7BACD3C1B3EE4F700B9BF06 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
