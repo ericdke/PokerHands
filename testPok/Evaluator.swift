@@ -58,11 +58,11 @@ enum RankName : String {
     case OnePair = "One Pair"
     case TwoPairs = "Two Pairs"
     case ThreeOfAKind = "Three Of A Kind"
-    case Straight = "Straight"
-    case Flush = "Flush"
-    case FullHouse = "Full House"
+    case Straight = "A Straight"
+    case Flush = "A Flush"
+    case FullHouse = "A Full House"
     case FourOfAKind = "Four Of A Kind"
-    case StraightFlush = "Straight Flush"
+    case StraightFlush = "A Straight Flush"
 }
 
 private var rankStarts:[Int:RankName] = [

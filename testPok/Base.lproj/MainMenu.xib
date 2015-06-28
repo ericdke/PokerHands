@@ -16,6 +16,7 @@
                 <outlet property="handsTableView" destination="QJT-tS-TSz" id="Lxk-wo-ieZ"/>
                 <outlet property="player1TextField" destination="G1i-4O-6wP" id="BZ8-7T-lGb"/>
                 <outlet property="player2TextField" destination="huq-ak-l1U" id="EnO-2t-ldJ"/>
+                <outlet property="roundsCountLabel" destination="ono-K6-w5P" id="ZiJ-w6-sF0"/>
                 <outlet property="roundsTextField" destination="8ya-6I-2oW" id="dwD-22-LLW"/>
             </connections>
         </customObject>
@@ -688,6 +689,9 @@
                         <buttonCell key="cell" type="push" title="Go" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="O2T-zJ-shm">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
+                            <string key="keyEquivalent" base64-UTF8="YES">
+DQ
+</string>
                         </buttonCell>
                         <connections>
                             <action selector="goButtonClicked:" target="8qc-uo-HRf" id="KMs-4j-rOk"/>
@@ -841,6 +845,14 @@
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
                     </scrollView>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ono-K6-w5P">
+                        <rect key="frame" x="20" y="20" width="38" height="17"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="0" id="iGw-WX-0Nu">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
                 </subviews>
             </view>
             <point key="canvasLocation" x="716" y="481"/>
