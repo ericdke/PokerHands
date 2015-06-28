@@ -55,4 +55,11 @@ struct Card {
             return "\(r) of \(s)"
         }
     }
+    
+    var fileName: String {
+        get {
+            return name.stringByReplacingOccurrencesOfString(" ", withString: "_").lowercaseString.stringByAppendingPathExtension("png")!
+        }
+    }
+    
 }
