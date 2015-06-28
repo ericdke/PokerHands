@@ -16,6 +16,8 @@ class SPKHandTableCellView: NSTableCellView {
         // Drawing code here.
     }
 
-    
+    @IBOutlet weak var label1: NSTextField!
+    @IBOutlet weak var label2: NSTextField!
+    @IBOutlet weak var label3: NSTextField!
 
 }

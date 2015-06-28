@@ -124,13 +124,17 @@ struct Dealer {
     func evaluateHoldemHandAtRiver(player: Player) -> (HandRank, [String]) {
         let sevenCards = table.dealtCards + player.cards
         let cardsReps = sevenCards.map({ $0.description })
-        let perms = cardsReps.permutation(5) // all 5 cards combinations from the 7 cards
-        let uniqs = Array(NSSet(array: perms.map({ ($0 as [String]).sorted(<) }))).map({ $0 as! [String] })
+        // all 5 cards combinations from the 7 cards
+        let perms = cardsReps.permutation(5)
+        // very slow without NSSet
+        // unbearably slow without sorting "perms" before converting to set
+        // TODO: do the permutations with rank/else instead of literal cards descriptions
+        let uniqs = Array(NSSet(array: perms.map({ $0.sorted(<) }))).map({ $0 as! [String] })
         var handsResult = [(HandRank, [String])]()
         for hand in uniqs {
             let h = evaluator.evaluate(hand)
             handsResult.append((h, hand)) }
-        handsResult.sort({ $0.0.rank < $1.0.rank })
+        handsResult.sort({ $0.0 < $1.0 })
         let bestHand = handsResult.first
         return bestHand!
     }
@@ -140,9 +144,9 @@ struct Dealer {
     }
 
     func findHeadsUpWinner(#player1: Player, player2: Player) -> Player {
-        if player1.holdemHand!.0.rank < player2.holdemHand!.0.rank {
+        if player1.holdemHand!.0 < player2.holdemHand!.0 {
             return player1 }
-        else if player1.holdemHand!.0.rank == player2.holdemHand!.0.rank {
+        else if player1.holdemHand!.0 == player2.holdemHand!.0 {
             return Player(name: "SPLIT") }
         else {
             return player2

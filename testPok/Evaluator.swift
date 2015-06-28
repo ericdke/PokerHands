@@ -91,6 +91,10 @@ func == (lhs: HandRank, rhs: HandRank) -> Bool {
     return lhs.rank == rhs.rank
 }
 
+func < (lhs: HandRank, rhs: HandRank) -> Bool {
+    return lhs.rank < rhs.rank
+}
+
 public class Evaluator {
     var deck = CardsDeck()
 
