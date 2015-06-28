@@ -4,7 +4,7 @@ Mixing several techniques in Swift to evaluate a Holdem poker hand.
 
 *Version pre alpha, work in progress.*
 
-![Swifty Poker Hands](https://www.evernote.com/shard/s89/sh/ba9bd648-4f4b-411e-a364-faf8f36bcd69/3d9d3205fc464db2/res/414d71b4-06e7-47bd-8795-5a8a3be2b2c5/skitch.png)
+![Swifty Poker Hands](https://www.evernote.com/shard/s89/sh/a0adda99-8b13-4fd2-9c00-14d542e21497/c3f58a528636a786/res/207bd881-cf62-4906-9af4-d6062aac9d0e/skitch.png)
 
 ## Techniques
 

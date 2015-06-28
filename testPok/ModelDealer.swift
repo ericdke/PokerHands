@@ -22,6 +22,11 @@ struct Dealer {
         currentDeck = Deck()
         table = Table()
     }
+    
+    init(deck: Deck) {
+        currentDeck = deck
+        table = Table()
+    }
 
     var currentGame: String { get { return "Game:\t\(table.currentGame)\n" } }
 

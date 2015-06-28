@@ -21,9 +21,9 @@ class AppController: NSObject, NSTableViewDataSource, NSTableViewDelegate {
     @IBOutlet weak var player2ScoreLabel: NSTextField!
     @IBOutlet weak var gobutton: NSButton!
 
-    typealias ResultForTable = (dealer: Dealer, player1: Player, player2: Player)
+    typealias TypeForTable = (dealer: Dealer, player1: Player, player2: Player)
 
-    var results = [ResultForTable]()
+    var results = [TypeForTable]()
     var cardsImages = [String:NSImage]()
 
     override init() {
@@ -107,29 +107,21 @@ class AppController: NSObject, NSTableViewDataSource, NSTableViewDelegate {
     }
 
     func playP(numberOfHands: Int) {
-        self.gobutton.enabled = false
-        self.results = []
-        self.roundsCountLabel.integerValue = 0
-        self.player1ScoreLabel.integerValue = 0
-        self.player2ScoreLabel.integerValue = 0
-        var name1: String
-        var name2: String
-        if !self.player1TextField.stringValue.isEmpty {
-            name1 = self.player1TextField.stringValue
-        } else {
-            name1 = "Johnny"
-        }
-        if !self.player2TextField.stringValue.isEmpty {
-            name2 = self.player2TextField.stringValue
-        } else {
-            name2 = "Annette"
-        }
-        self.player1ScoreNameLabel.stringValue = name1
-        self.player2ScoreNameLabel.stringValue = name2
+        gobutton.enabled = false
+        results = []
+        roundsCountLabel.integerValue = 0
+        player1ScoreLabel.integerValue = 0
+        player2ScoreLabel.integerValue = 0
+        let (name1, name2) = playerNames()
+        player1ScoreNameLabel.stringValue = name1
+        player2ScoreNameLabel.stringValue = name2
+        let dgen = Dealer()
+        let deck = dgen.currentDeck
         // TODO: create some sort of dispatch groups to avoid choke if numberOfHands is big
         for i in 1...numberOfHands {
+            // TODO: in this example we create new players and dealer each time because of race conditions otherwise, but we should refactor to use a safe-thread version of one single instance of each object so we can have player statistics, dealer and table stats, etc (will probably have to implement read-write barrier in our structs)
             dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
-                var dealer = Dealer()
+                var dealer = Dealer(deck: deck)
                 var player1 = Player(name: name1)
                 var player2 = Player(name: name2)
                 dealer.dealHoldemHandTo(&player1)
@@ -158,6 +150,22 @@ class AppController: NSObject, NSTableViewDataSource, NSTableViewDelegate {
                 }
             }
         }
+    }
+    
+    func playerNames() -> (String, String) {
+        let name1: String
+        let name2: String
+        if !self.player1TextField.stringValue.isEmpty {
+            name1 = self.player1TextField.stringValue
+        } else {
+            name1 = "Johnny"
+        }
+        if !self.player2TextField.stringValue.isEmpty {
+            name2 = self.player2TextField.stringValue
+        } else {
+            name2 = "Annette"
+        }
+        return (name1, name2)
     }
 
 }

@@ -12,11 +12,15 @@ struct Player {
 
     init() {}
 
-    init(name: String) { self.name = name }
+    init(name: String) {
+        self.name = name
+    }
 
     var name: String?
 
     var historyOfDealtHoldemCards = [(Card, Card)]()
+    
+    var frequentHands = [String:Int]()
 
     var holdemHand: (HandRank, [String])?
 
@@ -31,6 +35,12 @@ struct Player {
         didSet {
             let tu = (self.cards[0], self.cards[1])
             historyOfDealtHoldemCards.append(tu)
+            let fqname = "\(tu.0.description),\(tu.1.description)"
+            if frequentHands[fqname] == nil {
+                frequentHands[fqname] = 1
+            } else {
+                frequentHands[fqname]!++
+            }
         }
     }
 

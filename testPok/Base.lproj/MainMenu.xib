@@ -819,7 +819,7 @@ DQ
                                                             </textFieldCell>
                                                         </textField>
                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="BET-0n-ype">
-                                                            <rect key="frame" x="9" y="5" width="238" height="29"/>
+                                                            <rect key="frame" x="9" y="5" width="152" height="29"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                             <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="table" id="rwS-91-aRl">
                                                                 <font key="font" size="12" name="HelveticaNeue"/>
@@ -828,7 +828,7 @@ DQ
                                                             </textFieldCell>
                                                         </textField>
                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="eQL-rb-5nd">
-                                                            <rect key="frame" x="246" y="8" width="237" height="26"/>
+                                                            <rect key="frame" x="172" y="8" width="311" height="26"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                             <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="right" title="winner" id="ZX9-GJ-a3o">
                                                                 <font key="font" size="12" name="HelveticaNeue"/>
@@ -837,47 +837,47 @@ DQ
                                                             </textFieldCell>
                                                         </textField>
                                                         <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" id="wyq-yz-axF">
-                                                            <rect key="frame" x="11" y="36" width="50" height="62"/>
+                                                            <rect key="frame" x="8" y="39" width="53" height="66"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                             <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" imageFrameStyle="grayBezel" id="SBp-vj-hik"/>
                                                         </imageView>
                                                         <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" id="NJf-Av-Qpu">
-                                                            <rect key="frame" x="57" y="36" width="51" height="62"/>
+                                                            <rect key="frame" x="56" y="39" width="55" height="66"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                             <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" imageFrameStyle="grayBezel" id="NPG-MA-n03"/>
                                                         </imageView>
-                                                        <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" id="yE8-Kr-bPE">
-                                                            <rect key="frame" x="386" y="36" width="50" height="62"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" imageFrameStyle="grayBezel" id="VND-kQ-7Cm"/>
-                                                        </imageView>
                                                         <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" id="LRN-vk-EWL">
-                                                            <rect key="frame" x="222" y="36" width="51" height="62"/>
+                                                            <rect key="frame" x="220" y="39" width="54" height="66"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                             <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" imageFrameStyle="grayBezel" id="tYF-IG-bmI"/>
                                                         </imageView>
                                                         <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" id="sQi-si-59P">
-                                                            <rect key="frame" x="315" y="36" width="50" height="62"/>
+                                                            <rect key="frame" x="319" y="39" width="53" height="66"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                             <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" imageFrameStyle="grayBezel" id="FQI-sG-0Y8"/>
                                                         </imageView>
                                                         <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" id="gdS-3e-hKE">
-                                                            <rect key="frame" x="130" y="36" width="50" height="62"/>
+                                                            <rect key="frame" x="122" y="39" width="53" height="66"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                             <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" imageFrameStyle="grayBezel" id="kD5-7z-RCV"/>
                                                         </imageView>
                                                         <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" id="4Hj-xl-bgS">
-                                                            <rect key="frame" x="176" y="36" width="50" height="62"/>
+                                                            <rect key="frame" x="171" y="39" width="53" height="66"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                             <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" imageFrameStyle="grayBezel" id="J4d-3k-KsW"/>
                                                         </imageView>
                                                         <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" id="t4c-eG-qEl">
-                                                            <rect key="frame" x="269" y="36" width="50" height="62"/>
+                                                            <rect key="frame" x="270" y="39" width="53" height="66"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                             <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" imageFrameStyle="grayBezel" id="Gyb-YI-3dg"/>
                                                         </imageView>
+                                                        <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" id="yE8-Kr-bPE">
+                                                            <rect key="frame" x="382" y="39" width="53" height="66"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" imageFrameStyle="grayBezel" id="VND-kQ-7Cm"/>
+                                                        </imageView>
                                                         <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" id="62k-ic-avo">
-                                                            <rect key="frame" x="432" y="36" width="51" height="62"/>
+                                                            <rect key="frame" x="430" y="39" width="54" height="66"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                             <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" imageFrameStyle="grayBezel" id="aTv-a6-3pU"/>
                                                         </imageView>
