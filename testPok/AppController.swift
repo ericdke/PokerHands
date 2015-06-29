@@ -108,45 +108,6 @@ final class AppController: NSObject, NSTableViewDataSource, NSTableViewDelegate 
             playGCD(10)
         }
     }
-
-//    func playGCD(numberOfHands: Int) {
-//        pleaseWaitLabel.hidden = false
-//        spinner.startAnimation(nil)
-//        gobutton.enabled = false
-//        results = []
-//        roundsCountLabel.integerValue = 0
-//        player1ScoreLabel.integerValue = 0
-//        player2ScoreLabel.integerValue = 0
-//        let (name1, name2) = playerNames()
-//        player1ScoreNameLabel.stringValue = name1
-//        player2ScoreNameLabel.stringValue = name2
-//        let deck = Dealer().currentDeck
-//        // TODO: create some sort of dispatch groups to avoid choke if numberOfHands is big
-//        for i in 1...numberOfHands {
-//            // TODO: in this example we create new players and dealer each time because of race conditions otherwise, but we should refactor to use a safe-thread version of one single instance of each object so we can have player statistics, dealer and table stats, etc (will probably have to implement read-write barrier in our structs)
-//            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0)) {
-//                var dealer = Dealer(deck: deck)
-//                var (player1, player2) = (Player(name: name1), Player(name: name2))
-//                dealer.dealHoldemHandTo(&player1)
-//                dealer.dealHoldemHandTo(&player2)
-//                dealer.dealFlop()
-//                dealer.dealTurn()
-//                dealer.dealRiver()
-//                dealer.evaluateHoldemHandAtRiverFor(&player1)
-//                dealer.evaluateHoldemHandAtRiverFor(&player2)
-//                dealer.updateHeadsUpWinner(player1: player1, player2: player2)
-//                dispatch_async(dispatch_get_main_queue()) {
-//                    self.results.append((dealer, player1, player2))
-//                    self.endOfHand((dealer, player1, player2))
-//                    if i == numberOfHands {
-//                        self.gobutton.enabled = true
-//                        self.pleaseWaitLabel.hidden = true
-//                        self.spinner.stopAnimation(nil)
-//                    }
-//                }
-//            }
-//        }
-//    }
     
     func playGCD(numberOfHands: Int) {
         pleaseWaitLabel.hidden = false
@@ -165,6 +126,7 @@ final class AppController: NSObject, NSTableViewDataSource, NSTableViewDelegate 
             // run a loop of background tasks
             dispatch_apply(numberOfHands, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), { (index) -> Void in
                 // NSLog("%d", index)
+                // TODO: in this example we create new players and dealer each time, but we should refactor to use a safe-thread version of one single instance of each object so we can have player statistics, dealer and table stats, etc (will probably have to implement read-write barrier in our structs)
                 var dealer = Dealer(deck: deck)
                 var (player1, player2) = (Player(name: name1), Player(name: name2))
                 dealer.dealHoldemHandTo(&player1)
