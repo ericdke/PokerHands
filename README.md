@@ -4,7 +4,7 @@ Mixing several techniques in Swift to evaluate a Holdem poker hand.
 
 *Uses Swift 2.0 and Xcode 7 beta.*
 
-![Swifty Poker Hands](https://www.evernote.com/shard/s89/sh/a0adda99-8b13-4fd2-9c00-14d542e21497/c3f58a528636a786/res/207bd881-cf62-4906-9af4-d6062aac9d0e/skitch.png)
+![Swifty Poker Hands](https://www.evernote.com/shard/s89/sh/15087826-a0e0-406b-b8ba-365d0602ed14/fb03a5423ac87a63/res/cd58b69b-fdd9-4e25-a55e-b1eea11746c6/skitch.png)
 
 ## Techniques
 
@@ -26,7 +26,7 @@ A simplistic table view of a two-player hands simulator.
 
 ## Credits
 
-Cards images: [Playing Cards iOS Assets](https://github.com/hayeah/playing-cards-assets)
+Original cards images: [Playing Cards iOS Assets](https://github.com/hayeah/playing-cards-assets)
 
 2-cards and 5-cards hand ranking: [swift-poker-hand-evaluator](https://github.com/s4nchez/swift-poker-hand-evaluator)
 
