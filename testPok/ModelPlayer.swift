@@ -47,7 +47,7 @@ struct Player {
     var cardsNames: String { get { return ", ".join(cards.map({ $0.name })) } }
 
     mutating func removeOneCard() -> Card? {
-        if count > 0 {
+        if cards.count > 0 {
             return cards.takeOne() }
         return nil
     }

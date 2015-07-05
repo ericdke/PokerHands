@@ -131,8 +131,6 @@ struct Dealer {
         let cardsReps = sevenCards.map({ $0.description })
         // all 5 cards combinations from the 7 cards
         let perms = cardsReps.permutation(5)
-        // very slow without NSSet
-        // unbearably slow without sorting "perms" before converting to set
         // TODO: do the permutations with rank/else instead of literal cards descriptions
         let uniqs = Array(NSSet(array: perms.map({ $0.sort(<) }))).map({ $0 as! [String] })
         var handsResult = [(HandRank, [String])]()

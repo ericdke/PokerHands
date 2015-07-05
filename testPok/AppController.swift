@@ -5,6 +5,8 @@
 //  Created by ERIC DEJONCKHEERE on 27/06/2015.
 //  Copyright (c) 2015 Eric Dejonckheere. All rights reserved.
 //
+//  SWIFT 2
+//
 
 import Cocoa
 
@@ -39,8 +41,9 @@ final class AppController: NSObject, NSTableViewDataSource, NSTableViewDelegate 
     }
 
     func tableView(tableView: NSTableView, viewForTableColumn tableColumn: NSTableColumn?, row: Int) -> NSView? {
+
         let cell = tableView.makeViewWithIdentifier("roundsColumn", owner: self) as! SPKHandTableCellView
-        
+
         let result = results[row]
         
         let (p1hc, p2hc) = (result.player1.holeCards, result.player2.holeCards)
@@ -52,7 +55,7 @@ final class AppController: NSObject, NSTableViewDataSource, NSTableViewDelegate 
         if let name = wname where name == "SPLIT" {
             w = "Hand is split! Nothing to see."
         } else {
-            w = "Winner:\t\(result.dealer.currentHandWinner!.name!.uppercaseString) with \(result.dealer.currentHandWinner!.holdemHand!.0.name.rawValue.lowercaseString) \(result.dealer.currentHandWinner!.holdemHand!.1)"
+            w = "\(result.dealer.currentHandWinner!.name!.uppercaseString) wins with \(result.dealer.currentHandWinner!.holdemHand!.0.name.rawValue.lowercaseString) \(result.dealer.currentHandWinner!.holdemHand!.1)"
         }
         cell.textField!.stringValue = p1
         cell.label1.stringValue = p2
@@ -92,15 +95,6 @@ final class AppController: NSObject, NSTableViewDataSource, NSTableViewDelegate 
         return imgs
     }
 
-    @IBAction func player1TFActivated(sender: NSTextField) {
-    }
-
-    @IBAction func player2TFActivated(sender: NSTextField) {
-    }
-
-    @IBAction func roundsTFActivated(sender: NSTextField) {
-    }
-
     @IBAction func goButtonClicked(sender: NSButton) {
         if !roundsTextField.stringValue.isEmpty && roundsTextField.integerValue != 0 {
             playGCD(roundsTextField.integerValue)
@@ -122,9 +116,9 @@ final class AppController: NSObject, NSTableViewDataSource, NSTableViewDelegate 
         player2ScoreNameLabel.stringValue = name2
         let deck = Dealer().currentDeck
         // go in background
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0)) {
+        dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INTERACTIVE, 0)) {
             // run a loop of background tasks
-            dispatch_apply(numberOfHands, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), { (index) -> Void in
+            dispatch_apply(numberOfHands, dispatch_get_global_queue(QOS_CLASS_USER_INITIATED, 0), { (index) -> Void in
                 // NSLog("%d", index)
                 // TODO: in this example we create new players and dealer each time, but we should refactor to use a safe-thread version of one single instance of each object so we can have player statistics, dealer and table stats, etc (will probably have to implement read-write barrier in our structs)
                 var dealer = Dealer(deck: deck)

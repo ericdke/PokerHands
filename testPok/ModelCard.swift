@@ -58,7 +58,8 @@ struct Card {
     
     var fileName: String {
         get {
-            return name.stringByReplacingOccurrencesOfString(" ", withString: "_").lowercaseString.stringByAppendingPathExtension("png")!
+            let temp = name.stringByReplacingOccurrencesOfString(" ", withString: "_").lowercaseString
+            return "\(temp)_w.png"
         }
     }
     
