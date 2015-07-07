@@ -47,13 +47,13 @@ final class AppController: NSObject, NSTableViewDataSource, NSTableViewDelegate 
         let result = results[row]
         
         let (p1hc, p2hc) = (result.player1.holeCards, result.player2.holeCards)
-        let p1 = "\(result.player1.name!):\t\(p1hc)"
-        let p2 = "\(result.player2.name!):\t\(p2hc)"
-        let g = "Cards:\t\(result.dealer.table.currentGame)"
+        let p1 = "\(result.player1.name!): \(p1hc)"
+        let p2 = "\(result.player2.name!): \(p2hc)"
+        let g = "Cards: \(result.dealer.table.currentGame)"
         let wname = result.dealer.currentHandWinner!.name
         let w: String
         if let name = wname where name == "SPLIT" {
-            w = "Hand is split! Nothing to see."
+            w = "Split! This hand is canceled."
         } else {
             w = "\(result.dealer.currentHandWinner!.name!.uppercaseString) wins with \(result.dealer.currentHandWinner!.holdemHand!.0.name.rawValue.lowercaseString) \(result.dealer.currentHandWinner!.holdemHand!.1)"
         }

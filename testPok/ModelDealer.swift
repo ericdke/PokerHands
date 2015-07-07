@@ -28,13 +28,13 @@ struct Dealer {
         table = Table()
     }
 
-    var currentGame: String { get { return "Game:\t\(table.currentGame)\n" } }
+    var currentGame: String { get { return "Game: \(table.currentGame)\n" } }
 
-    var flop: String { get { return "Flop:\t\(table.flop)" } }
+    var flop: String { get { return "Flop: \(table.flop)" } }
 
-    var turn: String { get { return "Turn:\t\(table.turn)" } }
+    var turn: String { get { return "Turn: \(table.turn)" } }
 
-    var river: String { get { return "River:\t\(table.river)" } }
+    var river: String { get { return "River: \(table.river)" } }
 
     var currentHandWinner: Player? {
         didSet {

@@ -58,7 +58,7 @@ struct Player {
         if cards.count > 0 {
             let c = " ".join(cards.map({ $0.description }))
             let p = name ?? "Player"
-            return "\(p):\t\(c)" }
+            return "\(p): \(c)" }
         return "EMPTY HANDS"
         }
     }
