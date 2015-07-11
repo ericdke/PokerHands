@@ -1140,31 +1140,6 @@ DQ
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <button verticalHuggingPriority="750" id="zv9-kc-Rmt">
-                        <rect key="frame" x="332" y="14" width="80" height="28"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="push" title="OK" bezelStyle="rounded" alignment="center" controlSize="small" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Zay-NC-n1c">
-                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="smallSystem"/>
-                        </buttonCell>
-                        <connections>
-                            <action selector="buttonOK:" target="Bva-WB-tLZ" id="Ba2-en-sWR"/>
-                        </connections>
-                    </button>
-                    <button verticalHuggingPriority="750" id="GK8-Cc-bYo">
-                        <rect key="frame" x="234" y="14" width="80" height="28"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" controlSize="small" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="wEg-wX-2UN">
-                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="smallSystem"/>
-                            <string key="keyEquivalent" base64-UTF8="YES">
-Gw
-</string>
-                        </buttonCell>
-                        <connections>
-                            <action selector="playerAndCardsPanelCANCEL:" target="8qc-uo-HRf" id="b3B-u9-gt6"/>
-                        </connections>
-                    </button>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="fjF-ag-pDz">
                         <rect key="frame" x="335" y="227" width="293" height="26"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -1314,6 +1289,9 @@ Gw
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                             <font key="font" metaFont="smallSystem"/>
                         </buttonCell>
+                        <connections>
+                            <action selector="p1RandomButton:" target="Bva-WB-tLZ" id="o3c-K2-35a"/>
+                        </connections>
                     </button>
                     <button id="Ta3-Ka-ZZF">
                         <rect key="frame" x="446" y="49" width="67" height="20"/>
@@ -1322,6 +1300,20 @@ Gw
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                             <font key="font" metaFont="smallSystem"/>
                         </buttonCell>
+                        <connections>
+                            <action selector="p2RandomButton:" target="Bva-WB-tLZ" id="hxZ-uz-7zr"/>
+                        </connections>
+                    </button>
+                    <button verticalHuggingPriority="750" id="zv9-kc-Rmt">
+                        <rect key="frame" x="283" y="14" width="80" height="28"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="push" title="CLOSE" bezelStyle="rounded" alignment="center" controlSize="small" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Zay-NC-n1c">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="smallSystem"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="buttonCLOSE:" target="Bva-WB-tLZ" id="qqY-66-5am"/>
+                        </connections>
                     </button>
                 </subviews>
             </view>

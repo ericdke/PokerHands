@@ -40,10 +40,6 @@ final class AppController: NSObject, NSTableViewDataSource, NSTableViewDelegate 
         }
     }
     
-    @IBAction func playerAndCardsPanelCANCEL(sender: NSButton) {
-        window.endSheet(playerAndCardsPanel)
-    }
-    
     let settings = SPKSettings.sharedInstance
 
     typealias DealerAndPlayers = (dealer: Dealer, player1: Player, player2: Player)
@@ -53,10 +49,10 @@ final class AppController: NSObject, NSTableViewDataSource, NSTableViewDelegate 
 
     override init() {
         super.init()
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "gotPlayersSettings:", name: "playerAndCardsPanelButtonOK", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "playerAndCardsPanelCLOSE:", name: "playerAndCardsPanelButtonCLOSE", object: nil)
     }
     
-    func gotPlayersSettings(notification: NSNotification) {
+    func playerAndCardsPanelCLOSE(notification: NSNotification) {
         window.endSheet(playerAndCardsPanel)
     }
 
@@ -141,6 +137,12 @@ final class AppController: NSObject, NSTableViewDataSource, NSTableViewDelegate 
         player1ScoreNameLabel.stringValue = name1
         player2ScoreNameLabel.stringValue = name2
         let deck = Dealer().currentDeck
+        var customPlayer1Cards = [Card]()
+        var customPlayer2Cards = [Card]()
+        if settings.gameMode == .Custom {
+            customPlayer1Cards = settings.getPlayer1Cards()
+            customPlayer2Cards = settings.getPlayer2Cards()
+        }
         // go in background
         dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INTERACTIVE, 0)) {
             // run a loop of background tasks
@@ -153,8 +155,16 @@ final class AppController: NSObject, NSTableViewDataSource, NSTableViewDelegate 
                     dealer.dealHoldemHandTo(&player1)
                     dealer.dealHoldemHandTo(&player2)
                 } else {
-                    dealer.dealHoldemCardsTo(&player1, cards: self.settings.getPlayer1Cards())
-                    dealer.dealHoldemCardsTo(&player2, cards: self.settings.getPlayer2Cards())
+                    if customPlayer1Cards.isEmpty || self.settings.player1Random {
+                        dealer.dealHoldemHandTo(&player1)
+                    } else {
+                        dealer.dealHoldemCardsTo(&player1, cards: customPlayer1Cards)
+                    }
+                    if customPlayer2Cards.isEmpty || self.settings.player2Random {
+                        dealer.dealHoldemHandTo(&player2)
+                    } else {
+                        dealer.dealHoldemCardsTo(&player2, cards: customPlayer2Cards)
+                    }
                 }
                 
                 dealer.dealFlop()
