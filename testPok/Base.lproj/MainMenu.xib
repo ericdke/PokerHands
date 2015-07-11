@@ -1056,13 +1056,13 @@ DQ
                     <popUpButton verticalHuggingPriority="750" id="Quw-Zf-zSw">
                         <rect key="frame" x="173" y="157" width="111" height="22"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <popUpButtonCell key="cell" type="push" title="King" bezelStyle="rounded" alignment="left" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="Ocz-oM-s6F" id="LOi-a3-wu7">
+                        <popUpButtonCell key="cell" type="push" title="Ace" bezelStyle="rounded" alignment="left" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="BwM-xg-bJJ" id="LOi-a3-wu7">
                             <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="smallSystem"/>
                             <menu key="menu" id="05F-hi-Nc8">
                                 <items>
-                                    <menuItem title="Ace" id="BwM-xg-bJJ"/>
-                                    <menuItem title="King" state="on" id="Ocz-oM-s6F"/>
+                                    <menuItem title="Ace" state="on" id="BwM-xg-bJJ"/>
+                                    <menuItem title="King" id="Ocz-oM-s6F"/>
                                     <menuItem title="Queen" id="C59-C9-jBe"/>
                                     <menuItem title="Jack" id="bFb-Bi-ZDf"/>
                                     <menuItem title="10" id="8E8-06-Hs1"/>
@@ -1109,13 +1109,13 @@ DQ
                     <popUpButton verticalHuggingPriority="750" id="gTg-wn-eyJ">
                         <rect key="frame" x="173" y="86" width="111" height="22"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <popUpButtonCell key="cell" type="push" title="Ace" bezelStyle="rounded" alignment="left" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="ND6-AH-RTN" id="fFz-0U-UBP">
+                        <popUpButtonCell key="cell" type="push" title="King" bezelStyle="rounded" alignment="left" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="JkK-rI-KRp" id="fFz-0U-UBP">
                             <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="smallSystem"/>
                             <menu key="menu" id="jhE-kV-2j5">
                                 <items>
-                                    <menuItem title="Ace" state="on" id="ND6-AH-RTN"/>
-                                    <menuItem title="King" id="JkK-rI-KRp"/>
+                                    <menuItem title="Ace" id="ND6-AH-RTN"/>
+                                    <menuItem title="King" state="on" id="JkK-rI-KRp"/>
                                     <menuItem title="Queen" id="FjA-0X-SBy"/>
                                     <menuItem title="Jack" id="QJo-wn-54o"/>
                                     <menuItem title="10" id="B7B-ZD-CSh"/>
@@ -1189,14 +1189,14 @@ DQ
                     <popUpButton verticalHuggingPriority="750" id="bbl-iZ-eKq">
                         <rect key="frame" x="490" y="157" width="111" height="22"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <popUpButtonCell key="cell" type="push" title="Ace" bezelStyle="rounded" alignment="left" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="rYL-EH-8uQ" id="E5U-SA-Kag">
+                        <popUpButtonCell key="cell" type="push" title="Queen" bezelStyle="rounded" alignment="left" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="5fs-2T-wL0" id="E5U-SA-Kag">
                             <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="smallSystem"/>
                             <menu key="menu" id="koe-zV-eqy">
                                 <items>
-                                    <menuItem title="Ace" state="on" id="rYL-EH-8uQ"/>
+                                    <menuItem title="Ace" id="rYL-EH-8uQ"/>
                                     <menuItem title="King" id="ju2-8d-rbQ"/>
-                                    <menuItem title="Queen" id="5fs-2T-wL0"/>
+                                    <menuItem title="Queen" state="on" id="5fs-2T-wL0"/>
                                     <menuItem title="Jack" id="y6F-gO-Ggu"/>
                                     <menuItem title="10" id="g4f-e5-odL"/>
                                     <menuItem title="9" id="CbF-bX-PGY"/>
@@ -1242,14 +1242,14 @@ DQ
                     <popUpButton verticalHuggingPriority="750" id="P69-6B-5zM">
                         <rect key="frame" x="490" y="86" width="111" height="22"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <popUpButtonCell key="cell" type="push" title="Ace" bezelStyle="rounded" alignment="left" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="uhZ-sJ-zzB" id="XiK-NW-Wti">
+                        <popUpButtonCell key="cell" type="push" title="Queen" bezelStyle="rounded" alignment="left" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="TAk-PP-jFu" id="XiK-NW-Wti">
                             <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="smallSystem"/>
                             <menu key="menu" id="QXK-Y3-t0m">
                                 <items>
-                                    <menuItem title="Ace" state="on" id="uhZ-sJ-zzB"/>
+                                    <menuItem title="Ace" id="uhZ-sJ-zzB"/>
                                     <menuItem title="King" id="bEZ-xb-f0g"/>
-                                    <menuItem title="Queen" id="TAk-PP-jFu"/>
+                                    <menuItem title="Queen" state="on" id="TAk-PP-jFu"/>
                                     <menuItem title="Jack" id="gEk-FI-b6R"/>
                                     <menuItem title="10" id="zwa-h3-cbg"/>
                                     <menuItem title="9" id="xhn-aa-IZ9"/>

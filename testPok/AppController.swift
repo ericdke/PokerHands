@@ -68,9 +68,8 @@ final class AppController: NSObject, NSTableViewDataSource, NSTableViewDelegate 
 
         let result = results[row]
         
-        let (p1hc, p2hc) = (result.player1.holeCards, result.player2.holeCards)
-        let p1 = "\(result.player1.name!): \(p1hc)"
-        let p2 = "\(result.player2.name!): \(p2hc)"
+        let p1 = "\(result.player1.name!): \(result.player1.holeCards)"
+        let p2 = "\(result.player2.name!): \(result.player2.holeCards)"
         let g = "Cards: \(result.dealer.table.currentGame)"
         let wname = result.dealer.currentHandWinner!.name
         let w: String
@@ -155,15 +154,18 @@ final class AppController: NSObject, NSTableViewDataSource, NSTableViewDelegate 
                     dealer.dealHoldemHandTo(&player1)
                     dealer.dealHoldemHandTo(&player2)
                 } else {
-                    if customPlayer1Cards.isEmpty || self.settings.player1Random {
-                        dealer.dealHoldemHandTo(&player1)
-                    } else {
+                    // custom cards first
+                    if !customPlayer1Cards.isEmpty {
                         dealer.dealHoldemCardsTo(&player1, cards: customPlayer1Cards)
                     }
-                    if customPlayer2Cards.isEmpty || self.settings.player2Random {
-                        dealer.dealHoldemHandTo(&player2)
-                    } else {
+                    if !customPlayer2Cards.isEmpty {
                         dealer.dealHoldemCardsTo(&player2, cards: customPlayer2Cards)
+                    }
+                    if customPlayer1Cards.isEmpty {
+                        dealer.dealHoldemHandTo(&player1)
+                    }
+                    if customPlayer2Cards.isEmpty {
+                        dealer.dealHoldemHandTo(&player2)
                     }
                 }
                 
