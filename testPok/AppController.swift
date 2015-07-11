@@ -41,6 +41,7 @@ final class AppController: NSObject, NSTableViewDataSource, NSTableViewDelegate 
     }
     
     let settings = SPKSettings.sharedInstance
+    let byteRanks = ByteRanks()
 
     typealias DealerAndPlayers = (dealer: Dealer, player1: Player, player2: Player)
 
@@ -142,12 +143,13 @@ final class AppController: NSObject, NSTableViewDataSource, NSTableViewDelegate 
             customPlayer1Cards = settings.getPlayer1Cards()
             customPlayer2Cards = settings.getPlayer2Cards()
         }
+        let eval = Evaluator(byteRanksInstance: self.byteRanks)
         // go in background
         dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INTERACTIVE, 0)) {
             // run a loop of background tasks
             dispatch_apply(numberOfHands, dispatch_get_global_queue(QOS_CLASS_USER_INITIATED, 0), { (index) -> Void in
                 // TODO: in this example we create new players and dealer each time, but we should refactor to use a safe-thread version of one single instance of each object so we can have player statistics, dealer and table stats, etc (will probably have to implement read-write barrier in our structs)
-                var dealer = Dealer(deck: deck)
+                var dealer = Dealer(deck: deck, evaluator: eval)
                 var (player1, player2) = (Player(name: name1), Player(name: name2))
                 
                 if self.settings.gameMode == .Random {

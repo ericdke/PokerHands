@@ -126,7 +126,7 @@
 		C7BACD281B3EE4F700B9BF06 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7BACD261B3EE4F700B9BF06 /* MainMenu.xib */; };
 		C7BACD341B3EE4F700B9BF06 /* testPokTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7BACD331B3EE4F700B9BF06 /* testPokTests.swift */; };
 		C7BACD3F1B3EE50C00B9BF06 /* Evaluator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7BACD3D1B3EE50C00B9BF06 /* Evaluator.swift */; };
-		C7BACD401B3EE50C00B9BF06 /* Lookups.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7BACD3E1B3EE50C00B9BF06 /* Lookups.swift */; };
+		C7BACD401B3EE50C00B9BF06 /* ByteRanks.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7BACD3E1B3EE50C00B9BF06 /* ByteRanks.swift */; };
 		C7BACD421B3EE66400B9BF06 /* CoreExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7BACD411B3EE66400B9BF06 /* CoreExtensions.swift */; };
 		C7BACD441B3EE69300B9BF06 /* ModelCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7BACD431B3EE69300B9BF06 /* ModelCard.swift */; };
 		C7BACD461B3EE6C400B9BF06 /* ModelDeck.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7BACD451B3EE6C400B9BF06 /* ModelDeck.swift */; };
@@ -143,7 +143,7 @@
 		C7BD475A1B51D279001B2144 /* ModelTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7BACD491B3EE6F200B9BF06 /* ModelTable.swift */; };
 		C7BD475B1B51D27C001B2144 /* ModelDealer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7BACD4B1B3EE70800B9BF06 /* ModelDealer.swift */; };
 		C7BD475C1B51D281001B2144 /* Evaluator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7BACD3D1B3EE50C00B9BF06 /* Evaluator.swift */; };
-		C7BD475D1B51D284001B2144 /* Lookups.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7BACD3E1B3EE50C00B9BF06 /* Lookups.swift */; };
+		C7BD475D1B51D284001B2144 /* ByteRanks.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7BACD3E1B3EE50C00B9BF06 /* ByteRanks.swift */; };
 		C7D823411B51461F00041742 /* SPKPlayerAndCardsPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D823401B51461F00041742 /* SPKPlayerAndCardsPanel.swift */; };
 /* End PBXBuildFile section */
 
@@ -277,7 +277,7 @@
 		C7BACD321B3EE4F700B9BF06 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C7BACD331B3EE4F700B9BF06 /* testPokTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testPokTests.swift; sourceTree = "<group>"; };
 		C7BACD3D1B3EE50C00B9BF06 /* Evaluator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Evaluator.swift; sourceTree = "<group>"; };
-		C7BACD3E1B3EE50C00B9BF06 /* Lookups.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Lookups.swift; sourceTree = "<group>"; };
+		C7BACD3E1B3EE50C00B9BF06 /* ByteRanks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ByteRanks.swift; sourceTree = "<group>"; };
 		C7BACD411B3EE66400B9BF06 /* CoreExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreExtensions.swift; sourceTree = "<group>"; };
 		C7BACD431B3EE69300B9BF06 /* ModelCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelCard.swift; sourceTree = "<group>"; };
 		C7BACD451B3EE6C400B9BF06 /* ModelDeck.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelDeck.swift; sourceTree = "<group>"; };
@@ -456,7 +456,7 @@
 				C7BACD241B3EE4F700B9BF06 /* Images.xcassets */,
 				C7BACD261B3EE4F700B9BF06 /* MainMenu.xib */,
 				C7BACD3D1B3EE50C00B9BF06 /* Evaluator.swift */,
-				C7BACD3E1B3EE50C00B9BF06 /* Lookups.swift */,
+				C7BACD3E1B3EE50C00B9BF06 /* ByteRanks.swift */,
 				C763F5751B4066EF00475A7A /* cards_png */,
 				C7BACD201B3EE4F700B9BF06 /* Supporting Files */,
 			);
@@ -716,7 +716,7 @@
 				C7BACD441B3EE69300B9BF06 /* ModelCard.swift in Sources */,
 				C7BACD3F1B3EE50C00B9BF06 /* Evaluator.swift in Sources */,
 				C7BACD4C1B3EE70800B9BF06 /* ModelDealer.swift in Sources */,
-				C7BACD401B3EE50C00B9BF06 /* Lookups.swift in Sources */,
+				C7BACD401B3EE50C00B9BF06 /* ByteRanks.swift in Sources */,
 				C7D823411B51461F00041742 /* SPKPlayerAndCardsPanel.swift in Sources */,
 				C7BACD521B3F473200B9BF06 /* SPKHandTableCellView.swift in Sources */,
 			);
@@ -728,7 +728,7 @@
 			files = (
 				C7BD475A1B51D279001B2144 /* ModelTable.swift in Sources */,
 				C7BD47581B51D273001B2144 /* CoreExtensions.swift in Sources */,
-				C7BD475D1B51D284001B2144 /* Lookups.swift in Sources */,
+				C7BD475D1B51D284001B2144 /* ByteRanks.swift in Sources */,
 				C7BD47571B51D270001B2144 /* ModelDeck.swift in Sources */,
 				C7BACD341B3EE4F700B9BF06 /* testPokTests.swift in Sources */,
 				C7BD47561B51D26D001B2144 /* ModelCard.swift in Sources */,

@@ -10,7 +10,7 @@ import Cocoa
 
 struct Dealer {
 
-    let evaluator = Evaluator()
+    var evaluator: Evaluator
 
     var currentDeck: Deck
 
@@ -21,11 +21,19 @@ struct Dealer {
     init() {
         currentDeck = Deck()
         table = Table()
+        evaluator = Evaluator()
     }
     
     init(deck: Deck) {
         currentDeck = deck
         table = Table()
+        evaluator = Evaluator()
+    }
+    
+    init(deck: Deck, evaluator: Evaluator) {
+        currentDeck = deck
+        table = Table()
+        self.evaluator = evaluator
     }
 
     var currentGame: String { get { return "Game: \(table.currentGame)\n" } }

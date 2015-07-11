@@ -1,10 +1,7 @@
-//
-//  Evaluator.swift
-//  PokerHandEvaluator
-//
 //  Created by Ivan Sanchez on 06/10/2014.
 //  Copyright (c) 2014 Gourame Limited. All rights reserved.
 //
+//  Modified for SwiftyPokerHands to take values from JSON files instead of huge array literals.
 
 import Foundation
 
@@ -78,8 +75,8 @@ private var rankStarts:[Int:RankName] = [
 ]
 
 final class HandRank: Equatable {
-    var rank:Int
-    var name:RankName
+    let rank:Int
+    let name:RankName
     init(rank:Int) {
         self.rank = rank
         let start = rankStarts.keys.filter {$0 >= rank}.array.sort { $0 < $1 }.first!
@@ -96,7 +93,18 @@ func < (lhs: HandRank, rhs: HandRank) -> Bool {
 }
 
 final public class Evaluator {
-    var deck = CardsDeck()
+    
+    let deck = CardsDeck()
+    let byteRanks: ByteRanks
+    
+    init() {
+        // reads from json files in the bundle
+        self.byteRanks = ByteRanks()
+    }
+    
+    init(byteRanksInstance: ByteRanks) {
+        self.byteRanks = byteRanksInstance
+    }
 
     func evaluate(cards:[String]) -> HandRank {
         let cardValues = cards.map { self.deck.as_binary($0) }
@@ -106,11 +114,11 @@ final public class Evaluator {
         let isFlush:Bool = (cardValues.reduce(0xF000,combine:&)) != 0
 
         if isFlush {
-            let flushRank = flushes[handIndex]
+            let flushRank = byteRanks.flushes[handIndex]
             return HandRank(rank:flushRank)
         }
 
-        let unique5Candidate = uniqueToRanks[handIndex]
+        let unique5Candidate = byteRanks.uniqueToRanks[handIndex]
 
         if (unique5Candidate != 0){
             return HandRank(rank:unique5Candidate)
@@ -118,7 +126,7 @@ final public class Evaluator {
 
         let primeProduct = cardValues.map { $0 & 0xFF }.reduce(1, combine:*)
 
-        let combination = primeProductToCombination.indexOf(primeProduct)!
-        return HandRank(rank:combinationToRank[combination])
+        let combination = byteRanks.primeProductToCombination.indexOf(primeProduct)!
+        return HandRank(rank: byteRanks.combinationToRank[combination])
     }
 }
