@@ -81,6 +81,57 @@ struct Dealer {
     mutating func dealHoldemHandTo(inout player: Player) {
         player.cards = dealHoldemHand()
     }
+    
+    mutating func dealHoldemCards(cards: [String]) -> [Card] {
+        let up = cards.map({$0.uppercaseString})
+        var cards = [Card]()
+        var toRemove: Int?
+        for card in up {
+            let components = card.characters.map({String($0)})
+            let cardObj = Card(suit: components[1], rank: components[0])
+            for (index, deckCard) in currentDeck.cards.enumerate() {
+                if deckCard == cardObj {
+                    toRemove = index
+                    break
+                }
+            }
+            if let rm = toRemove {
+                currentDeck.cards.removeAtIndex(rm)
+                cards.append(cardObj)
+            } else {
+                NSLog("%@", "ERROR: \(cardObj) is not in the deck")
+            }
+        }
+        return cards
+    }
+    
+    mutating func dealHoldemCardsTo(inout player: Player, cards: [String]) {
+        player.cards = dealHoldemCards(cards)
+    }
+    
+    mutating func dealHoldemCardsTo(inout player: Player, cards: [Card]) {
+        var toRemove: Int?
+        var error = false
+        for card in cards {
+            for (index, deckCard) in currentDeck.cards.enumerate() {
+                if deckCard == card {
+                    toRemove = index
+                    break
+                }
+            }
+            if let rm = toRemove {
+                currentDeck.cards.removeAtIndex(rm)
+            } else {
+                error = true
+                NSLog("%@", "ERROR: \(card) is not in the deck")
+            }
+        }
+        if error {
+            player.cards = []
+        } else {
+            player.cards = cards
+        }
+    }
 
     mutating func dealFlop() -> [Card] {
         table.dealtCards = []

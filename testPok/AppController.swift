@@ -10,8 +10,14 @@
 
 import Cocoa
 
+enum GameMode {
+    case Random, Custom
+}
+
 final class AppController: NSObject, NSTableViewDataSource, NSTableViewDelegate {
 
+    @IBOutlet weak var window: NSWindow!
+    @IBOutlet weak var playerAndCardsPanel: NSPanel!
     @IBOutlet weak var handsTableView: NSTableView!
     @IBOutlet weak var player1TextField: NSTextField!
     @IBOutlet weak var player2TextField: NSTextField!
@@ -24,6 +30,21 @@ final class AppController: NSObject, NSTableViewDataSource, NSTableViewDelegate 
     @IBOutlet weak var gobutton: NSButton!
     @IBOutlet weak var spinner: NSProgressIndicator!
     @IBOutlet weak var pleaseWaitLabel: NSTextField!
+    
+    @IBAction func radioButtonsAction(sender: NSButton) {
+        if sender.tag == 0 {
+            settings.gameMode = .Random
+        } else {
+            settings.gameMode = .Custom
+            window.beginSheet(playerAndCardsPanel, completionHandler: { _ in })
+        }
+    }
+    
+    @IBAction func playerAndCardsPanelCANCEL(sender: NSButton) {
+        window.endSheet(playerAndCardsPanel)
+    }
+    
+    let settings = SPKSettings.sharedInstance
 
     typealias DealerAndPlayers = (dealer: Dealer, player1: Player, player2: Player)
 
@@ -32,6 +53,11 @@ final class AppController: NSObject, NSTableViewDataSource, NSTableViewDelegate 
 
     override init() {
         super.init()
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "gotPlayersSettings:", name: "playerAndCardsPanelButtonOK", object: nil)
+    }
+    
+    func gotPlayersSettings(notification: NSNotification) {
+        window.endSheet(playerAndCardsPanel)
     }
 
     
@@ -119,12 +145,18 @@ final class AppController: NSObject, NSTableViewDataSource, NSTableViewDelegate 
         dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INTERACTIVE, 0)) {
             // run a loop of background tasks
             dispatch_apply(numberOfHands, dispatch_get_global_queue(QOS_CLASS_USER_INITIATED, 0), { (index) -> Void in
-                // NSLog("%d", index)
                 // TODO: in this example we create new players and dealer each time, but we should refactor to use a safe-thread version of one single instance of each object so we can have player statistics, dealer and table stats, etc (will probably have to implement read-write barrier in our structs)
                 var dealer = Dealer(deck: deck)
                 var (player1, player2) = (Player(name: name1), Player(name: name2))
-                dealer.dealHoldemHandTo(&player1)
-                dealer.dealHoldemHandTo(&player2)
+                
+                if self.settings.gameMode == .Random {
+                    dealer.dealHoldemHandTo(&player1)
+                    dealer.dealHoldemHandTo(&player2)
+                } else {
+                    dealer.dealHoldemCardsTo(&player1, cards: self.settings.getPlayer1Cards())
+                    dealer.dealHoldemCardsTo(&player2, cards: self.settings.getPlayer2Cards())
+                }
+                
                 dealer.dealFlop()
                 dealer.dealTurn()
                 dealer.dealRiver()
@@ -149,27 +181,27 @@ final class AppController: NSObject, NSTableViewDataSource, NSTableViewDelegate 
         let (p1, p2) = (people.1.name!, people.2.name!)
         for (k, v) in people.0.scores {
             if k == p1 {
-                self.player1ScoreLabel.integerValue += v
+                player1ScoreLabel.integerValue += v
             } else if k == p2 {
-                self.player2ScoreLabel.integerValue += v
+                player2ScoreLabel.integerValue += v
             }
         }
-        self.roundsCountLabel.integerValue++
-        self.handsTableView.reloadData()
-        self.handsTableView.scrollRowToVisible(self.results.count - 1)
+        roundsCountLabel.integerValue++
+        handsTableView.reloadData()
+        handsTableView.scrollRowToVisible(self.results.count - 1)
     }
     
     func playerNames() -> (String, String) {
         let (name1, name2): (String,String)
-        if self.player1TextField.stringValue.isEmpty {
+        if player1TextField.stringValue.isEmpty {
             name1 = "Johnny"
         } else {
-            name1 = self.player1TextField.stringValue
+            name1 = player1TextField.stringValue
         }
-        if self.player2TextField.stringValue.isEmpty {
+        if player2TextField.stringValue.isEmpty {
             name2 = "Annette"
         } else {
-            name2 = self.player2TextField.stringValue
+            name2 = player2TextField.stringValue
         }
         return (name1, name2)
     }

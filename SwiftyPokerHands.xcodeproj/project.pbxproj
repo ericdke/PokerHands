@@ -135,6 +135,8 @@
 		C7BACD4C1B3EE70800B9BF06 /* ModelDealer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7BACD4B1B3EE70800B9BF06 /* ModelDealer.swift */; };
 		C7BACD4E1B3F45CE00B9BF06 /* AppController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7BACD4D1B3F45CE00B9BF06 /* AppController.swift */; };
 		C7BACD521B3F473200B9BF06 /* SPKHandTableCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7BACD511B3F473200B9BF06 /* SPKHandTableCellView.swift */; };
+		C7BD47541B51965D001B2144 /* SPKSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7BD47531B51965D001B2144 /* SPKSettings.swift */; };
+		C7D823411B51461F00041742 /* SPKPlayerAndCardsPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D823401B51461F00041742 /* SPKPlayerAndCardsPanel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -258,12 +260,12 @@
 		C7AF1ACD1B42A468001E4763 /* queen_of_diamonds.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = queen_of_diamonds.png; sourceTree = "<group>"; };
 		C7AF1ACE1B42A468001E4763 /* queen_of_hearts.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = queen_of_hearts.png; sourceTree = "<group>"; };
 		C7AF1ACF1B42A468001E4763 /* queen_of_spades.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = queen_of_spades.png; sourceTree = "<group>"; };
-		C7BACD1D1B3EE4F700B9BF06 /* testPok.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = testPok.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C7BACD1D1B3EE4F700B9BF06 /* SwiftyPokerHands.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftyPokerHands.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7BACD211B3EE4F700B9BF06 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C7BACD221B3EE4F700B9BF06 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C7BACD241B3EE4F700B9BF06 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		C7BACD271B3EE4F700B9BF06 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
-		C7BACD2D1B3EE4F700B9BF06 /* testPokTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = testPokTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C7BACD2D1B3EE4F700B9BF06 /* SwiftyPokerHands.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftyPokerHands.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7BACD321B3EE4F700B9BF06 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C7BACD331B3EE4F700B9BF06 /* testPokTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testPokTests.swift; sourceTree = "<group>"; };
 		C7BACD3D1B3EE50C00B9BF06 /* Evaluator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Evaluator.swift; sourceTree = "<group>"; };
@@ -276,6 +278,8 @@
 		C7BACD4B1B3EE70800B9BF06 /* ModelDealer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelDealer.swift; sourceTree = "<group>"; };
 		C7BACD4D1B3F45CE00B9BF06 /* AppController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppController.swift; sourceTree = "<group>"; };
 		C7BACD511B3F473200B9BF06 /* SPKHandTableCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPKHandTableCellView.swift; sourceTree = "<group>"; };
+		C7BD47531B51965D001B2144 /* SPKSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPKSettings.swift; sourceTree = "<group>"; };
+		C7D823401B51461F00041742 /* SPKPlayerAndCardsPanel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPKPlayerAndCardsPanel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -421,8 +425,8 @@
 		C7BACD1E1B3EE4F700B9BF06 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				C7BACD1D1B3EE4F700B9BF06 /* testPok.app */,
-				C7BACD2D1B3EE4F700B9BF06 /* testPokTests.xctest */,
+				C7BACD1D1B3EE4F700B9BF06 /* SwiftyPokerHands.app */,
+				C7BACD2D1B3EE4F700B9BF06 /* SwiftyPokerHands.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -431,6 +435,8 @@
 			isa = PBXGroup;
 			children = (
 				C7BACD4D1B3F45CE00B9BF06 /* AppController.swift */,
+				C7BD47531B51965D001B2144 /* SPKSettings.swift */,
+				C7D823401B51461F00041742 /* SPKPlayerAndCardsPanel.swift */,
 				C7BACD511B3F473200B9BF06 /* SPKHandTableCellView.swift */,
 				C7BACD411B3EE66400B9BF06 /* CoreExtensions.swift */,
 				C7BACD431B3EE69300B9BF06 /* ModelCard.swift */,
@@ -481,9 +487,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		C7BACD1C1B3EE4F700B9BF06 /* testPok */ = {
+		C7BACD1C1B3EE4F700B9BF06 /* SwiftyPokerHands */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C7BACD371B3EE4F700B9BF06 /* Build configuration list for PBXNativeTarget "testPok" */;
+			buildConfigurationList = C7BACD371B3EE4F700B9BF06 /* Build configuration list for PBXNativeTarget "SwiftyPokerHands" */;
 			buildPhases = (
 				C7BACD191B3EE4F700B9BF06 /* Sources */,
 				C7BACD1A1B3EE4F700B9BF06 /* Frameworks */,
@@ -493,14 +499,14 @@
 			);
 			dependencies = (
 			);
-			name = testPok;
+			name = SwiftyPokerHands;
 			productName = testPok;
-			productReference = C7BACD1D1B3EE4F700B9BF06 /* testPok.app */;
+			productReference = C7BACD1D1B3EE4F700B9BF06 /* SwiftyPokerHands.app */;
 			productType = "com.apple.product-type.application";
 		};
-		C7BACD2C1B3EE4F700B9BF06 /* testPokTests */ = {
+		C7BACD2C1B3EE4F700B9BF06 /* SwiftyPokerHandsTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C7BACD3A1B3EE4F700B9BF06 /* Build configuration list for PBXNativeTarget "testPokTests" */;
+			buildConfigurationList = C7BACD3A1B3EE4F700B9BF06 /* Build configuration list for PBXNativeTarget "SwiftyPokerHandsTests" */;
 			buildPhases = (
 				C7BACD291B3EE4F700B9BF06 /* Sources */,
 				C7BACD2A1B3EE4F700B9BF06 /* Frameworks */,
@@ -511,9 +517,9 @@
 			dependencies = (
 				C7BACD2F1B3EE4F700B9BF06 /* PBXTargetDependency */,
 			);
-			name = testPokTests;
+			name = SwiftyPokerHandsTests;
 			productName = testPokTests;
-			productReference = C7BACD2D1B3EE4F700B9BF06 /* testPokTests.xctest */;
+			productReference = C7BACD2D1B3EE4F700B9BF06 /* SwiftyPokerHands.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -535,7 +541,7 @@
 					};
 				};
 			};
-			buildConfigurationList = C7BACD181B3EE4F700B9BF06 /* Build configuration list for PBXProject "testPok" */;
+			buildConfigurationList = C7BACD181B3EE4F700B9BF06 /* Build configuration list for PBXProject "SwiftyPokerHands" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -548,8 +554,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				C7BACD1C1B3EE4F700B9BF06 /* testPok */,
-				C7BACD2C1B3EE4F700B9BF06 /* testPokTests */,
+				C7BACD1C1B3EE4F700B9BF06 /* SwiftyPokerHands */,
+				C7BACD2C1B3EE4F700B9BF06 /* SwiftyPokerHandsTests */,
 			);
 		};
 /* End PBXProject section */
@@ -693,6 +699,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C7BACD461B3EE6C400B9BF06 /* ModelDeck.swift in Sources */,
+				C7BD47541B51965D001B2144 /* SPKSettings.swift in Sources */,
 				C7BACD4E1B3F45CE00B9BF06 /* AppController.swift in Sources */,
 				C7BACD421B3EE66400B9BF06 /* CoreExtensions.swift in Sources */,
 				C7BACD481B3EE6DA00B9BF06 /* ModelPlayer.swift in Sources */,
@@ -702,6 +709,7 @@
 				C7BACD3F1B3EE50C00B9BF06 /* Evaluator.swift in Sources */,
 				C7BACD4C1B3EE70800B9BF06 /* ModelDealer.swift in Sources */,
 				C7BACD401B3EE50C00B9BF06 /* Lookups.swift in Sources */,
+				C7D823411B51461F00041742 /* SPKPlayerAndCardsPanel.swift in Sources */,
 				C7BACD521B3F473200B9BF06 /* SPKHandTableCellView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -719,7 +727,7 @@
 /* Begin PBXTargetDependency section */
 		C7BACD2F1B3EE4F700B9BF06 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = C7BACD1C1B3EE4F700B9BF06 /* testPok */;
+			target = C7BACD1C1B3EE4F700B9BF06 /* SwiftyPokerHands */;
 			targetProxy = C7BACD2E1B3EE4F700B9BF06 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -825,7 +833,7 @@
 				INFOPLIST_FILE = testPok/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ericdke.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = testPok;
+				PRODUCT_NAME = SwiftyPokerHands;
 			};
 			name = Debug;
 		};
@@ -837,7 +845,7 @@
 				INFOPLIST_FILE = testPok/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ericdke.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = testPok;
+				PRODUCT_NAME = SwiftyPokerHands;
 			};
 			name = Release;
 		};
@@ -857,8 +865,8 @@
 				INFOPLIST_FILE = testPokTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ericdke.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = testPokTests;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/testPok.app/Contents/MacOS/testPok";
+				PRODUCT_NAME = SwiftyPokerHands;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SwiftyPokerHands.app/Contents/MacOS/SwiftyPokerHands";
 			};
 			name = Debug;
 		};
@@ -874,15 +882,15 @@
 				INFOPLIST_FILE = testPokTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ericdke.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = testPokTests;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/testPok.app/Contents/MacOS/testPok";
+				PRODUCT_NAME = SwiftyPokerHands;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SwiftyPokerHands.app/Contents/MacOS/SwiftyPokerHands";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		C7BACD181B3EE4F700B9BF06 /* Build configuration list for PBXProject "testPok" */ = {
+		C7BACD181B3EE4F700B9BF06 /* Build configuration list for PBXProject "SwiftyPokerHands" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C7BACD351B3EE4F700B9BF06 /* Debug */,
@@ -891,7 +899,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C7BACD371B3EE4F700B9BF06 /* Build configuration list for PBXNativeTarget "testPok" */ = {
+		C7BACD371B3EE4F700B9BF06 /* Build configuration list for PBXNativeTarget "SwiftyPokerHands" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C7BACD381B3EE4F700B9BF06 /* Debug */,
@@ -900,7 +908,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C7BACD3A1B3EE4F700B9BF06 /* Build configuration list for PBXNativeTarget "testPokTests" */ = {
+		C7BACD3A1B3EE4F700B9BF06 /* Build configuration list for PBXNativeTarget "SwiftyPokerHandsTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C7BACD3B1B3EE4F700B9BF06 /* Debug */,

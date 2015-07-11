@@ -11,7 +11,7 @@
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
-        <customObject id="8qc-uo-HRf" customClass="AppController" customModule="testPok" customModuleProvider="target">
+        <customObject id="8qc-uo-HRf" customClass="AppController" customModule="SwiftyPokerHands" customModuleProvider="target">
             <connections>
                 <outlet property="gobutton" destination="PO3-Ug-vIq" id="LDy-Fl-1wZ"/>
                 <outlet property="handsTableView" destination="QJT-tS-TSz" id="Lxk-wo-ieZ"/>
@@ -21,13 +21,15 @@
                 <outlet property="player2ScoreLabel" destination="z6C-V1-YgO" id="OTw-SC-Tsz"/>
                 <outlet property="player2ScoreNameLabel" destination="7oT-By-Ldx" id="V7M-WE-co0"/>
                 <outlet property="player2TextField" destination="huq-ak-l1U" id="EnO-2t-ldJ"/>
+                <outlet property="playerAndCardsPanel" destination="Bva-WB-tLZ" id="6C6-n8-mlQ"/>
                 <outlet property="pleaseWaitLabel" destination="Xq7-tL-Dj0" id="erQ-Ue-jQT"/>
                 <outlet property="roundsCountLabel" destination="ono-K6-w5P" id="ZiJ-w6-sF0"/>
                 <outlet property="roundsTextField" destination="8ya-6I-2oW" id="dwD-22-LLW"/>
                 <outlet property="spinner" destination="AGE-iM-7PH" id="nNW-JU-n5T"/>
+                <outlet property="window" destination="QvC-M9-y7g" id="2dq-8B-NB1"/>
             </connections>
         </customObject>
-        <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="testPok" customModuleProvider="target">
+        <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="SwiftyPokerHands" customModuleProvider="target">
             <connections>
                 <outlet property="window" destination="QvC-M9-y7g" id="gIp-Ho-8D9"/>
             </connections>
@@ -35,11 +37,11 @@
         <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
         <menu title="Main Menu" systemMenu="main" id="AYu-sK-qS6">
             <items>
-                <menuItem title="testPok" id="1Xt-HY-uBw">
+                <menuItem title="SwiftyPokerHands" id="1Xt-HY-uBw">
                     <modifierMask key="keyEquivalentModifierMask"/>
-                    <menu key="submenu" title="testPok" systemMenu="apple" id="uQy-DD-JDr">
+                    <menu key="submenu" title="SwiftyPokerHands" systemMenu="apple" id="uQy-DD-JDr">
                         <items>
-                            <menuItem title="About testPok" id="5kV-Vb-QxS">
+                            <menuItem title="About SwiftyPokerHands" id="5kV-Vb-QxS">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
                                     <action selector="orderFrontStandardAboutPanel:" target="-1" id="Exp-CZ-Vem"/>
@@ -53,7 +55,7 @@
                                 <menu key="submenu" title="Services" systemMenu="services" id="hz9-B4-Xy5"/>
                             </menuItem>
                             <menuItem isSeparatorItem="YES" id="4je-JR-u6R"/>
-                            <menuItem title="Hide testPok" keyEquivalent="h" id="Olw-nP-bQN">
+                            <menuItem title="Hide SwiftyPokerHands" keyEquivalent="h" id="Olw-nP-bQN">
                                 <connections>
                                     <action selector="hide:" target="-1" id="PnN-Uc-m68"/>
                                 </connections>
@@ -71,7 +73,7 @@
                                 </connections>
                             </menuItem>
                             <menuItem isSeparatorItem="YES" id="kCx-OE-vgT"/>
-                            <menuItem title="Quit testPok" keyEquivalent="q" id="4sb-4s-VLi">
+                            <menuItem title="Quit SwiftyPokerHands" keyEquivalent="q" id="4sb-4s-VLi">
                                 <connections>
                                     <action selector="terminate:" target="-1" id="Te7-pn-YzF"/>
                                 </connections>
@@ -672,7 +674,7 @@
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <menu key="submenu" title="Help" systemMenu="help" id="F2S-fz-NVQ">
                         <items>
-                            <menuItem title="testPok Help" keyEquivalent="?" id="FKE-Sm-Kum">
+                            <menuItem title="SwiftyPokerHands Help" keyEquivalent="?" id="FKE-Sm-Kum">
                                 <connections>
                                     <action selector="showHelp:" target="-1" id="y7X-2Q-9no"/>
                                 </connections>
@@ -682,7 +684,7 @@
                 </menuItem>
             </items>
         </menu>
-        <window title="testPok" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="QvC-M9-y7g">
+        <window title="SwiftyPokerHands" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="QvC-M9-y7g">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="335" y="390" width="798" height="440"/>
@@ -758,7 +760,7 @@
                         </textFieldCell>
                     </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="ezO-i2-pAO">
-                        <rect key="frame" x="18" y="189" width="118" height="23"/>
+                        <rect key="frame" x="18" y="180" width="118" height="23"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" id="PpD-B8-Dcl">
                             <font key="font" size="12" name="HelveticaNeue"/>
@@ -767,7 +769,7 @@
                         </textFieldCell>
                     </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="Ad2-Kc-xuq">
-                        <rect key="frame" x="18" y="163" width="118" height="27"/>
+                        <rect key="frame" x="18" y="154" width="118" height="27"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" id="2e5-cO-l9q">
                             <font key="font" size="18" name="HelveticaNeue"/>
@@ -776,7 +778,7 @@
                         </textFieldCell>
                     </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="7oT-By-Ldx">
-                        <rect key="frame" x="18" y="132" width="118" height="23"/>
+                        <rect key="frame" x="18" y="123" width="118" height="23"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" id="ByT-Lv-61l">
                             <font key="font" size="12" name="HelveticaNeue"/>
@@ -785,7 +787,7 @@
                         </textFieldCell>
                     </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="z6C-V1-YgO">
-                        <rect key="frame" x="18" y="105" width="118" height="28"/>
+                        <rect key="frame" x="18" y="96" width="118" height="28"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" id="wOQ-1S-oFH">
                             <font key="font" size="18" name="HelveticaNeue"/>
@@ -837,7 +839,7 @@ DQ
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <tableView appearanceType="vibrantLight" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnReordering="NO" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="150" rowSizeStyle="automatic" viewBased="YES" id="QJT-tS-TSz">
-                                    <rect key="frame" x="0.0" y="0.0" width="627" height="398"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="627" height="0.0"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <size key="intercellSpacing" width="3" height="2"/>
                                     <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -857,7 +859,7 @@ DQ
                                             </textFieldCell>
                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                             <prototypeCellViews>
-                                                <tableCellView id="Pgh-3l-ajx" customClass="SPKHandTableCellView" customModule="testPok" customModuleProvider="target">
+                                                <tableCellView id="Pgh-3l-ajx" customClass="SPKHandTableCellView" customModule="SwiftyPokerHands" customModuleProvider="target">
                                                     <rect key="frame" x="1" y="1" width="624" height="150"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <subviews>
@@ -979,9 +981,363 @@ DQ
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
                     </scrollView>
+                    <button identifier="radioRandom" id="Uxv-uO-t0b">
+                        <rect key="frame" x="32" y="232" width="87" height="24"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="radio" title="Random cards" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="mini" state="on" inset="2" id="FSv-Oh-e9I">
+                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                            <font key="font" metaFont="miniSystem"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="radioButtonsAction:" target="8qc-uo-HRf" id="Ztf-E4-h5H"/>
+                        </connections>
+                    </button>
+                    <button identifier="radioCustom" tag="1" id="h0j-0l-qCZ">
+                        <rect key="frame" x="32" y="217" width="87" height="24"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="radio" title="Custom cards" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="mini" inset="2" id="gst-Le-tD0">
+                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                            <font key="font" metaFont="miniSystem"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="radioButtonsAction:" target="8qc-uo-HRf" id="kCH-VS-Od8"/>
+                        </connections>
+                    </button>
                 </subviews>
             </view>
-            <point key="canvasLocation" x="422" y="457"/>
+            <point key="canvasLocation" x="396" y="339"/>
+        </window>
+        <window title="Player and cards" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="Bva-WB-tLZ" customClass="SPKPlayerAndCardsPanel" customModule="SwiftyPokerHands" customModuleProvider="target">
+            <windowStyleMask key="styleMask" utility="YES" documentModal="YES"/>
+            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+            <rect key="contentRect" x="-1724" y="-168" width="646" height="273"/>
+            <rect key="screenRect" x="-1920" y="-280" width="1920" height="1057"/>
+            <view key="contentView" id="Hgh-ag-dLd">
+                <rect key="frame" x="0.0" y="0.0" width="646" height="273"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <popUpButton verticalHuggingPriority="750" id="eKc-wK-unQ">
+                        <rect key="frame" x="44" y="157" width="106" height="22"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <popUpButtonCell key="cell" type="push" title="♠ Spades" bezelStyle="rounded" alignment="left" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="kZb-YI-mEz" id="kGV-Uc-bln">
+                            <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="smallSystem"/>
+                            <menu key="menu" id="BE8-V1-SxX">
+                                <items>
+                                    <menuItem title="♠ Spades" state="on" id="kZb-YI-mEz">
+                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                        <accessibility identifier="p1c1s"/>
+                                    </menuItem>
+                                    <menuItem title="♣ Clubs" id="2kg-Un-g3W">
+                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                        <accessibility identifier="p1c1c"/>
+                                    </menuItem>
+                                    <menuItem title="♥ Hearts" id="AZK-QF-jrh">
+                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                        <accessibility identifier="p1c1h"/>
+                                    </menuItem>
+                                    <menuItem title="♦ Diamonds" id="7F6-Lz-q8H">
+                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                        <accessibility identifier="p1c1d"/>
+                                    </menuItem>
+                                </items>
+                            </menu>
+                        </popUpButtonCell>
+                    </popUpButton>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="noQ-mW-7cH">
+                        <rect key="frame" x="18" y="227" width="293" height="26"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Player 1" id="eQN-4h-JuY">
+                            <font key="font" metaFont="system" size="16"/>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <popUpButton verticalHuggingPriority="750" id="Quw-Zf-zSw">
+                        <rect key="frame" x="173" y="157" width="111" height="22"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <popUpButtonCell key="cell" type="push" title="King" bezelStyle="rounded" alignment="left" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="Ocz-oM-s6F" id="LOi-a3-wu7">
+                            <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="smallSystem"/>
+                            <menu key="menu" id="05F-hi-Nc8">
+                                <items>
+                                    <menuItem title="Ace" id="BwM-xg-bJJ"/>
+                                    <menuItem title="King" state="on" id="Ocz-oM-s6F"/>
+                                    <menuItem title="Queen" id="C59-C9-jBe"/>
+                                    <menuItem title="Jack" id="bFb-Bi-ZDf"/>
+                                    <menuItem title="10" id="8E8-06-Hs1"/>
+                                    <menuItem title="9" id="XWs-Jq-MPd"/>
+                                    <menuItem title="8" id="cho-t9-dwA"/>
+                                    <menuItem title="7" id="iUD-w0-hYN"/>
+                                    <menuItem title="6" id="jgR-Gp-xbY"/>
+                                    <menuItem title="5" id="4Ig-Hw-bQI"/>
+                                    <menuItem title="4" id="RGy-jc-tLM"/>
+                                    <menuItem title="3" id="fKc-jV-IHD"/>
+                                    <menuItem title="2" id="ad2-yI-JQ3"/>
+                                </items>
+                            </menu>
+                        </popUpButtonCell>
+                    </popUpButton>
+                    <popUpButton verticalHuggingPriority="750" id="jKN-xi-zZS">
+                        <rect key="frame" x="44" y="86" width="106" height="22"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <popUpButtonCell key="cell" type="push" title="♥ Hearts" bezelStyle="rounded" alignment="left" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="0GK-BE-Vzy" id="U8x-9P-fJT">
+                            <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="smallSystem"/>
+                            <menu key="menu" id="Hib-bs-HDH">
+                                <items>
+                                    <menuItem title="♥ Hearts" state="on" id="0GK-BE-Vzy">
+                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                        <accessibility identifier="p1c2h"/>
+                                    </menuItem>
+                                    <menuItem title="♠ Spades" id="fgn-w7-hze">
+                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                        <accessibility identifier="p1c2s"/>
+                                    </menuItem>
+                                    <menuItem title="♣ Clubs" id="aaV-Sy-8rY">
+                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                        <accessibility identifier="p1c2c"/>
+                                    </menuItem>
+                                    <menuItem title="♦ Diamonds" id="oVd-xh-gTs">
+                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                        <accessibility identifier="p1c2d"/>
+                                    </menuItem>
+                                </items>
+                            </menu>
+                        </popUpButtonCell>
+                    </popUpButton>
+                    <popUpButton verticalHuggingPriority="750" id="gTg-wn-eyJ">
+                        <rect key="frame" x="173" y="86" width="111" height="22"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <popUpButtonCell key="cell" type="push" title="Ace" bezelStyle="rounded" alignment="left" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="ND6-AH-RTN" id="fFz-0U-UBP">
+                            <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="smallSystem"/>
+                            <menu key="menu" id="jhE-kV-2j5">
+                                <items>
+                                    <menuItem title="Ace" state="on" id="ND6-AH-RTN"/>
+                                    <menuItem title="King" id="JkK-rI-KRp"/>
+                                    <menuItem title="Queen" id="FjA-0X-SBy"/>
+                                    <menuItem title="Jack" id="QJo-wn-54o"/>
+                                    <menuItem title="10" id="B7B-ZD-CSh"/>
+                                    <menuItem title="9" id="lEu-jo-aFF"/>
+                                    <menuItem title="8" id="yGO-Y4-fMs"/>
+                                    <menuItem title="7" id="ncB-Uw-WkD"/>
+                                    <menuItem title="6" id="f60-qd-wV4"/>
+                                    <menuItem title="5" id="Xzb-j1-omo"/>
+                                    <menuItem title="4" id="pqd-kU-Ccf"/>
+                                    <menuItem title="3" id="6eh-YI-lLS"/>
+                                    <menuItem title="2" id="vMG-HJ-pp0"/>
+                                </items>
+                            </menu>
+                        </popUpButtonCell>
+                    </popUpButton>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="3kO-HX-Y0A">
+                        <rect key="frame" x="111" y="186" width="104" height="21"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Card 1" id="KYw-0x-Wmq">
+                            <font key="font" metaFont="cellTitle"/>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <button verticalHuggingPriority="750" id="zv9-kc-Rmt">
+                        <rect key="frame" x="332" y="14" width="80" height="28"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="push" title="OK" bezelStyle="rounded" alignment="center" controlSize="small" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Zay-NC-n1c">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="smallSystem"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="buttonOK:" target="Bva-WB-tLZ" id="Ba2-en-sWR"/>
+                        </connections>
+                    </button>
+                    <button verticalHuggingPriority="750" id="GK8-Cc-bYo">
+                        <rect key="frame" x="234" y="14" width="80" height="28"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" controlSize="small" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="wEg-wX-2UN">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="smallSystem"/>
+                            <string key="keyEquivalent" base64-UTF8="YES">
+Gw
+</string>
+                        </buttonCell>
+                        <connections>
+                            <action selector="playerAndCardsPanelCANCEL:" target="8qc-uo-HRf" id="b3B-u9-gt6"/>
+                        </connections>
+                    </button>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="fjF-ag-pDz">
+                        <rect key="frame" x="335" y="227" width="293" height="26"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Player 2" id="Azz-fC-nkI">
+                            <font key="font" metaFont="system" size="16"/>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="ICu-BF-BsA">
+                        <rect key="frame" x="112" y="115" width="104" height="21"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Card 2" id="FYW-zg-8tU">
+                            <font key="font" metaFont="cellTitle"/>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <popUpButton verticalHuggingPriority="750" id="E2F-o0-1it">
+                        <rect key="frame" x="361" y="157" width="106" height="22"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <popUpButtonCell key="cell" type="push" title="♣ Clubs" bezelStyle="rounded" alignment="left" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="2o3-V0-XOI" id="6KX-zl-VrG">
+                            <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="smallSystem"/>
+                            <menu key="menu" id="R1m-wi-M4o">
+                                <items>
+                                    <menuItem title="♣ Clubs" state="on" id="2o3-V0-XOI">
+                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                        <accessibility identifier="p2c1c"/>
+                                    </menuItem>
+                                    <menuItem title="♠ Spades" id="rkU-nP-VRS">
+                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                        <accessibility identifier="p2c1s"/>
+                                    </menuItem>
+                                    <menuItem title="♥ Hearts" id="ic3-0A-9JO">
+                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                        <accessibility identifier="p2c1h"/>
+                                    </menuItem>
+                                    <menuItem title="♦ Diamonds" id="N9k-3z-E1c">
+                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                        <accessibility identifier="p2c1d"/>
+                                    </menuItem>
+                                </items>
+                            </menu>
+                        </popUpButtonCell>
+                    </popUpButton>
+                    <popUpButton verticalHuggingPriority="750" id="bbl-iZ-eKq">
+                        <rect key="frame" x="490" y="157" width="111" height="22"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <popUpButtonCell key="cell" type="push" title="Ace" bezelStyle="rounded" alignment="left" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="rYL-EH-8uQ" id="E5U-SA-Kag">
+                            <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="smallSystem"/>
+                            <menu key="menu" id="koe-zV-eqy">
+                                <items>
+                                    <menuItem title="Ace" state="on" id="rYL-EH-8uQ"/>
+                                    <menuItem title="King" id="ju2-8d-rbQ"/>
+                                    <menuItem title="Queen" id="5fs-2T-wL0"/>
+                                    <menuItem title="Jack" id="y6F-gO-Ggu"/>
+                                    <menuItem title="10" id="g4f-e5-odL"/>
+                                    <menuItem title="9" id="CbF-bX-PGY"/>
+                                    <menuItem title="8" id="8Wz-eO-fGd"/>
+                                    <menuItem title="7" id="wcb-dx-qge"/>
+                                    <menuItem title="6" id="JEG-EP-Igm"/>
+                                    <menuItem title="5" id="IOk-37-DGy"/>
+                                    <menuItem title="4" id="wjj-k4-uxI"/>
+                                    <menuItem title="3" id="S9P-DR-H1Z"/>
+                                    <menuItem title="2" id="8qR-RF-uhr"/>
+                                </items>
+                            </menu>
+                        </popUpButtonCell>
+                    </popUpButton>
+                    <popUpButton verticalHuggingPriority="750" id="pJk-zS-l0C">
+                        <rect key="frame" x="361" y="86" width="106" height="22"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <popUpButtonCell key="cell" type="push" title="♦ Diamonds" bezelStyle="rounded" alignment="left" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="nMX-oi-9Z0" id="Sfc-Kb-aYy">
+                            <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="smallSystem"/>
+                            <menu key="menu" id="VDd-Ik-LxI">
+                                <items>
+                                    <menuItem title="♦ Diamonds" state="on" id="nMX-oi-9Z0">
+                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                        <accessibility identifier="p2c2d"/>
+                                    </menuItem>
+                                    <menuItem title="♠ Spades" id="89J-O8-Svr">
+                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                        <accessibility identifier="p2c2s"/>
+                                    </menuItem>
+                                    <menuItem title="♣ Clubs" id="inH-ih-lS3">
+                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                        <accessibility identifier="p2c2c"/>
+                                    </menuItem>
+                                    <menuItem title="♥ Hearts" id="5xN-Iv-cjh">
+                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                        <accessibility identifier="p2c2h"/>
+                                    </menuItem>
+                                </items>
+                            </menu>
+                        </popUpButtonCell>
+                    </popUpButton>
+                    <popUpButton verticalHuggingPriority="750" id="P69-6B-5zM">
+                        <rect key="frame" x="490" y="86" width="111" height="22"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <popUpButtonCell key="cell" type="push" title="Ace" bezelStyle="rounded" alignment="left" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="uhZ-sJ-zzB" id="XiK-NW-Wti">
+                            <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="smallSystem"/>
+                            <menu key="menu" id="QXK-Y3-t0m">
+                                <items>
+                                    <menuItem title="Ace" state="on" id="uhZ-sJ-zzB"/>
+                                    <menuItem title="King" id="bEZ-xb-f0g"/>
+                                    <menuItem title="Queen" id="TAk-PP-jFu"/>
+                                    <menuItem title="Jack" id="gEk-FI-b6R"/>
+                                    <menuItem title="10" id="zwa-h3-cbg"/>
+                                    <menuItem title="9" id="xhn-aa-IZ9"/>
+                                    <menuItem title="8" id="Dg3-gs-d35"/>
+                                    <menuItem title="7" id="rtk-Fv-Bef"/>
+                                    <menuItem title="6" id="XWS-A7-Jga"/>
+                                    <menuItem title="5" id="ILp-LV-owT"/>
+                                    <menuItem title="4" id="m1x-n3-4iX"/>
+                                    <menuItem title="3" id="ZQx-Rb-qKv"/>
+                                    <menuItem title="2" id="gAo-rS-8P5"/>
+                                </items>
+                            </menu>
+                        </popUpButtonCell>
+                    </popUpButton>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="h1U-DC-we0">
+                        <rect key="frame" x="428" y="186" width="104" height="21"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Card 1" id="Hc0-DU-5iX">
+                            <font key="font" metaFont="cellTitle"/>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="dd5-5b-Cx8">
+                        <rect key="frame" x="429" y="115" width="104" height="21"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Card 2" id="FPS-uk-wIX">
+                            <font key="font" metaFont="cellTitle"/>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <button id="YXM-mO-2LH">
+                        <rect key="frame" x="130" y="49" width="67" height="20"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="check" title="Random" bezelStyle="regularSquare" imagePosition="left" controlSize="small" inset="2" id="3es-oV-a7o">
+                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                            <font key="font" metaFont="smallSystem"/>
+                        </buttonCell>
+                    </button>
+                    <button id="Ta3-Ka-ZZF">
+                        <rect key="frame" x="446" y="49" width="67" height="20"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="check" title="Random" bezelStyle="regularSquare" imagePosition="left" controlSize="small" inset="2" id="1yW-tq-f7s">
+                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                            <font key="font" metaFont="smallSystem"/>
+                        </buttonCell>
+                    </button>
+                </subviews>
+            </view>
+            <connections>
+                <outlet property="p1Random" destination="YXM-mO-2LH" id="NMg-U8-KFT"/>
+                <outlet property="p1c1Rank" destination="Quw-Zf-zSw" id="vkh-30-Hl4"/>
+                <outlet property="p1c1Suit" destination="eKc-wK-unQ" id="V8n-fQ-T09"/>
+                <outlet property="p1c2Rank" destination="gTg-wn-eyJ" id="C7h-24-23D"/>
+                <outlet property="p1c2Suit" destination="jKN-xi-zZS" id="Y1B-u9-T9p"/>
+                <outlet property="p2Random" destination="Ta3-Ka-ZZF" id="PBa-hR-Ixu"/>
+                <outlet property="p2c1Rank" destination="bbl-iZ-eKq" id="sLO-n4-yo7"/>
+                <outlet property="p2c1Suit" destination="E2F-o0-1it" id="xrS-6x-OZM"/>
+                <outlet property="p2c2Rank" destination="P69-6B-5zM" id="DyT-tB-Goc"/>
+                <outlet property="p2c2Suit" destination="pJk-zS-l0C" id="sV1-sN-z4t"/>
+            </connections>
+            <point key="canvasLocation" x="407" y="795.5"/>
         </window>
     </objects>
 </document>

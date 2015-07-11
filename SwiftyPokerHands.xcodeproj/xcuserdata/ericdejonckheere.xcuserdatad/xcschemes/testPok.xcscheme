@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "C7BACD1C1B3EE4F700B9BF06"
-               BuildableName = "testPok.app"
-               BlueprintName = "testPok"
-               ReferencedContainer = "container:testPok.xcodeproj">
+               BuildableName = "SwiftyPokerHands.app"
+               BlueprintName = "SwiftyPokerHands"
+               ReferencedContainer = "container:SwiftyPokerHands.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -29,9 +29,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "C7BACD2C1B3EE4F700B9BF06"
-               BuildableName = "testPokTests.xctest"
-               BlueprintName = "testPokTests"
-               ReferencedContainer = "container:testPok.xcodeproj">
+               BuildableName = "SwiftyPokerHands.xctest"
+               BlueprintName = "SwiftyPokerHandsTests"
+               ReferencedContainer = "container:SwiftyPokerHands.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -47,9 +47,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "C7BACD2C1B3EE4F700B9BF06"
-               BuildableName = "testPokTests.xctest"
-               BlueprintName = "testPokTests"
-               ReferencedContainer = "container:testPok.xcodeproj">
+               BuildableName = "SwiftyPokerHands.xctest"
+               BlueprintName = "SwiftyPokerHandsTests"
+               ReferencedContainer = "container:SwiftyPokerHands.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -57,9 +57,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "C7BACD1C1B3EE4F700B9BF06"
-            BuildableName = "testPok.app"
-            BlueprintName = "testPok"
-            ReferencedContainer = "container:testPok.xcodeproj">
+            BuildableName = "SwiftyPokerHands.app"
+            BlueprintName = "SwiftyPokerHands"
+            ReferencedContainer = "container:SwiftyPokerHands.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -80,9 +80,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "C7BACD1C1B3EE4F700B9BF06"
-            BuildableName = "testPok.app"
-            BlueprintName = "testPok"
-            ReferencedContainer = "container:testPok.xcodeproj">
+            BuildableName = "SwiftyPokerHands.app"
+            BlueprintName = "SwiftyPokerHands"
+            ReferencedContainer = "container:SwiftyPokerHands.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -99,9 +99,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "C7BACD1C1B3EE4F700B9BF06"
-            BuildableName = "testPok.app"
-            BlueprintName = "testPok"
-            ReferencedContainer = "container:testPok.xcodeproj">
+            BuildableName = "SwiftyPokerHands.app"
+            BlueprintName = "SwiftyPokerHands"
+            ReferencedContainer = "container:SwiftyPokerHands.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

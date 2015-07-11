@@ -30,6 +30,13 @@ import Cocoa
 //    }
 //}
 
+func ==(lhs: Card, rhs: Card) -> Bool {
+    if lhs.rank == rhs.rank && lhs.suit == rhs.suit {
+        return true
+    }
+    return false
+}
+
 extension Range {
     func toArray () -> [T] {
         var result: [T] = []
@@ -57,7 +64,6 @@ extension Int {
 }
 extension Array {
     func permutation (length: Int) -> [[T]] {
-//        var selfCopy = self
         if length < 0 || length > self.count {
             return []
         } else if length == 0 {
