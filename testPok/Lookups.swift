@@ -5,6 +5,7 @@
 //  Created by Ivan Sanchez on 06/10/2014.
 //  Copyright (c) 2014 Gourame Limited. All rights reserved.
 //
+// Takes a very long time to compile, be patient...
 
 import Foundation
 

@@ -125,7 +125,7 @@ final class AppController: NSObject, NSTableViewDataSource, NSTableViewDelegate 
     }
     
     func playGCD(numberOfHands: Int) {
-        pleaseWaitLabel.hidden = false
+//        pleaseWaitLabel.hidden = false
         spinner.startAnimation(nil)
         gobutton.enabled = false
         results = []
@@ -183,7 +183,7 @@ final class AppController: NSObject, NSTableViewDataSource, NSTableViewDelegate 
             // this executes _after_ the loop
             dispatch_async(dispatch_get_main_queue()) {
                 self.gobutton.enabled = true
-                self.pleaseWaitLabel.hidden = true
+//                self.pleaseWaitLabel.hidden = true
                 self.spinner.stopAnimation(nil)
             }
         }
