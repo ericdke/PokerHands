@@ -38,8 +38,8 @@ func ==(lhs: Card, rhs: Card) -> Bool {
 }
 
 extension Range {
-    func toArray () -> [T] {
-        var result: [T] = []
+    func toArray () -> [Element] {
+        var result: [Element] = []
         for i in self {
             result.append(i)
         }
@@ -63,30 +63,30 @@ extension Int {
     }
 }
 extension Array {
-    func permutation (length: Int) -> [[T]] {
+    func permutation (length: Int) -> [[Element]] {
         if length < 0 || length > self.count {
             return []
         } else if length == 0 {
             return [[]]
         } else {
-            var permutations: [[T]] = []
+            var permutations: [[Element]] = []
             let combinations = combination(length)
             for combination in combinations {
-                var endArray: [[T]] = []
+                var endArray: [[Element]] = []
                 var mutableCombination = combination
                 permutations += self.permutationHelper(length, array: &mutableCombination, endArray: &endArray)
             }
             return permutations
         }
     }
-    private func permutationHelper(n: Int, inout array: [T], inout endArray: [[T]]) -> [[T]] {
+    private func permutationHelper(n: Int, inout array: [Element], inout endArray: [[Element]]) -> [[Element]] {
         if n == 1 {
             endArray += [array]
         }
         for var i = 0; i < n; i++ {
             permutationHelper(n - 1, array: &array, endArray: &endArray)
             let j = n % 2 == 0 ? i : 0;
-            let temp: T = array[j]
+            let temp: Element = array[j]
             array[j] = array[n - 1]
             array[n - 1] = temp
         }
@@ -120,8 +120,8 @@ extension Array {
         }
         return combinations
     }
-    func shuffle() -> [T] {
-        var shuffledContent:[T] = []
+    func shuffle() -> [Element] {
+        var shuffledContent:[Element] = []
         let shuffledIndex:[Int] = self.count.indexRandom()
         for i in 0...shuffledIndex.count-1 {
             shuffledContent.append(self[shuffledIndex[i]])
@@ -129,25 +129,25 @@ extension Array {
         return shuffledContent
     }
     mutating func shuffled() {
-        var shuffledContent:[T] = []
+        var shuffledContent:[Element] = []
         let shuffledIndex:[Int] = self.count.indexRandom()
         for i in 0...shuffledIndex.count-1 {
             shuffledContent.append(self[shuffledIndex[i]])
         }
         self = shuffledContent
     }
-    func chooseOne() -> T {
+    func chooseOne() -> Element {
         return self[Int(arc4random_uniform(UInt32(self.count)))]
     }
     //TODO: make it an Optional
-    mutating func takeOne() -> T {
+    mutating func takeOne() -> Element {
         let index = Int(arc4random_uniform(UInt32(self.count)))
         let item = self[index]
         self.removeAtIndex(index)
         return item
     }
-    func choose(x:Int) -> [T] {
-        var shuffledContent:[T] = []
+    func choose(x:Int) -> [Element] {
+        var shuffledContent:[Element] = []
         let shuffledIndex:[Int] = x.indexRandom()
         for i in 0...shuffledIndex.count-1 {
             shuffledContent.append(self[shuffledIndex[i]])

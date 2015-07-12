@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="8121.17" systemVersion="14E46" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="8152.3" systemVersion="14E46" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" customObjectInstantitationMethod="direct">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="8121.17"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="8152.3"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
@@ -22,7 +22,7 @@
                 <outlet property="player2ScoreNameLabel" destination="7oT-By-Ldx" id="V7M-WE-co0"/>
                 <outlet property="player2TextField" destination="huq-ak-l1U" id="EnO-2t-ldJ"/>
                 <outlet property="playerAndCardsPanel" destination="Bva-WB-tLZ" id="6C6-n8-mlQ"/>
-                <outlet property="pleaseWaitLabel" destination="Xq7-tL-Dj0" id="erQ-Ue-jQT"/>
+                <outlet property="progressBar" destination="kPo-HV-84S" id="drR-Ho-2zA"/>
                 <outlet property="roundsCountLabel" destination="ono-K6-w5P" id="ZiJ-w6-sF0"/>
                 <outlet property="roundsTextField" destination="8ya-6I-2oW" id="dwD-22-LLW"/>
                 <outlet property="spinner" destination="AGE-iM-7PH" id="nNW-JU-n5T"/>
@@ -743,7 +743,7 @@
                     <textField verticalHuggingPriority="750" id="8ya-6I-2oW">
                         <rect key="frame" x="20" y="267" width="52" height="19"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" placeholderString="10" drawsBackground="YES" id="5RS-4V-JNj">
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" placeholderString="100" drawsBackground="YES" id="5RS-4V-JNj">
                             <numberFormatter key="formatter" formatterBehavior="default10_4" numberStyle="decimal" minimumIntegerDigits="1" maximumIntegerDigits="2000000000" maximumFractionDigits="3" id="gSA-Sg-xlX"/>
                             <font key="font" metaFont="smallSystem"/>
                             <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -760,7 +760,7 @@
                         </textFieldCell>
                     </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="ezO-i2-pAO">
-                        <rect key="frame" x="18" y="180" width="118" height="23"/>
+                        <rect key="frame" x="16" y="180" width="120" height="23"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" id="PpD-B8-Dcl">
                             <font key="font" size="12" name="HelveticaNeue"/>
@@ -769,7 +769,7 @@
                         </textFieldCell>
                     </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="Ad2-Kc-xuq">
-                        <rect key="frame" x="18" y="154" width="118" height="27"/>
+                        <rect key="frame" x="16" y="154" width="120" height="27"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" id="2e5-cO-l9q">
                             <font key="font" size="18" name="HelveticaNeue"/>
@@ -778,7 +778,7 @@
                         </textFieldCell>
                     </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="7oT-By-Ldx">
-                        <rect key="frame" x="18" y="123" width="118" height="23"/>
+                        <rect key="frame" x="16" y="123" width="120" height="23"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" id="ByT-Lv-61l">
                             <font key="font" size="12" name="HelveticaNeue"/>
@@ -787,7 +787,7 @@
                         </textFieldCell>
                     </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="z6C-V1-YgO">
-                        <rect key="frame" x="18" y="96" width="118" height="28"/>
+                        <rect key="frame" x="16" y="96" width="120" height="28"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" id="wOQ-1S-oFH">
                             <font key="font" size="18" name="HelveticaNeue"/>
@@ -804,17 +804,8 @@
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <textField hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" id="Xq7-tL-Dj0">
-                        <rect key="frame" x="31" y="76" width="92" height="12"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <textFieldCell key="cell" controlSize="mini" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Computing hands..." id="10r-ck-uMR">
-                            <font key="font" metaFont="miniSystem"/>
-                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                    </textField>
-                    <progressIndicator horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" displayedWhenStopped="NO" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" id="AGE-iM-7PH">
-                        <rect key="frame" x="69" y="52" width="16" height="16"/>
+                    <progressIndicator hidden="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" displayedWhenStopped="NO" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" id="AGE-iM-7PH">
+                        <rect key="frame" x="69" y="38" width="16" height="16"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     </progressIndicator>
                     <button verticalHuggingPriority="750" id="PO3-Ug-vIq">
@@ -1003,6 +994,10 @@ DQ
                             <action selector="radioButtonsAction:" target="8qc-uo-HRf" id="kCH-VS-Od8"/>
                         </connections>
                     </button>
+                    <progressIndicator hidden="YES" minValue="1" maxValue="100" doubleValue="1" displayedWhenStopped="NO" controlSize="small" style="bar" id="kPo-HV-84S">
+                        <rect key="frame" x="18" y="57" width="116" height="12"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    </progressIndicator>
                 </subviews>
             </view>
             <point key="canvasLocation" x="396" y="339"/>

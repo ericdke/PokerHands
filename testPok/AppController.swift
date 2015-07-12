@@ -29,7 +29,8 @@ final class AppController: NSObject, NSTableViewDataSource, NSTableViewDelegate 
     @IBOutlet weak var player2ScoreLabel: NSTextField!
     @IBOutlet weak var gobutton: NSButton!
     @IBOutlet weak var spinner: NSProgressIndicator!
-    @IBOutlet weak var pleaseWaitLabel: NSTextField!
+    @IBOutlet weak var progressBar: NSProgressIndicator!
+    
     
     @IBAction func radioButtonsAction(sender: NSButton) {
         if sender.tag == 0 {
@@ -121,12 +122,15 @@ final class AppController: NSObject, NSTableViewDataSource, NSTableViewDelegate 
         if !roundsTextField.stringValue.isEmpty && roundsTextField.integerValue != 0 {
             playGCD(roundsTextField.integerValue)
         } else {
-            playGCD(10)
+            playGCD(100)
         }
     }
     
     func playGCD(numberOfHands: Int) {
-        spinner.startAnimation(nil)
+        progressBar.hidden = false
+        progressBar.doubleValue = 1.0
+        progressBar.maxValue = Double(numberOfHands)
+//        spinner.startAnimation(nil)
         gobutton.enabled = false
         results = []
         roundsCountLabel.integerValue = 0
@@ -183,8 +187,9 @@ final class AppController: NSObject, NSTableViewDataSource, NSTableViewDelegate 
             })
             // this executes _after_ the loop
             dispatch_async(dispatch_get_main_queue()) {
+                self.progressBar.hidden = true
                 self.gobutton.enabled = true
-                self.spinner.stopAnimation(nil)
+//                self.spinner.stopAnimation(nil)
             }
         }
     }
@@ -199,6 +204,7 @@ final class AppController: NSObject, NSTableViewDataSource, NSTableViewDelegate 
             }
         }
         roundsCountLabel.integerValue++
+        progressBar.doubleValue++
         handsTableView.reloadData()
         handsTableView.scrollRowToVisible(self.results.count - 1)
     }
