@@ -1,11 +1,3 @@
-//
-//  SPKPlayerAndCardsPanel.swift
-//  SwiftyPokerHands
-//
-//  Created by ERIC DEJONCKHEERE on 11/07/2015.
-//  Copyright © 2015 Eric Dejonckheere. All rights reserved.
-//
-
 import Cocoa
 
 class SPKPlayerAndCardsPanel: NSPanel {

@@ -36,12 +36,12 @@ class testPokTests: XCTestCase {
     
     func testInitPlayer() {
         let player = Player(name: "James")
-        XCTAssertTrue(player.name == "James", "init player with name")
+        XCTAssertTrue(player.name == "James")
     }
     
     func testInitDeck() {
         let d = Deck()
-        XCTAssertTrue(d.count == 52, "standard deck")
+        XCTAssertTrue(d.count == 52)
         XCTAssertTrue(d.suits == ["♠","♣","♥","♦"])
         XCTAssertTrue(d.ranks == ["A","K","Q","J","T","9","8","7","6","5","4","3","2"])
         XCTAssertTrue(d.cards.first! == Card(suit: "♠", rank: "A"))
@@ -141,9 +141,9 @@ class testPokTests: XCTestCase {
         dealer.dealHoldemCardsTo(&p1, cards: ["A♠", "K♠"])
         dealer.table.dealtCards = [Card(suit: "♠", rank: "Q"), Card(suit: "♠", rank: "J"), Card(suit: "♠", rank: "T"), Card(suit: "♠", rank: "2"), Card(suit: "♠", rank: "3")]
         dealer.evaluateHoldemHandAtRiverFor(&p1)
-        print(p1.holdemHand!.0.name)
         XCTAssertTrue(p1.holdemHand!.0.rank == 1)
         XCTAssertTrue(p1.holdemHand!.0.name.rawValue == "A Straight Flush")
+        XCTAssertTrue(p1.cardsNames == "Ace of Spades, King of Spades")
     }
     
     func testDealForTwoPlayersAndEvaluate() {
@@ -201,6 +201,7 @@ class testPokTests: XCTestCase {
         XCTAssertTrue(p1.historyOfDealtHoldemCards[1].1 == Card(suit: "♠", rank: "J"))
         XCTAssertTrue(p1.historyOfDealtHoldemCards[2].0 == Card(suit: "♠", rank: "T"))
         XCTAssertTrue(p1.historyOfDealtHoldemCards[2].1 == Card(suit: "♠", rank: "9"))
+        XCTAssertTrue(p1.cardsHistory == "A♠ K♠, Q♠ J♠, T♠ 9♠")
     }
     
     func testPlayerFrequentHands() {

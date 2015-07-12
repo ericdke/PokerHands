@@ -304,7 +304,7 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		C70F884B1B51E340007BE197 /* byteRanks */ = {
+		C70F884B1B51E340007BE197 /* SPHByteRanks */ = {
 			isa = PBXGroup;
 			children = (
 				C70F884C1B51E340007BE197 /* combinationToRank_bytes.json */,
@@ -312,6 +312,7 @@
 				C70F884E1B51E340007BE197 /* primeProductToCombination_bytes.json */,
 				C70F884F1B51E340007BE197 /* uniqueToRanks_bytes.json */,
 			);
+			name = SPHByteRanks;
 			path = byteRanks;
 			sourceTree = "<group>";
 		};
@@ -449,26 +450,25 @@
 		C7BACD1F1B3EE4F700B9BF06 /* SwiftyPokerHands */ = {
 			isa = PBXGroup;
 			children = (
-				C70F884B1B51E340007BE197 /* byteRanks */,
 				C7BACD4D1B3F45CE00B9BF06 /* DemoAppController.swift */,
 				C7BD47531B51965D001B2144 /* DemoSettings.swift */,
 				C7D823401B51461F00041742 /* DemoPlayersCardsPanel.swift */,
 				C7BACD511B3F473200B9BF06 /* DemoHandTableCellView.swift */,
+				C7BACD221B3EE4F700B9BF06 /* AppDelegate.swift */,
+				C70F884B1B51E340007BE197 /* SPHByteRanks */,
 				C7BACD411B3EE66400B9BF06 /* SPHCoreExtensions.swift */,
 				C7BACD431B3EE69300B9BF06 /* SPHModelCard.swift */,
 				C7BACD451B3EE6C400B9BF06 /* SPHModelDeck.swift */,
 				C7BACD471B3EE6DA00B9BF06 /* SPHModelPlayer.swift */,
 				C7BACD491B3EE6F200B9BF06 /* SPHModelTable.swift */,
 				C7BACD4B1B3EE70800B9BF06 /* SPHModelDealer.swift */,
-				C7BACD221B3EE4F700B9BF06 /* AppDelegate.swift */,
-				C7BACD241B3EE4F700B9BF06 /* Images.xcassets */,
-				C7BACD261B3EE4F700B9BF06 /* MainMenu.xib */,
 				C7BACD3D1B3EE50C00B9BF06 /* SPHEvaluator.swift */,
 				C7BACD3E1B3EE50C00B9BF06 /* SPHByteRanks.swift */,
+				C7BACD241B3EE4F700B9BF06 /* Images.xcassets */,
+				C7BACD261B3EE4F700B9BF06 /* MainMenu.xib */,
 				C763F5751B4066EF00475A7A /* cards_png */,
 				C7BACD201B3EE4F700B9BF06 /* Supporting Files */,
 			);
-			name = SwiftyPokerHands;
 			path = SwiftyPokerHands;
 			sourceTree = "<group>";
 		};
@@ -486,7 +486,6 @@
 				C7BACD331B3EE4F700B9BF06 /* SwiftyPokerHandsTests.swift */,
 				C7BACD311B3EE4F700B9BF06 /* Supporting Files */,
 			);
-			name = SwiftyPokerHandsTests;
 			path = SwiftyPokerHandsTests;
 			sourceTree = "<group>";
 		};

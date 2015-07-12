@@ -1,13 +1,3 @@
-//
-//  ModelPlayer.swift
-//  testPok
-//
-//  Created by ERIC DEJONCKHEERE on 27/06/2015.
-//  Copyright (c) 2015 Eric Dejonckheere. All rights reserved.
-//
-
-//import Foundation
-
 struct Player {
 
     init() {}
@@ -25,10 +15,7 @@ struct Player {
     var holdemHand: (HandRank, [String])?
 
     var cardsHistory: String { get {
-        let n = name ?? "Player"
-        let c = ", ".join(historyOfDealtHoldemCards.map({ $0.0.description + " " + $0.1.description }))
-        return "\n\(n)'s hole cards: \(c)"
-        }
+        return ", ".join(historyOfDealtHoldemCards.map({ $0.0.description + " " + $0.1.description })) }
     }
 
     var cards = [Card]() {
