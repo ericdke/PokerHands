@@ -121,26 +121,26 @@
 		C7BACD251B3EE4F700B9BF06 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C7BACD241B3EE4F700B9BF06 /* Images.xcassets */; };
 		C7BACD281B3EE4F700B9BF06 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7BACD261B3EE4F700B9BF06 /* MainMenu.xib */; };
 		C7BACD341B3EE4F700B9BF06 /* SwiftyPokerHandsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7BACD331B3EE4F700B9BF06 /* SwiftyPokerHandsTests.swift */; };
-		C7BACD3F1B3EE50C00B9BF06 /* Evaluator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7BACD3D1B3EE50C00B9BF06 /* Evaluator.swift */; };
-		C7BACD401B3EE50C00B9BF06 /* ByteRanks.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7BACD3E1B3EE50C00B9BF06 /* ByteRanks.swift */; };
-		C7BACD421B3EE66400B9BF06 /* CoreExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7BACD411B3EE66400B9BF06 /* CoreExtensions.swift */; };
-		C7BACD441B3EE69300B9BF06 /* ModelCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7BACD431B3EE69300B9BF06 /* ModelCard.swift */; };
-		C7BACD461B3EE6C400B9BF06 /* ModelDeck.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7BACD451B3EE6C400B9BF06 /* ModelDeck.swift */; };
-		C7BACD481B3EE6DA00B9BF06 /* ModelPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7BACD471B3EE6DA00B9BF06 /* ModelPlayer.swift */; };
-		C7BACD4A1B3EE6F200B9BF06 /* ModelTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7BACD491B3EE6F200B9BF06 /* ModelTable.swift */; };
-		C7BACD4C1B3EE70800B9BF06 /* ModelDealer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7BACD4B1B3EE70800B9BF06 /* ModelDealer.swift */; };
-		C7BACD4E1B3F45CE00B9BF06 /* AppController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7BACD4D1B3F45CE00B9BF06 /* AppController.swift */; };
-		C7BACD521B3F473200B9BF06 /* SPKHandTableCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7BACD511B3F473200B9BF06 /* SPKHandTableCellView.swift */; };
-		C7BD47541B51965D001B2144 /* SPKSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7BD47531B51965D001B2144 /* SPKSettings.swift */; };
-		C7BD47561B51D26D001B2144 /* ModelCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7BACD431B3EE69300B9BF06 /* ModelCard.swift */; };
-		C7BD47571B51D270001B2144 /* ModelDeck.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7BACD451B3EE6C400B9BF06 /* ModelDeck.swift */; };
-		C7BD47581B51D273001B2144 /* CoreExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7BACD411B3EE66400B9BF06 /* CoreExtensions.swift */; };
-		C7BD47591B51D276001B2144 /* ModelPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7BACD471B3EE6DA00B9BF06 /* ModelPlayer.swift */; };
-		C7BD475A1B51D279001B2144 /* ModelTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7BACD491B3EE6F200B9BF06 /* ModelTable.swift */; };
-		C7BD475B1B51D27C001B2144 /* ModelDealer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7BACD4B1B3EE70800B9BF06 /* ModelDealer.swift */; };
-		C7BD475C1B51D281001B2144 /* Evaluator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7BACD3D1B3EE50C00B9BF06 /* Evaluator.swift */; };
-		C7BD475D1B51D284001B2144 /* ByteRanks.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7BACD3E1B3EE50C00B9BF06 /* ByteRanks.swift */; };
-		C7D823411B51461F00041742 /* SPKPlayerAndCardsPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D823401B51461F00041742 /* SPKPlayerAndCardsPanel.swift */; };
+		C7BACD3F1B3EE50C00B9BF06 /* SPHEvaluator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7BACD3D1B3EE50C00B9BF06 /* SPHEvaluator.swift */; };
+		C7BACD401B3EE50C00B9BF06 /* SPHByteRanks.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7BACD3E1B3EE50C00B9BF06 /* SPHByteRanks.swift */; };
+		C7BACD421B3EE66400B9BF06 /* SPHCoreExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7BACD411B3EE66400B9BF06 /* SPHCoreExtensions.swift */; };
+		C7BACD441B3EE69300B9BF06 /* SPHModelCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7BACD431B3EE69300B9BF06 /* SPHModelCard.swift */; };
+		C7BACD461B3EE6C400B9BF06 /* SPHModelDeck.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7BACD451B3EE6C400B9BF06 /* SPHModelDeck.swift */; };
+		C7BACD481B3EE6DA00B9BF06 /* SPHModelPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7BACD471B3EE6DA00B9BF06 /* SPHModelPlayer.swift */; };
+		C7BACD4A1B3EE6F200B9BF06 /* SPHModelTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7BACD491B3EE6F200B9BF06 /* SPHModelTable.swift */; };
+		C7BACD4C1B3EE70800B9BF06 /* SPHModelDealer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7BACD4B1B3EE70800B9BF06 /* SPHModelDealer.swift */; };
+		C7BACD4E1B3F45CE00B9BF06 /* DemoAppController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7BACD4D1B3F45CE00B9BF06 /* DemoAppController.swift */; };
+		C7BACD521B3F473200B9BF06 /* DemoHandTableCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7BACD511B3F473200B9BF06 /* DemoHandTableCellView.swift */; };
+		C7BD47541B51965D001B2144 /* DemoSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7BD47531B51965D001B2144 /* DemoSettings.swift */; };
+		C7BD47561B51D26D001B2144 /* SPHModelCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7BACD431B3EE69300B9BF06 /* SPHModelCard.swift */; };
+		C7BD47571B51D270001B2144 /* SPHModelDeck.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7BACD451B3EE6C400B9BF06 /* SPHModelDeck.swift */; };
+		C7BD47581B51D273001B2144 /* SPHCoreExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7BACD411B3EE66400B9BF06 /* SPHCoreExtensions.swift */; };
+		C7BD47591B51D276001B2144 /* SPHModelPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7BACD471B3EE6DA00B9BF06 /* SPHModelPlayer.swift */; };
+		C7BD475A1B51D279001B2144 /* SPHModelTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7BACD491B3EE6F200B9BF06 /* SPHModelTable.swift */; };
+		C7BD475B1B51D27C001B2144 /* SPHModelDealer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7BACD4B1B3EE70800B9BF06 /* SPHModelDealer.swift */; };
+		C7BD475C1B51D281001B2144 /* SPHEvaluator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7BACD3D1B3EE50C00B9BF06 /* SPHEvaluator.swift */; };
+		C7BD475D1B51D284001B2144 /* SPHByteRanks.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7BACD3E1B3EE50C00B9BF06 /* SPHByteRanks.swift */; };
+		C7D823411B51461F00041742 /* DemoPlayersCardsPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D823401B51461F00041742 /* DemoPlayersCardsPanel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -272,18 +272,18 @@
 		C7BACD2D1B3EE4F700B9BF06 /* SwiftyPokerHands.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftyPokerHands.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7BACD321B3EE4F700B9BF06 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C7BACD331B3EE4F700B9BF06 /* SwiftyPokerHandsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftyPokerHandsTests.swift; sourceTree = "<group>"; };
-		C7BACD3D1B3EE50C00B9BF06 /* Evaluator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Evaluator.swift; sourceTree = "<group>"; };
-		C7BACD3E1B3EE50C00B9BF06 /* ByteRanks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ByteRanks.swift; sourceTree = "<group>"; };
-		C7BACD411B3EE66400B9BF06 /* CoreExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreExtensions.swift; sourceTree = "<group>"; };
-		C7BACD431B3EE69300B9BF06 /* ModelCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelCard.swift; sourceTree = "<group>"; };
-		C7BACD451B3EE6C400B9BF06 /* ModelDeck.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelDeck.swift; sourceTree = "<group>"; };
-		C7BACD471B3EE6DA00B9BF06 /* ModelPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelPlayer.swift; sourceTree = "<group>"; };
-		C7BACD491B3EE6F200B9BF06 /* ModelTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelTable.swift; sourceTree = "<group>"; };
-		C7BACD4B1B3EE70800B9BF06 /* ModelDealer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelDealer.swift; sourceTree = "<group>"; };
-		C7BACD4D1B3F45CE00B9BF06 /* AppController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppController.swift; sourceTree = "<group>"; };
-		C7BACD511B3F473200B9BF06 /* SPKHandTableCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPKHandTableCellView.swift; sourceTree = "<group>"; };
-		C7BD47531B51965D001B2144 /* SPKSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPKSettings.swift; sourceTree = "<group>"; };
-		C7D823401B51461F00041742 /* SPKPlayerAndCardsPanel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPKPlayerAndCardsPanel.swift; sourceTree = "<group>"; };
+		C7BACD3D1B3EE50C00B9BF06 /* SPHEvaluator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPHEvaluator.swift; sourceTree = "<group>"; };
+		C7BACD3E1B3EE50C00B9BF06 /* SPHByteRanks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPHByteRanks.swift; sourceTree = "<group>"; };
+		C7BACD411B3EE66400B9BF06 /* SPHCoreExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPHCoreExtensions.swift; sourceTree = "<group>"; };
+		C7BACD431B3EE69300B9BF06 /* SPHModelCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPHModelCard.swift; sourceTree = "<group>"; };
+		C7BACD451B3EE6C400B9BF06 /* SPHModelDeck.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPHModelDeck.swift; sourceTree = "<group>"; };
+		C7BACD471B3EE6DA00B9BF06 /* SPHModelPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPHModelPlayer.swift; sourceTree = "<group>"; };
+		C7BACD491B3EE6F200B9BF06 /* SPHModelTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPHModelTable.swift; sourceTree = "<group>"; };
+		C7BACD4B1B3EE70800B9BF06 /* SPHModelDealer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPHModelDealer.swift; sourceTree = "<group>"; };
+		C7BACD4D1B3F45CE00B9BF06 /* DemoAppController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoAppController.swift; sourceTree = "<group>"; };
+		C7BACD511B3F473200B9BF06 /* DemoHandTableCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoHandTableCellView.swift; sourceTree = "<group>"; };
+		C7BD47531B51965D001B2144 /* DemoSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoSettings.swift; sourceTree = "<group>"; };
+		C7D823401B51461F00041742 /* DemoPlayersCardsPanel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoPlayersCardsPanel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -450,21 +450,21 @@
 			isa = PBXGroup;
 			children = (
 				C70F884B1B51E340007BE197 /* byteRanks */,
-				C7BACD4D1B3F45CE00B9BF06 /* AppController.swift */,
-				C7BD47531B51965D001B2144 /* SPKSettings.swift */,
-				C7D823401B51461F00041742 /* SPKPlayerAndCardsPanel.swift */,
-				C7BACD511B3F473200B9BF06 /* SPKHandTableCellView.swift */,
-				C7BACD411B3EE66400B9BF06 /* CoreExtensions.swift */,
-				C7BACD431B3EE69300B9BF06 /* ModelCard.swift */,
-				C7BACD451B3EE6C400B9BF06 /* ModelDeck.swift */,
-				C7BACD471B3EE6DA00B9BF06 /* ModelPlayer.swift */,
-				C7BACD491B3EE6F200B9BF06 /* ModelTable.swift */,
-				C7BACD4B1B3EE70800B9BF06 /* ModelDealer.swift */,
+				C7BACD4D1B3F45CE00B9BF06 /* DemoAppController.swift */,
+				C7BD47531B51965D001B2144 /* DemoSettings.swift */,
+				C7D823401B51461F00041742 /* DemoPlayersCardsPanel.swift */,
+				C7BACD511B3F473200B9BF06 /* DemoHandTableCellView.swift */,
+				C7BACD411B3EE66400B9BF06 /* SPHCoreExtensions.swift */,
+				C7BACD431B3EE69300B9BF06 /* SPHModelCard.swift */,
+				C7BACD451B3EE6C400B9BF06 /* SPHModelDeck.swift */,
+				C7BACD471B3EE6DA00B9BF06 /* SPHModelPlayer.swift */,
+				C7BACD491B3EE6F200B9BF06 /* SPHModelTable.swift */,
+				C7BACD4B1B3EE70800B9BF06 /* SPHModelDealer.swift */,
 				C7BACD221B3EE4F700B9BF06 /* AppDelegate.swift */,
 				C7BACD241B3EE4F700B9BF06 /* Images.xcassets */,
 				C7BACD261B3EE4F700B9BF06 /* MainMenu.xib */,
-				C7BACD3D1B3EE50C00B9BF06 /* Evaluator.swift */,
-				C7BACD3E1B3EE50C00B9BF06 /* ByteRanks.swift */,
+				C7BACD3D1B3EE50C00B9BF06 /* SPHEvaluator.swift */,
+				C7BACD3E1B3EE50C00B9BF06 /* SPHByteRanks.swift */,
 				C763F5751B4066EF00475A7A /* cards_png */,
 				C7BACD201B3EE4F700B9BF06 /* Supporting Files */,
 			);
@@ -708,19 +708,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C7BACD461B3EE6C400B9BF06 /* ModelDeck.swift in Sources */,
-				C7BD47541B51965D001B2144 /* SPKSettings.swift in Sources */,
-				C7BACD4E1B3F45CE00B9BF06 /* AppController.swift in Sources */,
-				C7BACD421B3EE66400B9BF06 /* CoreExtensions.swift in Sources */,
-				C7BACD481B3EE6DA00B9BF06 /* ModelPlayer.swift in Sources */,
+				C7BACD461B3EE6C400B9BF06 /* SPHModelDeck.swift in Sources */,
+				C7BD47541B51965D001B2144 /* DemoSettings.swift in Sources */,
+				C7BACD4E1B3F45CE00B9BF06 /* DemoAppController.swift in Sources */,
+				C7BACD421B3EE66400B9BF06 /* SPHCoreExtensions.swift in Sources */,
+				C7BACD481B3EE6DA00B9BF06 /* SPHModelPlayer.swift in Sources */,
 				C7BACD231B3EE4F700B9BF06 /* AppDelegate.swift in Sources */,
-				C7BACD4A1B3EE6F200B9BF06 /* ModelTable.swift in Sources */,
-				C7BACD441B3EE69300B9BF06 /* ModelCard.swift in Sources */,
-				C7BACD3F1B3EE50C00B9BF06 /* Evaluator.swift in Sources */,
-				C7BACD4C1B3EE70800B9BF06 /* ModelDealer.swift in Sources */,
-				C7BACD401B3EE50C00B9BF06 /* ByteRanks.swift in Sources */,
-				C7D823411B51461F00041742 /* SPKPlayerAndCardsPanel.swift in Sources */,
-				C7BACD521B3F473200B9BF06 /* SPKHandTableCellView.swift in Sources */,
+				C7BACD4A1B3EE6F200B9BF06 /* SPHModelTable.swift in Sources */,
+				C7BACD441B3EE69300B9BF06 /* SPHModelCard.swift in Sources */,
+				C7BACD3F1B3EE50C00B9BF06 /* SPHEvaluator.swift in Sources */,
+				C7BACD4C1B3EE70800B9BF06 /* SPHModelDealer.swift in Sources */,
+				C7BACD401B3EE50C00B9BF06 /* SPHByteRanks.swift in Sources */,
+				C7D823411B51461F00041742 /* DemoPlayersCardsPanel.swift in Sources */,
+				C7BACD521B3F473200B9BF06 /* DemoHandTableCellView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -728,15 +728,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C7BD475A1B51D279001B2144 /* ModelTable.swift in Sources */,
-				C7BD47581B51D273001B2144 /* CoreExtensions.swift in Sources */,
-				C7BD475D1B51D284001B2144 /* ByteRanks.swift in Sources */,
-				C7BD47571B51D270001B2144 /* ModelDeck.swift in Sources */,
+				C7BD475A1B51D279001B2144 /* SPHModelTable.swift in Sources */,
+				C7BD47581B51D273001B2144 /* SPHCoreExtensions.swift in Sources */,
+				C7BD475D1B51D284001B2144 /* SPHByteRanks.swift in Sources */,
+				C7BD47571B51D270001B2144 /* SPHModelDeck.swift in Sources */,
 				C7BACD341B3EE4F700B9BF06 /* SwiftyPokerHandsTests.swift in Sources */,
-				C7BD47561B51D26D001B2144 /* ModelCard.swift in Sources */,
-				C7BD475C1B51D281001B2144 /* Evaluator.swift in Sources */,
-				C7BD475B1B51D27C001B2144 /* ModelDealer.swift in Sources */,
-				C7BD47591B51D276001B2144 /* ModelPlayer.swift in Sources */,
+				C7BD47561B51D26D001B2144 /* SPHModelCard.swift in Sources */,
+				C7BD475C1B51D281001B2144 /* SPHEvaluator.swift in Sources */,
+				C7BD475B1B51D27C001B2144 /* SPHModelDealer.swift in Sources */,
+				C7BD47591B51D276001B2144 /* SPHModelPlayer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
