@@ -95,17 +95,10 @@ func < (lhs: HandRank, rhs: HandRank) -> Bool {
 final public class Evaluator {
     
     let deck = CardsDeck()
-    let byteRanks: ByteRanks
-    
-    init() {
-        // reads from json files in the bundle
-        self.byteRanks = ByteRanks()
-    }
-    
-    init(byteRanksInstance: ByteRanks) {
-        self.byteRanks = byteRanksInstance
-    }
 
+    // reads from files at first launch only
+    let byteRanks = ByteRanks.sharedInstance
+    
     func evaluate(cards:[String]) -> HandRank {
         let cardValues = cards.map { self.deck.as_binary($0) }
 

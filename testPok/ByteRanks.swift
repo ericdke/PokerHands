@@ -6,10 +6,14 @@
 import Foundation
 
 final class ByteRanks {
+    
+    static let sharedInstance = ByteRanks()
+    
     let flushes: [Int]
-    let uniqueToRanks:[Int]
-    let primeProductToCombination:[Int]
-    let combinationToRank:[Int]
+    let uniqueToRanks: [Int]
+    let primeProductToCombination: [Int]
+    let combinationToRank: [Int]
+    
     init() {
         do {
             let path = NSBundle.mainBundle().pathForResource("flushes_bytes", ofType: "json")

@@ -41,7 +41,7 @@ final class AppController: NSObject, NSTableViewDataSource, NSTableViewDelegate 
     }
     
     let settings = SPKSettings.sharedInstance
-    let byteRanks = ByteRanks()
+    let byteRanks = ByteRanks.sharedInstance
 
     typealias DealerAndPlayers = (dealer: Dealer, player1: Player, player2: Player)
 
@@ -126,7 +126,6 @@ final class AppController: NSObject, NSTableViewDataSource, NSTableViewDelegate 
     }
     
     func playGCD(numberOfHands: Int) {
-//        pleaseWaitLabel.hidden = false
         spinner.startAnimation(nil)
         gobutton.enabled = false
         results = []
@@ -143,7 +142,7 @@ final class AppController: NSObject, NSTableViewDataSource, NSTableViewDelegate 
             customPlayer1Cards = settings.getPlayer1Cards()
             customPlayer2Cards = settings.getPlayer2Cards()
         }
-        let eval = Evaluator(byteRanksInstance: self.byteRanks)
+        let eval = Evaluator()
         // go in background
         dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INTERACTIVE, 0)) {
             // run a loop of background tasks
@@ -185,7 +184,6 @@ final class AppController: NSObject, NSTableViewDataSource, NSTableViewDelegate 
             // this executes _after_ the loop
             dispatch_async(dispatch_get_main_queue()) {
                 self.gobutton.enabled = true
-//                self.pleaseWaitLabel.hidden = true
                 self.spinner.stopAnimation(nil)
             }
         }
