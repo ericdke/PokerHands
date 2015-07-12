@@ -149,7 +149,7 @@
 			containerPortal = C7BACD151B3EE4F700B9BF06 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = C7BACD1C1B3EE4F700B9BF06;
-			remoteInfo = testPok;
+			remoteInfo = SwiftyPokerHands;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -469,7 +469,7 @@
 				C7BACD201B3EE4F700B9BF06 /* Supporting Files */,
 			);
 			name = SwiftyPokerHands;
-			path = testPok;
+			path = SwiftyPokerHands;
 			sourceTree = "<group>";
 		};
 		C7BACD201B3EE4F700B9BF06 /* Supporting Files */ = {
@@ -487,7 +487,7 @@
 				C7BACD311B3EE4F700B9BF06 /* Supporting Files */,
 			);
 			name = SwiftyPokerHandsTests;
-			path = testPokTests;
+			path = SwiftyPokerHandsTests;
 			sourceTree = "<group>";
 		};
 		C7BACD311B3EE4F700B9BF06 /* Supporting Files */ = {
@@ -514,7 +514,7 @@
 			dependencies = (
 			);
 			name = SwiftyPokerHands;
-			productName = testPok;
+			productName = SwiftyPokerHands;
 			productReference = C7BACD1D1B3EE4F700B9BF06 /* SwiftyPokerHands.app */;
 			productType = "com.apple.product-type.application";
 		};
@@ -532,7 +532,7 @@
 				C7BACD2F1B3EE4F700B9BF06 /* PBXTargetDependency */,
 			);
 			name = SwiftyPokerHandsTests;
-			productName = testPokTests;
+			productName = SwiftyPokerHandsTests;
 			productReference = C7BACD2D1B3EE4F700B9BF06 /* SwiftyPokerHands.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
@@ -848,7 +848,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
-				INFOPLIST_FILE = testPok/Info.plist;
+				INFOPLIST_FILE = SwiftyPokerHands/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ericdke.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = SwiftyPokerHands;
@@ -860,7 +860,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
-				INFOPLIST_FILE = testPok/Info.plist;
+				INFOPLIST_FILE = SwiftyPokerHands/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ericdke.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = SwiftyPokerHands;
@@ -880,7 +880,7 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = testPokTests/Info.plist;
+				INFOPLIST_FILE = SwiftyPokerHandsTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ericdke.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = SwiftyPokerHands;
@@ -897,7 +897,7 @@
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = testPokTests/Info.plist;
+				INFOPLIST_FILE = SwiftyPokerHandsTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ericdke.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = SwiftyPokerHands;
