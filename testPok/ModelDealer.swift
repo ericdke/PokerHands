@@ -30,6 +30,12 @@ struct Dealer {
         evaluator = Evaluator()
     }
     
+    init(evaluator: Evaluator) {
+        currentDeck = Deck()
+        table = Table()
+        self.evaluator = evaluator
+    }
+    
     init(deck: Deck, evaluator: Evaluator) {
         currentDeck = deck
         table = Table()
