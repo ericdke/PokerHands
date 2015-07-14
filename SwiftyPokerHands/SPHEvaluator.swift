@@ -113,7 +113,7 @@ final public class Evaluator {
 
         let unique5Candidate = byteRanks.uniqueToRanks[handIndex]
 
-        if (unique5Candidate != 0){
+        if unique5Candidate != 0 {
             return HandRank(rank:unique5Candidate)
         }
 

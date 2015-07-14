@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="8152.3" systemVersion="14E46" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" customObjectInstantitationMethod="direct">
     <dependencies>
+        <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="8152.3"/>
     </dependencies>
     <objects>
@@ -25,7 +26,6 @@
                 <outlet property="progressBar" destination="kPo-HV-84S" id="drR-Ho-2zA"/>
                 <outlet property="roundsCountLabel" destination="ono-K6-w5P" id="ZiJ-w6-sF0"/>
                 <outlet property="roundsTextField" destination="8ya-6I-2oW" id="dwD-22-LLW"/>
-                <outlet property="spinner" destination="AGE-iM-7PH" id="nNW-JU-n5T"/>
                 <outlet property="window" destination="QvC-M9-y7g" id="2dq-8B-NB1"/>
             </connections>
         </customObject>
@@ -804,10 +804,6 @@
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <progressIndicator hidden="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" displayedWhenStopped="NO" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" id="AGE-iM-7PH">
-                        <rect key="frame" x="69" y="38" width="16" height="16"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    </progressIndicator>
                     <button verticalHuggingPriority="750" id="PO3-Ug-vIq">
                         <rect key="frame" x="81" y="259" width="59" height="32"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -1000,7 +996,7 @@ DQ
                     </progressIndicator>
                 </subviews>
             </view>
-            <point key="canvasLocation" x="396" y="339"/>
+            <point key="canvasLocation" x="369" y="145"/>
         </window>
         <window title="Player and cards" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="Bva-WB-tLZ" customClass="SPKPlayerAndCardsPanel" customModule="SwiftyPokerHands" customModuleProvider="target">
             <windowStyleMask key="styleMask" utility="YES" documentModal="YES"/>
@@ -1324,7 +1320,7 @@ DQ
                 <outlet property="p2c2Rank" destination="P69-6B-5zM" id="DyT-tB-Goc"/>
                 <outlet property="p2c2Suit" destination="pJk-zS-l0C" id="sV1-sN-z4t"/>
             </connections>
-            <point key="canvasLocation" x="407" y="795.5"/>
+            <point key="canvasLocation" x="369" y="578.5"/>
         </window>
     </objects>
 </document>

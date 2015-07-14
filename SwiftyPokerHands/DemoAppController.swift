@@ -24,7 +24,6 @@ final class AppController: NSObject, NSTableViewDataSource, NSTableViewDelegate 
     @IBOutlet weak var player1ScoreLabel: NSTextField!
     @IBOutlet weak var player2ScoreLabel: NSTextField!
     @IBOutlet weak var gobutton: NSButton!
-    @IBOutlet weak var spinner: NSProgressIndicator!
     @IBOutlet weak var progressBar: NSProgressIndicator!
     
     
@@ -45,16 +44,6 @@ final class AppController: NSObject, NSTableViewDataSource, NSTableViewDelegate 
     var results = [DealerAndPlayers]()
     var cardsImages = [String:NSImage]()
 
-    override init() {
-        super.init()
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "playerAndCardsPanelCLOSE:", name: "playerAndCardsPanelButtonCLOSE", object: nil)
-    }
-    
-    func playerAndCardsPanelCLOSE(notification: NSNotification) {
-        window.endSheet(playerAndCardsPanel)
-    }
-
-    
     // TODO: put the tableView in its own view + controller
     func numberOfRowsInTableView(tableView: NSTableView) -> Int {
         return results.count
@@ -126,7 +115,6 @@ final class AppController: NSObject, NSTableViewDataSource, NSTableViewDelegate 
         progressBar.hidden = false
         progressBar.doubleValue = 1.0
         progressBar.maxValue = Double(numberOfHands)
-//        spinner.startAnimation(nil)
         gobutton.enabled = false
         results = []
         roundsCountLabel.integerValue = 0
@@ -144,9 +132,18 @@ final class AppController: NSObject, NSTableViewDataSource, NSTableViewDelegate 
         }
         let eval = Evaluator()
         // go in background
-        dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INTERACTIVE, 0)) {
+        var q1: dispatch_queue_t
+        var q2: dispatch_queue_t
+        if #available(OSX 10.10, *) {
+            q1 = dispatch_get_global_queue(QOS_CLASS_USER_INTERACTIVE, 0)
+            q2 = dispatch_get_global_queue(QOS_CLASS_USER_INITIATED, 0)
+        } else {
+            q1 = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)
+            q2 = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
+        }
+        dispatch_async(q1) {
             // run a loop of background tasks
-            dispatch_apply(numberOfHands, dispatch_get_global_queue(QOS_CLASS_USER_INITIATED, 0), { (index) -> Void in
+            dispatch_apply(numberOfHands, q2, { (index) -> Void in
                 // TODO: in this example we create new players and dealer each time, but we should refactor to use a safe-thread version of one single instance of each object so we can have player statistics, dealer and table stats, etc (will probably have to implement read-write barrier in our structs)
                 var dealer = Dealer(deck: deck, evaluator: eval)
                 var (player1, player2) = (Player(name: name1), Player(name: name2))
@@ -185,7 +182,6 @@ final class AppController: NSObject, NSTableViewDataSource, NSTableViewDelegate 
             dispatch_async(dispatch_get_main_queue()) {
                 self.progressBar.hidden = true
                 self.gobutton.enabled = true
-//                self.spinner.stopAnimation(nil)
             }
         }
     }

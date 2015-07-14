@@ -30,6 +30,10 @@ class testPokTests: XCTestCase {
         XCTAssertNotNil(dealer.evaluator.byteRanks.flushes)
         XCTAssertNotNil(dealer.evaluator.byteRanks.primeProductToCombination)
         XCTAssertNotNil(dealer.evaluator.byteRanks.uniqueToRanks)
+        XCTAssertFalse(dealer.evaluator.byteRanks.combinationToRank.isEmpty)
+        XCTAssertFalse(dealer.evaluator.byteRanks.flushes.isEmpty)
+        XCTAssertFalse(dealer.evaluator.byteRanks.primeProductToCombination.isEmpty)
+        XCTAssertFalse(dealer.evaluator.byteRanks.uniqueToRanks.isEmpty)
         XCTAssertTrue(dealer.currentDeck.count == 52)
         XCTAssertTrue(dealer.currentDeck.cards.first! == Card(suit: "♠", rank: "A"))
     }
@@ -138,7 +142,10 @@ class testPokTests: XCTestCase {
     func testDealForOnePlayerAndEvaluate() {
         var dealer = Dealer(evaluator: eval)
         var p1 = Player(name: "Jim")
+        XCTAssertTrue(p1.holeCards.isEmpty)
+        XCTAssertTrue(p1.holdemHand == nil)
         dealer.dealHoldemCardsTo(&p1, cards: ["A♠", "K♠"])
+        XCTAssertTrue(p1.holeCards == "A♠ K♠")
         dealer.table.dealtCards = [Card(suit: "♠", rank: "Q"), Card(suit: "♠", rank: "J"), Card(suit: "♠", rank: "T"), Card(suit: "♠", rank: "2"), Card(suit: "♠", rank: "3")]
         dealer.evaluateHoldemHandAtRiverFor(&p1)
         XCTAssertTrue(p1.holdemHand!.0.rank == 1)

@@ -26,7 +26,7 @@ class SPKPlayerAndCardsPanel: NSPanel {
         settings.player2Card2Rank = p2c2Rank.titleOfSelectedItem!
         settings.player1Random = Bool(p1Random.state)
         settings.player2Random = Bool(p2Random.state)
-        NSNotificationCenter.defaultCenter().postNotificationName("playerAndCardsPanelButtonCLOSE", object: nil)
+        self.orderOut(nil)
     }
     
     @IBAction func p1RandomButton(sender: NSButton) {

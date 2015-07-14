@@ -34,13 +34,13 @@ struct Dealer {
         self.evaluator = evaluator
     }
 
-    var currentGame: String { get { return "Game: \(table.currentGame)\n" } }
+    var currentGame: String { get { return table.currentGame } }
 
-    var flop: String { get { return "Flop: \(table.flop)" } }
+    var flop: String { get { return table.flop } }
 
-    var turn: String { get { return "Turn: \(table.turn)" } }
+    var turn: String { get { return table.turn } }
 
-    var river: String { get { return "River: \(table.river)" } }
+    var river: String { get { return table.river } }
 
     var currentHandWinner: Player? {
         didSet {
