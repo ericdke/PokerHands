@@ -7,6 +7,12 @@ import Foundation
 
 final class ByteRanks {
     
+    enum SPHError: String, ErrorType {
+        case CouldNotFindJSONFile = "FATAL ERROR: Could not find init files in app bundle"
+        case CouldNotLoadJSONFile = "FATAL ERROR: Could not load init files from app bundle"
+        case CouldNotConvertJSONFile = "FATAL ERROR: Could not read init files from app bundle"
+    }
+    
     static let sharedInstance = ByteRanks()
     
     let flushes: [Int]
@@ -16,40 +22,25 @@ final class ByteRanks {
     
     init() {
         do {
-            let path = NSBundle.mainBundle().pathForResource("flushes_bytes", ofType: "json")
-            let d = NSData(contentsOfFile: path!)
-            let j = try NSJSONSerialization.JSONObjectWithData(d!, options: []) as! [Int]
-            self.flushes = j
+            let bundle = NSBundle.mainBundle()
+            guard let fpath = bundle.pathForResource("flushes_bytes", ofType: "json"), let upath = bundle.pathForResource("uniqueToRanks_bytes", ofType: "json"), let ppath = bundle.pathForResource("primeProductToCombination_bytes", ofType: "json"), let cpath = bundle.pathForResource("combinationToRank_bytes", ofType: "json") else {
+                throw SPHError.CouldNotFindJSONFile
+            }
+            guard let fdata = NSData(contentsOfFile: fpath), let udata = NSData(contentsOfFile: upath), let pdata = NSData(contentsOfFile: ppath), let cdata = NSData(contentsOfFile: cpath) else {
+                throw SPHError.CouldNotLoadJSONFile
+            }
+            guard let ujson = try NSJSONSerialization.JSONObjectWithData(udata, options: []) as? [Int], let fjson = try NSJSONSerialization.JSONObjectWithData(fdata, options: []) as? [Int], let pjson = try NSJSONSerialization.JSONObjectWithData(pdata, options: []) as? [Int], let cjson = try NSJSONSerialization.JSONObjectWithData(cdata, options: []) as? [Int] else {
+                throw SPHError.CouldNotConvertJSONFile
+            }
+            self.flushes = fjson
+            self.uniqueToRanks = ujson
+            self.primeProductToCombination = pjson
+            self.combinationToRank = cjson
         } catch {
             print(error)
-            self.flushes = []
-        }
-        do {
-            let path = NSBundle.mainBundle().pathForResource("uniqueToRanks_bytes", ofType: "json")
-            let d = NSData(contentsOfFile: path!)
-            let j = try NSJSONSerialization.JSONObjectWithData(d!, options: []) as! [Int]
-            self.uniqueToRanks = j
-        } catch {
-            print(error)
-            self.uniqueToRanks = []
-        }
-        do {
-            let path = NSBundle.mainBundle().pathForResource("primeProductToCombination_bytes", ofType: "json")
-            let d = NSData(contentsOfFile: path!)
-            let j = try NSJSONSerialization.JSONObjectWithData(d!, options: []) as! [Int]
-            self.primeProductToCombination = j
-        } catch {
-            print(error)
-            self.primeProductToCombination = []
-        }
-        do {
-            let path = NSBundle.mainBundle().pathForResource("combinationToRank_bytes", ofType: "json")
-            let d = NSData(contentsOfFile: path!)
-            let j = try NSJSONSerialization.JSONObjectWithData(d!, options: []) as! [Int]
-            self.combinationToRank = j
-        } catch {
-            print(error)
-            self.combinationToRank = []
+            fatalError()
         }
     }
+    
+    
 }

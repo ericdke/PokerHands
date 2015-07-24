@@ -101,12 +101,12 @@ struct Dealer {
                     break
                 }
             }
-            if let rm = toRemove {
-                currentDeck.cards.removeAtIndex(rm)
-                cards.append(cardObj)
-            } else {
+            guard let rm = toRemove else {
                 NSLog("%@", "ERROR: \(cardObj) is not in the deck")
+                break
             }
+            currentDeck.cards.removeAtIndex(rm)
+            cards.append(cardObj)
         }
         return cards
     }
@@ -125,12 +125,12 @@ struct Dealer {
                     break
                 }
             }
-            if let rm = toRemove {
-                currentDeck.cards.removeAtIndex(rm)
-            } else {
+            guard let rm = toRemove else {
                 error = true
                 NSLog("%@", "ERROR: \(card) is not in the deck")
+                break
             }
+            currentDeck.cards.removeAtIndex(rm)
         }
         if error {
             player.cards = []
