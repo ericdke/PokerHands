@@ -36,6 +36,9 @@ final class ByteRanks {
             self.uniqueToRanks = ujson
             self.primeProductToCombination = pjson
             self.combinationToRank = cjson
+        } catch let error as SPHError {
+            print(error.rawValue)
+            fatalError()
         } catch {
             print(error)
             fatalError()
