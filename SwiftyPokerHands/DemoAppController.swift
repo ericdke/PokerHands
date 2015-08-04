@@ -59,13 +59,22 @@ final class AppController: NSObject, NSTableViewDataSource, NSTableViewDelegate 
 
         let result = results[row]
         
-        guard let name1 = result.player1.name, let name2 = result.player2.name, let winnerName = result.dealer.currentHandWinner?.name, let winningHandName = result.dealer.currentHandWinner?.holdemHand?.0.name.rawValue.lowercaseString, let tableCards = result.dealer.currentHandWinner?.holdemHand?.1 else { return nil }
+        guard let name1 = result.player1.name, let name2 = result.player2.name,
+            let winnerName = result.dealer.currentHandWinner?.name
+            else { return nil }
         
         cell.textField?.stringValue = "\(name1): \(result.player1.holeCards)"
         cell.label1.stringValue = "\(name2): \(result.player2.holeCards)"
         cell.label2.stringValue = "Cards: \(result.dealer.table.currentGame)"
-        cell.label3.stringValue = winnerName == "SPLIT" ? "Split! This hand is canceled." : "\(winnerName.uppercaseString) wins with \(winningHandName) \(tableCards)"
-        
+        if winnerName == "SPLIT" {
+            cell.label3.stringValue = "Split! This hand is canceled."
+        } else {
+            guard let tableCards = result.dealer.currentHandWinner?.holdemHand?.1,
+                let winningHandName = result.dealer.currentHandWinner?.holdemHand?.0.name.rawValue.lowercaseString
+                else { return nil }
+            cell.label3.stringValue = "\(winnerName.uppercaseString) wins with \(winningHandName) \(tableCards)"
+        }
+
         let player1CardsImages = getImagesForCards(result.player1.cards)
         cell.card1Player1.image = player1CardsImages[0]
         cell.card2Player1.image = player1CardsImages[1]

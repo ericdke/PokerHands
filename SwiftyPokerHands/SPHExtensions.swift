@@ -9,18 +9,27 @@ import Cocoa
 //    }
 //}
 //
-//extension MutableCollectionType where Index == Int {
-//    /// Shuffle the elements of `self` in-place.
-//    mutating func shuffleInPlace() {
-//        // empty and single-element collections don't shuffle
-//        if count < 2 { return }
-//        
-//        for i in 0..<count - 1 {
-//            let j = Int(arc4random_uniform(UInt32(count - i))) + i
-//            swap(&self[i], &self[j])
-//        }
-//    }
-//}
+extension MutableCollectionType where Index == Int {
+    mutating func shuffleInPlace() {
+        if count < 2 { return }
+        for i in 0..<count - 1 {
+            let j = Int(arc4random_uniform(UInt32(count - i))) + i
+            swap(&self[i], &self[j])
+        }
+    }
+}
+
+protocol CanTakeCard {
+    var cards: [Card] { get set }
+    mutating func takeOneCard() -> Card?
+}
+
+extension CanTakeCard {
+    mutating func takeOneCard() -> Card? {
+        guard cards.count > 0 else { return nil }
+        return cards.takeOne()
+    }
+}
 
 func ==(lhs: Card, rhs: Card) -> Bool {
     if lhs.rank == rhs.rank && lhs.suit == rhs.suit {
@@ -38,6 +47,7 @@ extension Range {
         return result
     }
 }
+
 extension Int {
     func random() -> Int {
         return Int(arc4random_uniform(UInt32(abs(self))))
@@ -54,7 +64,21 @@ extension Int {
         return  shuffledIndex
     }
 }
+
 extension Array {
+    func chooseOne() -> Element {
+        return self[Int(arc4random_uniform(UInt32(self.count)))]
+    }
+    
+    //TODO: make it an Optional
+    mutating func takeOne() -> Element {
+        let index = Int(arc4random_uniform(UInt32(self.count)))
+        let item = self[index]
+        self.removeAtIndex(index)
+        return item
+    }
+    
+    // adapted from ExSwift
     func permutation (length: Int) -> [[Element]] {
         if length < 0 || length > self.count {
             return []
@@ -111,32 +135,6 @@ extension Array {
             }
         }
         return combinations
-    }
-    func shuffle() -> [Element] {
-        var shuffledContent:[Element] = []
-        let shuffledIndex:[Int] = self.count.indexRandom()
-        for i in 0...shuffledIndex.count-1 {
-            shuffledContent.append(self[shuffledIndex[i]])
-        }
-        return shuffledContent
-    }
-    mutating func shuffled() {
-        var shuffledContent:[Element] = []
-        let shuffledIndex:[Int] = self.count.indexRandom()
-        for i in 0...shuffledIndex.count-1 {
-            shuffledContent.append(self[shuffledIndex[i]])
-        }
-        self = shuffledContent
-    }
-    func chooseOne() -> Element {
-        return self[Int(arc4random_uniform(UInt32(self.count)))]
-    }
-    //TODO: make it an Optional
-    mutating func takeOne() -> Element {
-        let index = Int(arc4random_uniform(UInt32(self.count)))
-        let item = self[index]
-        self.removeAtIndex(index)
-        return item
     }
     func choose(x:Int) -> [Element] {
         var shuffledContent:[Element] = []

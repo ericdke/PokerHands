@@ -123,7 +123,7 @@
 		C7BACD341B3EE4F700B9BF06 /* SwiftyPokerHandsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7BACD331B3EE4F700B9BF06 /* SwiftyPokerHandsTests.swift */; };
 		C7BACD3F1B3EE50C00B9BF06 /* SPHEvaluator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7BACD3D1B3EE50C00B9BF06 /* SPHEvaluator.swift */; };
 		C7BACD401B3EE50C00B9BF06 /* SPHByteRanks.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7BACD3E1B3EE50C00B9BF06 /* SPHByteRanks.swift */; };
-		C7BACD421B3EE66400B9BF06 /* SPHCoreExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7BACD411B3EE66400B9BF06 /* SPHCoreExtensions.swift */; };
+		C7BACD421B3EE66400B9BF06 /* SPHExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7BACD411B3EE66400B9BF06 /* SPHExtensions.swift */; };
 		C7BACD441B3EE69300B9BF06 /* SPHModelCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7BACD431B3EE69300B9BF06 /* SPHModelCard.swift */; };
 		C7BACD461B3EE6C400B9BF06 /* SPHModelDeck.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7BACD451B3EE6C400B9BF06 /* SPHModelDeck.swift */; };
 		C7BACD481B3EE6DA00B9BF06 /* SPHModelPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7BACD471B3EE6DA00B9BF06 /* SPHModelPlayer.swift */; };
@@ -134,7 +134,7 @@
 		C7BD47541B51965D001B2144 /* DemoSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7BD47531B51965D001B2144 /* DemoSettings.swift */; };
 		C7BD47561B51D26D001B2144 /* SPHModelCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7BACD431B3EE69300B9BF06 /* SPHModelCard.swift */; };
 		C7BD47571B51D270001B2144 /* SPHModelDeck.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7BACD451B3EE6C400B9BF06 /* SPHModelDeck.swift */; };
-		C7BD47581B51D273001B2144 /* SPHCoreExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7BACD411B3EE66400B9BF06 /* SPHCoreExtensions.swift */; };
+		C7BD47581B51D273001B2144 /* SPHExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7BACD411B3EE66400B9BF06 /* SPHExtensions.swift */; };
 		C7BD47591B51D276001B2144 /* SPHModelPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7BACD471B3EE6DA00B9BF06 /* SPHModelPlayer.swift */; };
 		C7BD475A1B51D279001B2144 /* SPHModelTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7BACD491B3EE6F200B9BF06 /* SPHModelTable.swift */; };
 		C7BD475B1B51D27C001B2144 /* SPHModelDealer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7BACD4B1B3EE70800B9BF06 /* SPHModelDealer.swift */; };
@@ -274,7 +274,7 @@
 		C7BACD331B3EE4F700B9BF06 /* SwiftyPokerHandsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftyPokerHandsTests.swift; sourceTree = "<group>"; };
 		C7BACD3D1B3EE50C00B9BF06 /* SPHEvaluator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPHEvaluator.swift; sourceTree = "<group>"; };
 		C7BACD3E1B3EE50C00B9BF06 /* SPHByteRanks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPHByteRanks.swift; sourceTree = "<group>"; };
-		C7BACD411B3EE66400B9BF06 /* SPHCoreExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPHCoreExtensions.swift; sourceTree = "<group>"; };
+		C7BACD411B3EE66400B9BF06 /* SPHExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPHExtensions.swift; sourceTree = "<group>"; };
 		C7BACD431B3EE69300B9BF06 /* SPHModelCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPHModelCard.swift; sourceTree = "<group>"; };
 		C7BACD451B3EE6C400B9BF06 /* SPHModelDeck.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPHModelDeck.swift; sourceTree = "<group>"; };
 		C7BACD471B3EE6DA00B9BF06 /* SPHModelPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPHModelPlayer.swift; sourceTree = "<group>"; };
@@ -456,7 +456,7 @@
 				C7BACD511B3F473200B9BF06 /* DemoHandTableCellView.swift */,
 				C7BACD221B3EE4F700B9BF06 /* AppDelegate.swift */,
 				C70F884B1B51E340007BE197 /* SPHByteRanks */,
-				C7BACD411B3EE66400B9BF06 /* SPHCoreExtensions.swift */,
+				C7BACD411B3EE66400B9BF06 /* SPHExtensions.swift */,
 				C7BACD431B3EE69300B9BF06 /* SPHModelCard.swift */,
 				C7BACD451B3EE6C400B9BF06 /* SPHModelDeck.swift */,
 				C7BACD471B3EE6DA00B9BF06 /* SPHModelPlayer.swift */,
@@ -710,7 +710,7 @@
 				C7BACD461B3EE6C400B9BF06 /* SPHModelDeck.swift in Sources */,
 				C7BD47541B51965D001B2144 /* DemoSettings.swift in Sources */,
 				C7BACD4E1B3F45CE00B9BF06 /* DemoAppController.swift in Sources */,
-				C7BACD421B3EE66400B9BF06 /* SPHCoreExtensions.swift in Sources */,
+				C7BACD421B3EE66400B9BF06 /* SPHExtensions.swift in Sources */,
 				C7BACD481B3EE6DA00B9BF06 /* SPHModelPlayer.swift in Sources */,
 				C7BACD231B3EE4F700B9BF06 /* AppDelegate.swift in Sources */,
 				C7BACD4A1B3EE6F200B9BF06 /* SPHModelTable.swift in Sources */,
@@ -728,7 +728,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C7BD475A1B51D279001B2144 /* SPHModelTable.swift in Sources */,
-				C7BD47581B51D273001B2144 /* SPHCoreExtensions.swift in Sources */,
+				C7BD47581B51D273001B2144 /* SPHExtensions.swift in Sources */,
 				C7BD475D1B51D284001B2144 /* SPHByteRanks.swift in Sources */,
 				C7BD47571B51D270001B2144 /* SPHModelDeck.swift in Sources */,
 				C7BACD341B3EE4F700B9BF06 /* SwiftyPokerHandsTests.swift in Sources */,

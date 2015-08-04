@@ -1,4 +1,4 @@
-struct Deck {
+struct Deck: CanTakeCard {
 
     let suits = ["♠","♣","♥","♦"]
     let ranks = ["A","K","Q","J","T","9","8","7","6","5","4","3","2"]
@@ -16,13 +16,7 @@ struct Deck {
     }
 
     mutating func shuffle() {
-        cards.shuffled()
-    }
-
-    mutating func takeOneCard() -> Card? {
-        if count > 0 {
-            return cards.takeOne() }
-        return nil
+        cards.shuffleInPlace()
     }
 
     var count: Int { get { return cards.count } }

@@ -1,4 +1,4 @@
-struct Player {
+struct Player: CanTakeCard {
 
     init() {}
 
@@ -32,12 +32,6 @@ struct Player {
     }
 
     var cardsNames: String { get { return ", ".join(cards.map({ $0.name })) } }
-
-    mutating func removeOneCard() -> Card? {
-        if cards.count > 0 {
-            return cards.takeOne() }
-        return nil
-    }
 
     var count: Int { get { return cards.count } }
 
