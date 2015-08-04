@@ -16,45 +16,42 @@ class SPKPlayerAndCardsPanel: NSPanel {
     let settings = SPKSettings.sharedInstance
     
     @IBAction func buttonCLOSE(sender: NSButton) {
-        settings.player1Card1Suit = p1c1Suit.titleOfSelectedItem!
-        settings.player1Card1Rank = p1c1Rank.titleOfSelectedItem!
-        settings.player1Card2Suit = p1c2Suit.titleOfSelectedItem!
-        settings.player1Card2Rank = p1c2Rank.titleOfSelectedItem!
-        settings.player2Card1Suit = p2c1Suit.titleOfSelectedItem!
-        settings.player2Card1Rank = p2c1Rank.titleOfSelectedItem!
-        settings.player2Card2Suit = p2c2Suit.titleOfSelectedItem!
-        settings.player2Card2Rank = p2c2Rank.titleOfSelectedItem!
+        guard let p1c1SuitTitle = p1c1Suit.titleOfSelectedItem,
+            p1c1RankTitle = p1c1Rank.titleOfSelectedItem,
+            p1c2SuitTitle = p1c2Suit.titleOfSelectedItem,
+            p1c2RankTitle = p1c2Rank.titleOfSelectedItem,
+            p2c1SuitTitle = p1c1Suit.titleOfSelectedItem,
+            p2c1RankTitle = p1c1Rank.titleOfSelectedItem,
+            p2c2SuitTitle = p1c2Suit.titleOfSelectedItem,
+            p2c2RankTitle = p1c2Rank.titleOfSelectedItem else { return }
+        
+        settings.player1Card1Suit = p1c1SuitTitle
+        settings.player1Card1Rank = p1c1RankTitle
+        settings.player1Card2Suit = p1c2SuitTitle
+        settings.player1Card2Rank = p1c2RankTitle
+        settings.player2Card1Suit = p2c1SuitTitle
+        settings.player2Card1Rank = p2c1RankTitle
+        settings.player2Card2Suit = p2c2SuitTitle
+        settings.player2Card2Rank = p2c2RankTitle
         settings.player1Random = Bool(p1Random.state)
         settings.player2Random = Bool(p2Random.state)
         self.orderOut(nil)
     }
     
     @IBAction func p1RandomButton(sender: NSButton) {
-        if sender.state == NSOnState {
-            p1c1Suit.enabled = false
-            p1c1Rank.enabled = false
-            p1c2Suit.enabled = false
-            p1c2Rank.enabled = false
-        } else {
-            p1c1Suit.enabled = true
-            p1c1Rank.enabled = true
-            p1c2Suit.enabled = true
-            p1c2Rank.enabled = true
-        }
+        let boo = !Bool(sender.state)
+        p1c1Suit.enabled = boo
+        p1c1Rank.enabled = boo
+        p1c2Suit.enabled = boo
+        p1c2Rank.enabled = boo
     }
     
     @IBAction func p2RandomButton(sender: NSButton) {
-        if sender.state == NSOnState {
-            p2c1Suit.enabled = false
-            p2c1Rank.enabled = false
-            p2c2Suit.enabled = false
-            p2c2Rank.enabled = false
-        } else {
-            p2c1Suit.enabled = true
-            p2c1Rank.enabled = true
-            p2c2Suit.enabled = true
-            p2c2Rank.enabled = true
-        }
+        let boo = !Bool(sender.state)
+        p2c1Suit.enabled = boo
+        p2c1Rank.enabled = boo
+        p2c2Suit.enabled = boo
+        p2c2Rank.enabled = boo
     }
     
 }

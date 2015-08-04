@@ -10,6 +10,10 @@ enum GameMode {
     case Random, Custom
 }
 
+enum PersonType {
+    case Player1, Player2, Dealer
+}
+
 final class AppController: NSObject, NSTableViewDataSource, NSTableViewDelegate {
 
     @IBOutlet weak var window: NSWindow!
@@ -55,30 +59,22 @@ final class AppController: NSObject, NSTableViewDataSource, NSTableViewDelegate 
 
         let result = results[row]
         
-        let p1 = "\(result.player1.name!): \(result.player1.holeCards)"
-        let p2 = "\(result.player2.name!): \(result.player2.holeCards)"
-        let g = "Cards: \(result.dealer.table.currentGame)"
-        let wname = result.dealer.currentHandWinner!.name
-        let w: String
-        if let name = wname where name == "SPLIT" {
-            w = "Split! This hand is canceled."
-        } else {
-            w = "\(result.dealer.currentHandWinner!.name!.uppercaseString) wins with \(result.dealer.currentHandWinner!.holdemHand!.0.name.rawValue.lowercaseString) \(result.dealer.currentHandWinner!.holdemHand!.1)"
-        }
-        cell.textField!.stringValue = p1
-        cell.label1.stringValue = p2
-        cell.label2.stringValue = g
-        cell.label3.stringValue = w
+        guard let name1 = result.player1.name, let name2 = result.player2.name, let winnerName = result.dealer.currentHandWinner?.name, let winningHandName = result.dealer.currentHandWinner?.holdemHand?.0.name.rawValue.lowercaseString, let tableCards = result.dealer.currentHandWinner?.holdemHand?.1 else { return nil }
         
-        let player1CardsImages = getImageForCards(result.player1.cards)
+        cell.textField?.stringValue = "\(name1): \(result.player1.holeCards)"
+        cell.label1.stringValue = "\(name2): \(result.player2.holeCards)"
+        cell.label2.stringValue = "Cards: \(result.dealer.table.currentGame)"
+        cell.label3.stringValue = winnerName == "SPLIT" ? "Split! This hand is canceled." : "\(winnerName.uppercaseString) wins with \(winningHandName) \(tableCards)"
+        
+        let player1CardsImages = getImagesForCards(result.player1.cards)
         cell.card1Player1.image = player1CardsImages[0]
         cell.card2Player1.image = player1CardsImages[1]
         
-        let player2CardsImages = getImageForCards(result.player2.cards)
+        let player2CardsImages = getImagesForCards(result.player2.cards)
         cell.card1Player2.image = player2CardsImages[0]
         cell.card2Player2.image = player2CardsImages[1]
         
-        let tableCardsImages = getImageForCards(result.dealer.table.dealtCards)
+        let tableCardsImages = getImagesForCards(result.dealer.table.dealtCards)
         cell.card1Flop.image = tableCardsImages[0]
         cell.card2Flop.image = tableCardsImages[1]
         cell.card3Flop.image = tableCardsImages[2]
@@ -88,7 +84,7 @@ final class AppController: NSObject, NSTableViewDataSource, NSTableViewDelegate 
         return cell
     }
     
-    func getImageForCards(cards: [Card]) -> [NSImage] {
+    func getImagesForCards(cards: [Card]) -> [NSImage] {
         var imgs = [NSImage]()
         for card in cards {
             let name = card.fileName
@@ -152,7 +148,7 @@ final class AppController: NSObject, NSTableViewDataSource, NSTableViewDelegate 
                     dealer.dealHoldemHandTo(&player1)
                     dealer.dealHoldemHandTo(&player2)
                 } else {
-                    // custom cards first
+                    // custom cards first! otherwise the random func could deal one of the custom cards
                     if !customPlayer1Cards.isEmpty {
                         dealer.dealHoldemCardsTo(&player1, cards: customPlayer1Cards)
                     }
@@ -187,12 +183,12 @@ final class AppController: NSObject, NSTableViewDataSource, NSTableViewDelegate 
     }
     
     func endOfHand(people: DealerAndPlayers) {
-        let (p1, p2) = (people.1.name!, people.2.name!)
-        for (k, v) in people.0.scores {
-            if k == p1 {
-                player1ScoreLabel.integerValue += v
-            } else if k == p2 {
-                player2ScoreLabel.integerValue += v
+        guard let name1 = people.player1.name, name2 = people.player2.name else { print("ERROR with player names");return }
+        for (name, value) in people.dealer.scores {
+            if name == name1 {
+                player1ScoreLabel.integerValue += value
+            } else if name == name2 {
+                player2ScoreLabel.integerValue += value
             }
         }
         roundsCountLabel.integerValue++
@@ -202,17 +198,8 @@ final class AppController: NSObject, NSTableViewDataSource, NSTableViewDelegate 
     }
     
     func playerNames() -> (String, String) {
-        let (name1, name2): (String,String)
-        if player1TextField.stringValue.isEmpty {
-            name1 = "Johnny"
-        } else {
-            name1 = player1TextField.stringValue
-        }
-        if player2TextField.stringValue.isEmpty {
-            name2 = "Annette"
-        } else {
-            name2 = player2TextField.stringValue
-        }
+        let name1 = player1TextField.stringValue.isEmpty ? "Johnny" : player1TextField.stringValue
+        let name2 = player2TextField.stringValue.isEmpty ? "Annette" : player2TextField.stringValue
         return (name1, name2)
     }
 

@@ -20,11 +20,7 @@ class SPKSettings {
         if player1Random {
             return []
         } else {
-            let c1Suit = String(player1Card1Suit.characters.first!)
-            let c2Suit = String(player1Card2Suit.characters.first!)
-            let card1 = Card(suit: c1Suit, rank: getRank(player1Card1Rank))
-            let card2 = Card(suit: c2Suit, rank: getRank(player1Card2Rank))
-            return [card1, card2]
+            return getPlayerCards(.Player1)
         }
     }
     
@@ -32,12 +28,28 @@ class SPKSettings {
         if player2Random {
             return []
         } else {
-            let c1Suit = String(player2Card1Suit.characters.first!)
-            let c2Suit = String(player2Card2Suit.characters.first!)
-            let card1 = Card(suit: c1Suit, rank: getRank(player2Card1Rank))
-            let card2 = Card(suit: c2Suit, rank: getRank(player2Card2Rank))
-            return [card1, card2]
+            return getPlayerCards(.Player2)
         }
+    }
+    
+    private func getPlayerCards(type: PersonType) -> [Card] {
+        switch type {
+        case .Player1:
+            let card1 = Card(suit: getSuit(player1Card1Suit), rank: getRank(player1Card1Rank))
+            let card2 = Card(suit: getSuit(player1Card2Suit), rank: getRank(player1Card2Rank))
+            return [card1, card2]
+        case .Player2:
+            let card1 = Card(suit: getSuit(player2Card1Suit), rank: getRank(player2Card1Rank))
+            let card2 = Card(suit: getSuit(player2Card2Suit), rank: getRank(player2Card2Rank))
+            return [card1, card2]
+        default:
+            return []
+        }
+    }
+    
+    private func getSuit(label: String) -> String {
+        // forced because label will be checked by the caller for not being empty
+        return String(label.characters.first!)
     }
     
     private func getRank(rank: String) -> String {
