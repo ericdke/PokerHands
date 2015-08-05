@@ -71,6 +71,10 @@ extension SequenceType where Generator.Element == Card {
         }
         return nil
     }
+    
+    func joinNames(with string: String) -> String {
+        return string.join(self.map({ $0.name }))
+    }
 }
 
 extension Range {

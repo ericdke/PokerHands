@@ -13,6 +13,20 @@ struct Player: CanTakeCard {
     var frequentHands = [String:Int]()
 
     var holdemHand: (HandRank, [String])?
+    
+    var holdemHandDescription: String? {
+        get {
+            guard let hand = holdemHand else { return nil }
+            return " ".join(hand.1)
+        }
+    }
+    
+    var holdemHandNameDescription: String? {
+        get {
+            guard let hand = holdemHand else { return nil }
+            return hand.0.name.rawValue.lowercaseString
+        }
+    }
 
     var cardsHistory: String { get {
         return ", ".join(historyOfDealtHoldemCards.map({ $0.0.description + " " + $0.1.description })) }
@@ -31,7 +45,7 @@ struct Player: CanTakeCard {
         }
     }
 
-    var cardsNames: String { get { return ", ".join(cards.map({ $0.name })) } }
+    var cardsNames: String { get { return cards.joinNames(with: ", ") } }
 
     var count: Int { get { return cards.count } }
 
