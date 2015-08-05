@@ -1,4 +1,4 @@
-struct Deck: CanTakeCard {
+struct Deck: CanTakeCard, SPHDebug {
 
     let suits = ["♠","♣","♥","♦"]
     let ranks = ["A","K","Q","J","T","9","8","7","6","5","4","3","2"]
@@ -17,6 +17,17 @@ struct Deck: CanTakeCard {
 
     mutating func shuffle() {
         cards.shuffleInPlace()
+    }
+    
+    mutating func takeCards(number:Int) -> [Card] {
+        guard self.count >= number else {
+            return errorNotEnoughCards()
+        }
+        var c = [Card]()
+        for _ in 1...number {
+            c.append(cards.takeOne())
+        }
+        return c
     }
 
     var count: Int { get { return cards.count } }

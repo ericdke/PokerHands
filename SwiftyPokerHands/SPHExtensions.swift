@@ -37,12 +37,29 @@ extension CanTakeCard {
         guard cards.count > 0 else { return nil }
         return cards.takeOne()
     }
+    
+}
+
+protocol SPHDebug {
+    func errorNotEnoughCards() -> [Card]
+    func error(message: String)
+}
+
+extension SPHDebug {
+    func errorNotEnoughCards() -> [Card] {
+        error("not enough cards")
+        return []
+    }
+    func error(message: String) {
+        NSLog("ERROR: %@", message)
+    }
 }
 
 extension SequenceType where Generator.Element == Card {
     func descriptions() -> [String] {
         return self.map({ $0.description })
     }
+    
     func spacedDescriptions() -> String {
         return " ".join(self.descriptions())
     }

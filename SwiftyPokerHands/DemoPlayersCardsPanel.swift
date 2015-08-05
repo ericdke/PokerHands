@@ -20,10 +20,10 @@ class SPKPlayerAndCardsPanel: NSPanel {
             p1c1RankTitle = p1c1Rank.titleOfSelectedItem,
             p1c2SuitTitle = p1c2Suit.titleOfSelectedItem,
             p1c2RankTitle = p1c2Rank.titleOfSelectedItem,
-            p2c1SuitTitle = p1c1Suit.titleOfSelectedItem,
-            p2c1RankTitle = p1c1Rank.titleOfSelectedItem,
-            p2c2SuitTitle = p1c2Suit.titleOfSelectedItem,
-            p2c2RankTitle = p1c2Rank.titleOfSelectedItem else { return }
+            p2c1SuitTitle = p2c1Suit.titleOfSelectedItem,
+            p2c1RankTitle = p2c1Rank.titleOfSelectedItem,
+            p2c2SuitTitle = p2c2Suit.titleOfSelectedItem,
+            p2c2RankTitle = p2c2Rank.titleOfSelectedItem else { return }
         
         settings.player1Card1Suit = p1c1SuitTitle
         settings.player1Card1Rank = p1c1RankTitle

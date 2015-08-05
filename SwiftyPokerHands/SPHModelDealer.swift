@@ -1,6 +1,6 @@
 import Cocoa
 
-struct Dealer {
+struct Dealer: SPHDebug {
 
     var evaluator: Evaluator
 
@@ -60,24 +60,14 @@ struct Dealer {
 
     mutating func changeDeck() {
         currentDeck = Deck()
-        if verbose { print("\nChanged deck of cards for a new one.\n") }
     }
 
     mutating func shuffleDeck() {
         currentDeck.shuffle()
-        if verbose { print("\nCards in the deck have been shuffled.\n") }
     }
 
     mutating func deal(numberOfCards: Int) -> [Card] {
-        if currentDeck.count >= numberOfCards {
-            var cards = [Card]()
-            for _ in 1...numberOfCards {
-                cards.append(currentDeck.takeOneCard()!)
-            }
-            return cards
-        }
-        errorNotEnoughCards()
-        return []
+        return currentDeck.takeCards(numberOfCards)
     }
 
     mutating func dealHoldemHand() -> [Card] {
@@ -89,12 +79,11 @@ struct Dealer {
     }
     
     mutating func dealHoldemCards(cards: [String]) -> [Card] {
-        let up = cards.map({$0.uppercaseString})
-        var cards = [Card]()
+        let upCardChars = cards.map({$0.uppercaseString.characters.map({String($0)})})
+        var cardsToDeal = [Card]()
         var toRemove: Int?
-        for card in up {
-            let components = card.characters.map({String($0)})
-            let cardObj = Card(suit: components[1], rank: components[0])
+        for cardChars in upCardChars {
+            let cardObj = Card(suit: cardChars[1], rank: cardChars[0])
             for (index, deckCard) in currentDeck.cards.enumerate() {
                 if deckCard == cardObj {
                     toRemove = index
@@ -106,9 +95,9 @@ struct Dealer {
                 break
             }
             currentDeck.cards.removeAtIndex(rm)
-            cards.append(cardObj)
+            cardsToDeal.append(cardObj)
         }
-        return cards
+        return cardsToDeal
     }
     
     mutating func dealHoldemCardsTo(inout player: Player, cards: [String]) {
@@ -166,17 +155,9 @@ struct Dealer {
     private mutating func dealWithBurning(numberOfCardsToDeal: Int) -> [Card] {
         if let burned = burn() {
             table.addToBurntCards(burned)
-            return deal(numberOfCardsToDeal) }
-        errorNotEnoughCards()
-        return []
-    }
-
-    private func error(message: String) {
-        NSLog("ERROR: %@", message)
-    }
-
-    private func errorNotEnoughCards() {
-        error("not enough cards")
+            return deal(numberOfCardsToDeal)
+        }
+        return errorNotEnoughCards()
     }
 
     mutating func evaluateHoldemHandAtRiverFor(inout player: Player) {
