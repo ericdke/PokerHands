@@ -37,15 +37,14 @@ extension CanTakeCard {
         guard cards.count > 0 else { return nil }
         return cards.takeOne()
     }
-    
 }
 
-protocol SPHDebug {
+protocol SPHCardsDebug {
     func errorNotEnoughCards() -> [Card]
     func error(message: String)
 }
 
-extension SPHDebug {
+extension SPHCardsDebug {
     func errorNotEnoughCards() -> [Card] {
         error("not enough cards")
         return []
@@ -62,6 +61,15 @@ extension SequenceType where Generator.Element == Card {
     
     func spacedDescriptions() -> String {
         return " ".join(self.descriptions())
+    }
+    
+    func indexOf(card: Card) -> Int? {
+        for (index, deckCard) in self.enumerate() {
+            if deckCard == card {
+                return index
+            }
+        }
+        return nil
     }
 }
 

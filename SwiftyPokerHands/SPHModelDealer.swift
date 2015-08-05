@@ -1,6 +1,6 @@
 import Cocoa
 
-struct Dealer: SPHDebug {
+struct Dealer: SPHCardsDebug {
 
     var evaluator: Evaluator
 
@@ -81,20 +81,13 @@ struct Dealer: SPHDebug {
     mutating func dealHoldemCards(cards: [String]) -> [Card] {
         let upCardChars = cards.map({$0.uppercaseString.characters.map({String($0)})})
         var cardsToDeal = [Card]()
-        var toRemove: Int?
         for cardChars in upCardChars {
             let cardObj = Card(suit: cardChars[1], rank: cardChars[0])
-            for (index, deckCard) in currentDeck.cards.enumerate() {
-                if deckCard == cardObj {
-                    toRemove = index
-                    break
-                }
-            }
-            guard let rm = toRemove else {
+            guard let indexToRemove = currentDeck.cards.indexOf(cardObj) else {
                 NSLog("%@", "ERROR: \(cardObj) is not in the deck")
                 break
             }
-            currentDeck.cards.removeAtIndex(rm)
+            currentDeck.cards.removeAtIndex(indexToRemove)
             cardsToDeal.append(cardObj)
         }
         return cardsToDeal
@@ -105,27 +98,16 @@ struct Dealer: SPHDebug {
     }
     
     mutating func dealHoldemCardsTo(inout player: Player, cards: [Card]) {
-        var toRemove: Int?
-        var error = false
+        var cardsToDeal = [Card]()
         for card in cards {
-            for (index, deckCard) in currentDeck.cards.enumerate() {
-                if deckCard == card {
-                    toRemove = index
-                    break
-                }
-            }
-            guard let rm = toRemove else {
-                error = true
+            guard let indexToRemove = currentDeck.cards.indexOf(card) else {
                 NSLog("%@", "ERROR: \(card) is not in the deck")
                 break
             }
-            currentDeck.cards.removeAtIndex(rm)
+            currentDeck.cards.removeAtIndex(indexToRemove)
+            cardsToDeal.append(card)
         }
-        if error {
-            player.cards = []
-        } else {
-            player.cards = cards
-        }
+        player.cards = cardsToDeal
     }
 
     mutating func dealFlop() -> [Card] {
@@ -147,17 +129,13 @@ struct Dealer: SPHDebug {
     }
 
     private mutating func burn() -> Card? {
-        if currentDeck.count > 0 {
-            return currentDeck.takeOneCard() }
-        return nil
+        return currentDeck.takeOneCard()
     }
 
     private mutating func dealWithBurning(numberOfCardsToDeal: Int) -> [Card] {
-        if let burned = burn() {
-            table.addToBurntCards(burned)
-            return deal(numberOfCardsToDeal)
-        }
-        return errorNotEnoughCards()
+        guard let burned = burn() else { return errorNotEnoughCards() }
+        table.addToBurntCards(burned)
+        return deal(numberOfCardsToDeal)
     }
 
     mutating func evaluateHoldemHandAtRiverFor(inout player: Player) {
@@ -174,7 +152,8 @@ struct Dealer: SPHDebug {
         var handsResult = [(HandRank, [String])]()
         for hand in uniqs {
             let h = evaluator.evaluate(hand)
-            handsResult.append((h, hand)) }
+            handsResult.append((h, hand))
+        }
         handsResult.sortInPlace({ $0.0 < $1.0 })
         let bestHand = handsResult.first
         return bestHand!
