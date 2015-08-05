@@ -1,3 +1,5 @@
+import Foundation
+
 struct Card {
 
     let suit: String
