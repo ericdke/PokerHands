@@ -9,6 +9,14 @@ import Cocoa
 //    }
 //}
 //
+
+func ==(lhs: Card, rhs: Card) -> Bool {
+    if lhs.rank == rhs.rank && lhs.suit == rhs.suit {
+        return true
+    }
+    return false
+}
+
 extension MutableCollectionType where Index == Int {
     mutating func shuffleInPlace() {
         if count < 2 { return }
@@ -31,11 +39,13 @@ extension CanTakeCard {
     }
 }
 
-func ==(lhs: Card, rhs: Card) -> Bool {
-    if lhs.rank == rhs.rank && lhs.suit == rhs.suit {
-        return true
+extension SequenceType where Generator.Element == Card {
+    func descriptions() -> [String] {
+        return self.map({ $0.description })
     }
-    return false
+    func spacedDescriptions() -> String {
+        return " ".join(self.descriptions())
+    }
 }
 
 extension Range {
@@ -79,7 +89,7 @@ extension Array {
     }
     
     // adapted from ExSwift
-    func permutation (length: Int) -> [[Element]] {
+    func permutation(length: Int) -> [[Element]] {
         if length < 0 || length > self.count {
             return []
         } else if length == 0 {
@@ -108,7 +118,7 @@ extension Array {
         }
         return endArray
     }
-    func combination (length: Int) -> [[Element]] {
+    func combination(length: Int) -> [[Element]] {
         if length < 0 || length > self.count {
             return []
         }
@@ -136,11 +146,11 @@ extension Array {
         }
         return combinations
     }
-    func choose(x:Int) -> [Element] {
-        var shuffledContent:[Element] = []
-        let shuffledIndex:[Int] = x.indexRandom()
-        for i in 0...shuffledIndex.count-1 {
-            shuffledContent.append(self[shuffledIndex[i]])
-        }
-        return shuffledContent }
+//    func choose(x:Int) -> [Element] {
+//        var shuffledContent:[Element] = []
+//        let shuffledIndex:[Int] = x.indexRandom()
+//        for i in 0...shuffledIndex.count-1 {
+//            shuffledContent.append(self[shuffledIndex[i]])
+//        }
+//        return shuffledContent }
 }

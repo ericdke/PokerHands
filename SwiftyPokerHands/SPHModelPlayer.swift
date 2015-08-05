@@ -35,5 +35,5 @@ struct Player: CanTakeCard {
 
     var count: Int { get { return cards.count } }
 
-    var holeCards: String { get { return " ".join(cards.map({ $0.description })) } }
+    var holeCards: String { get { return cards.spacedDescriptions() } }
 }
