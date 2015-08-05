@@ -52,4 +52,20 @@ struct Player: CanTakeCard {
     var count: Int { get { return cards.count } }
 
     var holeCards: String { get { return cards.spacedDescriptions() } }
+    
+    var lastDealtHandReadableDate: String? {
+        get {
+            guard let date = historyOfDealtHoldemCards.last?.2 else { return nil }
+            let formatter = NSDateFormatter()
+            formatter.dateFormat = "yyyy/MM/dd HH:mm:ss:SSS"
+            return formatter.stringFromDate(date)
+        }
+    }
+    
+    var lastDealtHandDate: NSDate? {
+        get {
+            guard let date = historyOfDealtHoldemCards.last?.2 else { return nil }
+            return date
+        }
+    }
 }
