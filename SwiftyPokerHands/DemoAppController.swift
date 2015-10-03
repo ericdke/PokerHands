@@ -126,15 +126,15 @@ final class AppController: NSObject, NSTableViewDataSource, NSTableViewDelegate 
         roundsCountLabel.integerValue = 0
         player1ScoreLabel.integerValue = 0
         player2ScoreLabel.integerValue = 0
-        let (name1, name2) = playerNames()
+        let (name1, name2) = self.playerNames
         player1ScoreNameLabel.stringValue = name1
         player2ScoreNameLabel.stringValue = name2
         let deck = Dealer().currentDeck
         var customPlayer1Cards = [Card]()
         var customPlayer2Cards = [Card]()
         if settings.gameMode == .Custom {
-            customPlayer1Cards = settings.getPlayer1Cards()
-            customPlayer2Cards = settings.getPlayer2Cards()
+            customPlayer1Cards = settings.player1Cards
+            customPlayer2Cards = settings.player2Cards
         }
         let eval = Evaluator()
         // go in background
@@ -207,7 +207,7 @@ final class AppController: NSObject, NSTableViewDataSource, NSTableViewDelegate 
         handsTableView.scrollRowToVisible(self.results.count - 1)
     }
     
-    func playerNames() -> (String, String) {
+    var playerNames: (String, String) {
         let name1 = player1TextField.stringValue.isEmpty ? "Johnny" : player1TextField.stringValue
         let name2 = player2TextField.stringValue.isEmpty ? "Annette" : player2TextField.stringValue
         return (name1, name2)

@@ -53,7 +53,7 @@ struct Player: CanTakeCard {
 
     var count: Int { get { return cards.count } }
 
-    var holeCards: String { get { return cards.spacedDescriptions() } }
+    var holeCards: String { get { return cards.spacedDescriptions } }
     
     var lastDealtHandReadableDate: String? {
         get {

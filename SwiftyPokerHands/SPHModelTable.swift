@@ -7,16 +7,16 @@ struct Table {
     var burntCards: String {
         get {
             guard dealtCards.count > 0 else { return "" }
-            return "\nBurnt cards: \(burnt.spacedDescriptions())"
+            return "\nBurnt cards: \(burnt.spacedDescriptions)"
         }
     }
 
-    var currentGame: String { get { return dealtCards.spacedDescriptions() } }
+    var currentGame: String { get { return dealtCards.spacedDescriptions } }
 
     var flop: String {
         get {
             guard dealtCards.count > 2 else { return "" }
-            return dealtCards[0...2].spacedDescriptions()
+            return dealtCards[0...2].spacedDescriptions
         }
     }
 

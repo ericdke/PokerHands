@@ -57,12 +57,12 @@ extension SPHCardsDebug {
 
 extension SequenceType where Generator.Element == Card {
     
-    func descriptions() -> [String] {
-        return self.map({ $0.description })
+    var descriptions: [String] {
+        return self.map { $0.description }
     }
     
-    func spacedDescriptions() -> String {
-        return self.descriptions().joinWithSeparator(" ")
+    var spacedDescriptions: String {
+        return self.descriptions.joinWithSeparator(" ")
     }
     
     func indexOf(card: Card) -> Int? {
@@ -82,41 +82,13 @@ extension SequenceType where Generator.Element == Card {
 
 extension Range {
     
-    func toArray () -> [Element] {
-        var result: [Element] = []
-        for i in self {
-            result.append(i)
-        }
-        return result
-    }
-    
-}
-
-extension Int {
-    
-    func random() -> Int {
-        return Int(arc4random_uniform(UInt32(abs(self))))
-    }
-    
-    func indexRandom() -> [Int] {
-        var newIndex = 0
-        var shuffledIndex:[Int] = []
-        while shuffledIndex.count < self {
-            newIndex = Int(arc4random_uniform(UInt32(self)))
-            if !(shuffledIndex.indexOf(newIndex) > -1 ) {
-                shuffledIndex.append(newIndex)
-            }
-        }
-        return  shuffledIndex
+    var array: [Element] {
+        return self.map { $0 }
     }
     
 }
 
 extension Array {
-    
-    func chooseOne() -> Element {
-        return self[Int(arc4random_uniform(UInt32(self.count)))]
-    }
     
     mutating func takeOne() -> Element {
         let index = Int(arc4random_uniform(UInt32(self.count)))
@@ -161,7 +133,7 @@ extension Array {
         if length < 0 || length > self.count {
             return []
         }
-        var indexes: [Int] = (0..<length).toArray()
+        var indexes: [Int] = (0..<length).array
         var combinations: [[Element]] = []
         let offset = self.count - indexes.count
         while true {

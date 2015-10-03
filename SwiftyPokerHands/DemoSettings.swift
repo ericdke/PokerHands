@@ -16,7 +16,7 @@ class SPKSettings {
     
     var gameMode: GameMode = .Random
     
-    func getPlayer1Cards() -> [Card] {
+    var player1Cards: [Card] {
         if player1Random {
             return []
         } else {
@@ -24,7 +24,7 @@ class SPKSettings {
         }
     }
     
-    func getPlayer2Cards() -> [Card] {
+    var player2Cards: [Card] {
         if player2Random {
             return []
         } else {
