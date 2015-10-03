@@ -138,8 +138,8 @@ final class AppController: NSObject, NSTableViewDataSource, NSTableViewDelegate 
         }
         let eval = Evaluator()
         // go in background
-        var q1: dispatch_queue_t
-        var q2: dispatch_queue_t
+        let q1: dispatch_queue_t
+        let q2: dispatch_queue_t
         if #available(OSX 10.10, *) {
             q1 = dispatch_get_global_queue(QOS_CLASS_USER_INTERACTIVE, 0)
             q2 = dispatch_get_global_queue(QOS_CLASS_USER_INITIATED, 0)

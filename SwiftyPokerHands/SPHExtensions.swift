@@ -88,6 +88,26 @@ extension Range {
     
 }
 
+extension Int {
+    
+    func times(f: () -> ()) {
+        if self > 0 {
+            for _ in 0..<self {
+                f()
+            }
+        }
+    }
+    
+    func times(@autoclosure f: () -> ()) {
+        if self > 0 {
+            for _ in 0..<self {
+                f()
+            }
+        }
+    }
+    
+}
+
 extension Array {
     
     mutating func takeOne() -> Element {

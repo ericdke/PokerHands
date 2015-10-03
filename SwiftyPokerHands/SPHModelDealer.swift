@@ -34,13 +34,13 @@ struct Dealer: SPHCardsDebug {
         self.evaluator = evaluator
     }
 
-    var currentGame: String { get { return table.currentGame } }
+    var currentGame: String { return table.currentGame }
 
-    var flop: String { get { return table.flop } }
+    var flop: String { return table.flop }
 
-    var turn: String { get { return table.turn } }
+    var turn: String { return table.turn }
 
-    var river: String { get { return table.river } }
+    var river: String { return table.river }
 
     var currentHandWinner: Player? {
         didSet {

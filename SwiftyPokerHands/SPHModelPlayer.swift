@@ -17,23 +17,16 @@ struct Player: CanTakeCard {
     var holdemHand: (HandRank, [String])?
     
     var holdemHandDescription: String? {
-        get {
-            guard let hand = holdemHand else { return nil }
-            return hand.1.joinWithSeparator(" ")
-        }
+        return holdemHand?.1.joinWithSeparator(" ")
     }
     
     var holdemHandNameDescription: String? {
-        get {
-            guard let hand = holdemHand else { return nil }
-            return hand.0.name.rawValue.lowercaseString
-        }
+        return holdemHand?.0.name.rawValue.lowercaseString
     }
 
-    var cardsHistory: String { get {
-            let mapped = historyOfDealtHoldemCards.map { $0.0.description + " " + $0.1.description }
-            return mapped.joinWithSeparator(", ")
-        }
+    var cardsHistory: String {
+        let mapped = historyOfDealtHoldemCards.map { $0.0.description + " " + $0.1.description }
+        return mapped.joinWithSeparator(", ")
     }
 
     var cards = [Card]() {
@@ -49,25 +42,20 @@ struct Player: CanTakeCard {
         }
     }
 
-    var cardsNames: String { get { return cards.joinNames(with: ", ") } }
+    var cardsNames: String { return cards.joinNames(with: ", ") }
 
-    var count: Int { get { return cards.count } }
+    var count: Int { return cards.count }
 
-    var holeCards: String { get { return cards.spacedDescriptions } }
+    var holeCards: String { return cards.spacedDescriptions }
     
     var lastDealtHandReadableDate: String? {
-        get {
-            guard let date = historyOfDealtHoldemCards.last?.2 else { return nil }
-            let formatter = NSDateFormatter()
-            formatter.dateFormat = "yyyy/MM/dd HH:mm:ss:SSS"
-            return formatter.stringFromDate(date)
-        }
+        guard let date = historyOfDealtHoldemCards.last?.2 else { return nil }
+        let formatter = NSDateFormatter()
+        formatter.dateFormat = "yyyy/MM/dd HH:mm:ss:SSS"
+        return formatter.stringFromDate(date)
     }
     
     var lastDealtHandDate: NSDate? {
-        get {
-            guard let date = historyOfDealtHoldemCards.last?.2 else { return nil }
-            return date
-        }
+        return historyOfDealtHoldemCards.last?.2
     }
 }

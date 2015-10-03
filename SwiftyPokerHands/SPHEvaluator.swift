@@ -6,19 +6,19 @@
 import Foundation
 
 final public class CardsDeck {
+    
     var cards:[String:Int]
-    var count: Int {
-        get {
-            return cards.count
-        }
-    }
-    init(){
+    
+    var count: Int { return cards.count }
+    
+    init() {
         cards = [:]
         let suitDetails:[String: Int] = [
             "♠": 0b0001,
             "♥": 0b0010,
             "♦": 0b0100,
-            "♣": 0b1000]
+            "♣": 0b1000
+        ]
         let faces:[String:[String:Int]] = [
             "2":["index":0, "prime": 2],
             "3":["index":1, "prime": 3],
@@ -32,8 +32,9 @@ final public class CardsDeck {
             "J":["index":9, "prime": 29],
             "Q":["index":10, "prime": 31],
             "K":["index":11, "prime": 37],
-            "A":["index":12, "prime": 41]]
-        for face in faces.keys{
+            "A":["index":12, "prime": 41]
+        ]
+        for face in faces.keys {
             for suit in suitDetails.keys {
                 let faceIndex = faces[face]!["index"]!
                 let faceValue = faceIndex << 8
@@ -45,7 +46,7 @@ final public class CardsDeck {
         }
     }
 
-    func as_binary(card:String) -> Int{
+    func as_binary(card:String) -> Int {
         return cards[card]!
     }
 }

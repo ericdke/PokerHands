@@ -25,8 +25,8 @@ struct Deck: CanTakeCard, SPHCardsDebug {
             return errorNotEnoughCards()
         }
         var c = [Card]()
-        for _ in 1...number {
-            c.append(cards.takeOne())
+        number.times {
+            c.append(self.cards.takeOne())
         }
         return c
     }

@@ -16,7 +16,7 @@ struct Card {
 
     var name: String {
         get {
-            var s = ""
+            let s:String
             switch suit {
             case "♠", "Spades":
                 s = "Spades"
@@ -27,9 +27,10 @@ struct Card {
             case "♦", "Diamonds":
                 s = "Diamonds"
             default:
+                s = ""
                 print("Error")
             }
-            var r = ""
+            let r:String
             switch rank {
             case "A", "Ace":
                 r = "Ace"
