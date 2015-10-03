@@ -2,7 +2,7 @@
 
 Mixing several techniques in Swift to evaluate a Holdem poker hand.
 
-*Uses Swift 2.0 and Xcode 7 beta 3+. Demo app needs OS X 10.10+.*
+*Source code is in Swift 2.0 and needs Xcode 7.0.1 minimum. Demo app needs OS X 10.10+.*
 
 ![Swifty Poker Hands](https://www.evernote.com/shard/s89/sh/3f391e4f-3ba4-45ee-b4f6-cdaa8a85628f/8c3ded92bfda886b/res/7971889e-0eab-4f56-971c-51731ef3274e/skitch.png)
 
