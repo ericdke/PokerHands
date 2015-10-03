@@ -79,7 +79,7 @@ final class HandRank: Equatable {
     let name:RankName
     init(rank:Int) {
         self.rank = rank
-        let start = rankStarts.keys.filter {$0 >= rank}.array.sort { $0 < $1 }.first!
+        let start = Array(rankStarts.keys.filter {$0 >= rank}).sort { $0 < $1 }.first!
         self.name = rankStarts[start]!
     }
 }

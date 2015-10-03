@@ -1,15 +1,5 @@
 import Cocoa
 
-//extension CollectionType where Index == Int {
-//    /// Return a copy of `self` with its elements shuffled
-//    func shuffle() -> [Generator.Element] {
-//        var list = Array(self)
-//        list.shuffleInPlace()
-//        return list
-//    }
-//}
-//
-
 func ==(lhs: Card, rhs: Card) -> Bool {
     if lhs.rank == rhs.rank && lhs.suit == rhs.suit {
         return true
@@ -18,6 +8,7 @@ func ==(lhs: Card, rhs: Card) -> Bool {
 }
 
 extension MutableCollectionType where Index == Int {
+    
     mutating func shuffleInPlace() {
         if count < 2 { return }
         for i in 0..<count - 1 {
@@ -25,42 +16,53 @@ extension MutableCollectionType where Index == Int {
             swap(&self[i], &self[j])
         }
     }
+    
 }
 
 protocol CanTakeCard {
+    
     var cards: [Card] { get set }
     mutating func takeOneCard() -> Card?
+    
 }
 
 extension CanTakeCard {
+    
     mutating func takeOneCard() -> Card? {
         guard cards.count > 0 else { return nil }
         return cards.takeOne()
     }
+    
 }
 
 protocol SPHCardsDebug {
+    
     func errorNotEnoughCards() -> [Card]
     func error(message: String)
+    
 }
 
 extension SPHCardsDebug {
+    
     func errorNotEnoughCards() -> [Card] {
         error("not enough cards")
         return []
     }
+    
     func error(message: String) {
         NSLog("ERROR: %@", message)
     }
+    
 }
 
 extension SequenceType where Generator.Element == Card {
+    
     func descriptions() -> [String] {
         return self.map({ $0.description })
     }
     
     func spacedDescriptions() -> String {
-        return " ".join(self.descriptions())
+        return self.descriptions().joinWithSeparator(" ")
     }
     
     func indexOf(card: Card) -> Int? {
@@ -73,11 +75,13 @@ extension SequenceType where Generator.Element == Card {
     }
     
     func joinNames(with string: String) -> String {
-        return string.join(self.map({ $0.name }))
+        return self.map({ $0.name }).joinWithSeparator(string)
     }
+    
 }
 
 extension Range {
+    
     func toArray () -> [Element] {
         var result: [Element] = []
         for i in self {
@@ -85,12 +89,15 @@ extension Range {
         }
         return result
     }
+    
 }
 
 extension Int {
+    
     func random() -> Int {
         return Int(arc4random_uniform(UInt32(abs(self))))
     }
+    
     func indexRandom() -> [Int] {
         var newIndex = 0
         var shuffledIndex:[Int] = []
@@ -102,14 +109,15 @@ extension Int {
         }
         return  shuffledIndex
     }
+    
 }
 
 extension Array {
+    
     func chooseOne() -> Element {
         return self[Int(arc4random_uniform(UInt32(self.count)))]
     }
     
-    //TODO: make it an Optional
     mutating func takeOne() -> Element {
         let index = Int(arc4random_uniform(UInt32(self.count)))
         let item = self[index]
@@ -134,6 +142,7 @@ extension Array {
             return permutations
         }
     }
+    // adapted from ExSwift
     private func permutationHelper(n: Int, inout array: [Element], inout endArray: [[Element]]) -> [[Element]] {
         if n == 1 {
             endArray += [array]
@@ -147,6 +156,7 @@ extension Array {
         }
         return endArray
     }
+    // adapted from ExSwift
     func combination(length: Int) -> [[Element]] {
         if length < 0 || length > self.count {
             return []
@@ -175,11 +185,5 @@ extension Array {
         }
         return combinations
     }
-//    func choose(x:Int) -> [Element] {
-//        var shuffledContent:[Element] = []
-//        let shuffledIndex:[Int] = x.indexRandom()
-//        for i in 0...shuffledIndex.count-1 {
-//            shuffledContent.append(self[shuffledIndex[i]])
-//        }
-//        return shuffledContent }
+
 }

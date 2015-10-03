@@ -55,7 +55,7 @@ final class AppController: NSObject, NSTableViewDataSource, NSTableViewDelegate 
 
     func tableView(tableView: NSTableView, viewForTableColumn tableColumn: NSTableColumn?, row: Int) -> NSView? {
 
-        guard let cell = tableView.makeViewWithIdentifier("roundsColumn", owner: self) as? SPKHandTableCellView
+        guard let cellView = tableView.makeViewWithIdentifier("roundsColumn", owner: self) as? SPKHandTableCellView
             else { return nil }
 
         let result = results[row]
@@ -67,31 +67,31 @@ final class AppController: NSObject, NSTableViewDataSource, NSTableViewDelegate 
             let tableCardsImages = getImagesForCards(result.dealer.table.dealtCards)
             else { return nil }
         
-        cell.textField?.stringValue = "\(name1): \(result.player1.holeCards)"
-        cell.label1.stringValue = "\(name2): \(result.player2.holeCards)"
-        cell.label2.stringValue = "Cards: \(result.dealer.table.currentGame)"
+        cellView.textField?.stringValue = "\(name1): \(result.player1.holeCards)"
+        cellView.label1.stringValue = "\(name2): \(result.player2.holeCards)"
+        cellView.label2.stringValue = "Cards: \(result.dealer.table.currentGame)"
         if winnerName == "SPLIT" {
-            cell.label3.stringValue = "Split! This hand is canceled."
+            cellView.label3.stringValue = "Split! This hand is canceled."
         } else {
             guard let winningHand = result.dealer.currentHandWinner?.holdemHandDescription,
                 let winningHandName = result.dealer.currentHandWinner?.holdemHandNameDescription
                 else { return nil }
-            cell.label3.stringValue = "\(winnerName.uppercaseString) wins with \(winningHandName) (\(winningHand))"
+            cellView.label3.stringValue = "\(winnerName.uppercaseString) wins with \(winningHandName) (\(winningHand))"
         }
 
-        cell.card1Player1.image = player1CardsImages[0]
-        cell.card2Player1.image = player1CardsImages[1]
+        cellView.card1Player1.image = player1CardsImages[0]
+        cellView.card2Player1.image = player1CardsImages[1]
         
-        cell.card1Player2.image = player2CardsImages[0]
-        cell.card2Player2.image = player2CardsImages[1]
+        cellView.card1Player2.image = player2CardsImages[0]
+        cellView.card2Player2.image = player2CardsImages[1]
         
-        cell.card1Flop.image = tableCardsImages[0]
-        cell.card2Flop.image = tableCardsImages[1]
-        cell.card3Flop.image = tableCardsImages[2]
-        cell.card4Turn.image = tableCardsImages[3]
-        cell.card5River.image = tableCardsImages[4]
+        cellView.card1Flop.image = tableCardsImages[0]
+        cellView.card2Flop.image = tableCardsImages[1]
+        cellView.card3Flop.image = tableCardsImages[2]
+        cellView.card4Turn.image = tableCardsImages[3]
+        cellView.card5River.image = tableCardsImages[4]
         
-        return cell
+        return cellView
     }
     
     func getImagesForCards(cards: [Card]) -> [NSImage]? {

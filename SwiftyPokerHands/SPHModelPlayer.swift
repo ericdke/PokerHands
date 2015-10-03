@@ -19,7 +19,7 @@ struct Player: CanTakeCard {
     var holdemHandDescription: String? {
         get {
             guard let hand = holdemHand else { return nil }
-            return " ".join(hand.1)
+            return hand.1.joinWithSeparator(" ")
         }
     }
     
@@ -31,7 +31,9 @@ struct Player: CanTakeCard {
     }
 
     var cardsHistory: String { get {
-        return ", ".join(historyOfDealtHoldemCards.map({ $0.0.description + " " + $0.1.description })) }
+            let mapped = historyOfDealtHoldemCards.map { $0.0.description + " " + $0.1.description }
+            return mapped.joinWithSeparator(", ")
+        }
     }
 
     var cards = [Card]() {
