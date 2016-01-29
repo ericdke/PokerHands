@@ -147,6 +147,7 @@ final class AppController: NSObject, NSTableViewDataSource, NSTableViewDelegate 
             q1 = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)
             q2 = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
         }
+
         dispatch_async(q1) {
             // run a loop of background tasks
             dispatch_apply(numberOfHands, q2, { (index) -> Void in
@@ -201,8 +202,8 @@ final class AppController: NSObject, NSTableViewDataSource, NSTableViewDelegate 
                 player2ScoreLabel.integerValue += value
             }
         }
-        roundsCountLabel.integerValue++
-        progressBar.doubleValue++
+        roundsCountLabel.integerValue += 1
+        progressBar.doubleValue += 1
         handsTableView.reloadData()
         handsTableView.scrollRowToVisible(self.results.count - 1)
     }

@@ -37,7 +37,7 @@ struct Player: CanTakeCard {
             if frequentHands[fqname] == nil {
                 frequentHands[fqname] = 1
             } else {
-                frequentHands[fqname]!++
+                frequentHands[fqname]! += 1
             }
         }
     }

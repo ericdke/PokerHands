@@ -48,7 +48,7 @@ struct Dealer: SPHCardsDebug {
                 if scores[currentHandWinner!.name!] == nil {
                     scores[currentHandWinner!.name!] = 1
                 } else {
-                    scores[currentHandWinner!.name!]!++
+                    scores[currentHandWinner!.name!]! += 1
                 }
             } else {
                 scores = [:]
@@ -64,6 +64,10 @@ struct Dealer: SPHCardsDebug {
 
     mutating func shuffleDeck() {
         currentDeck.shuffle()
+    }
+    
+    mutating func removeCards(inout player: Player) {
+        player.cards = []
     }
 
     mutating func deal(numberOfCards: Int) -> [Card] {
@@ -148,7 +152,9 @@ struct Dealer: SPHCardsDebug {
         // all 5 cards combinations from the 7 cards
         let perms = cardsReps.permutation(5)
         // TODO: do the permutations with rank/else instead of literal cards descriptions
-        let uniqs = Array(NSSet(array: perms.map({ $0.sort(<) }))).map({ $0 as! [String] })
+        let sortedPerms = perms.map({ $0.sort(<) })
+        let permsSet = NSSet(array: sortedPerms)
+        let uniqs = Array(permsSet).map({ $0 as! [String] })
         var handsResult = [(HandRank, [String])]()
         for hand in uniqs {
             let h = evaluator.evaluate(hand)
