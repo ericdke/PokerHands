@@ -4,7 +4,9 @@ struct Table {
 
     var burnt = [Card]()
 
-    var currentGame: String { return dealtCards.spacedDescriptions }
+    var currentGame: String {
+        return dealtCards.spacedDescriptions
+    }
 
     var flop: String {
         guard dealtCards.count > 2 else { return "" }

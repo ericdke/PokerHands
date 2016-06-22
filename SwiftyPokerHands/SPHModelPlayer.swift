@@ -42,11 +42,17 @@ struct Player: CanTakeCard {
         }
     }
 
-    var cardsNames: String { return cards.joinNames(with: ", ") }
+    var cardsNames: String {
+        return cards.joinNames(with: ", ")
+    }
 
-    var count: Int { return cards.count }
+    var count: Int {
+        return cards.count
+    }
 
-    var holeCards: String { return cards.spacedDescriptions }
+    var holeCards: String {
+        return cards.spacedDescriptions
+    }
     
     var lastDealtHandReadableDate: String? {
         guard let date = historyOfDealtHoldemCards.last?.2 else { return nil }

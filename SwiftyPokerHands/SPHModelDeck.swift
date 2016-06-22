@@ -31,7 +31,11 @@ struct Deck: CanTakeCard, SPHCardsDebug {
         return c
     }
 
-    var count: Int { get { return cards.count } }
+    var count: Int {
+        return cards.count
+    }
 
-    var dealt: Int { get { return capacity - cards.count } }
+    var dealt: Int {
+        return capacity - cards.count
+    }
 }
