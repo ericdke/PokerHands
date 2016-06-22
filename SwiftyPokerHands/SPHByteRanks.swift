@@ -5,9 +5,9 @@
 
 import Foundation
 
-final class ByteRanks {
+final public class ByteRanks {
     
-    enum SPHError: String, ErrorType {
+    enum SPHError: String, ErrorProtocol {
         case CouldNotFindJSONFile = "FATAL ERROR: Could not find init files in app bundle"
         case CouldNotLoadJSONFile = "FATAL ERROR: Could not load init files from app bundle"
         case CouldNotConvertJSONFile = "FATAL ERROR: Could not read init files from app bundle"
@@ -22,25 +22,34 @@ final class ByteRanks {
     
     init() {
         do {
-            let bundle = NSBundle.mainBundle()
-            guard let fpath = bundle.pathForResource("flushes_bytes", ofType: "json"), let upath = bundle.pathForResource("uniqueToRanks_bytes", ofType: "json"), let ppath = bundle.pathForResource("primeProductToCombination_bytes", ofType: "json"), let cpath = bundle.pathForResource("combinationToRank_bytes", ofType: "json") else {
-                throw SPHError.CouldNotFindJSONFile
+            let bundle = Bundle.main()
+            guard let fpath = bundle.pathForResource("flushes_bytes", ofType: "json"),
+                upath = bundle.pathForResource("uniqueToRanks_bytes", ofType: "json"),
+                ppath = bundle.pathForResource("primeProductToCombination_bytes", ofType: "json"),
+                cpath = bundle.pathForResource("combinationToRank_bytes", ofType: "json") else {
+                    throw SPHError.CouldNotFindJSONFile
             }
-            guard let fdata = NSData(contentsOfFile: fpath), let udata = NSData(contentsOfFile: upath), let pdata = NSData(contentsOfFile: ppath), let cdata = NSData(contentsOfFile: cpath) else {
-                throw SPHError.CouldNotLoadJSONFile
+            guard let fdata = try? Data(contentsOf: URL(fileURLWithPath: fpath)),
+                udata = try? Data(contentsOf: URL(fileURLWithPath: upath)),
+                pdata = try? Data(contentsOf: URL(fileURLWithPath: ppath)),
+                cdata = try? Data(contentsOf: URL(fileURLWithPath: cpath)) else {
+                    throw SPHError.CouldNotLoadJSONFile
             }
-            guard let ujson = try NSJSONSerialization.JSONObjectWithData(udata, options: []) as? [Int], let fjson = try NSJSONSerialization.JSONObjectWithData(fdata, options: []) as? [Int], let pjson = try NSJSONSerialization.JSONObjectWithData(pdata, options: []) as? [Int], let cjson = try NSJSONSerialization.JSONObjectWithData(cdata, options: []) as? [Int] else {
-                throw SPHError.CouldNotConvertJSONFile
+            guard let ujson = try JSONSerialization.jsonObject(with: udata, options: []) as? [Int],
+                fjson = try JSONSerialization.jsonObject(with: fdata, options: []) as? [Int],
+                pjson = try JSONSerialization.jsonObject(with: pdata, options: []) as? [Int],
+                cjson = try JSONSerialization.jsonObject(with: cdata, options: []) as? [Int] else {
+                    throw SPHError.CouldNotConvertJSONFile
             }
             self.flushes = fjson
             self.uniqueToRanks = ujson
             self.primeProductToCombination = pjson
             self.combinationToRank = cjson
         } catch let error as SPHError {
-            print(error.rawValue)
-            fatalError()
-        } catch {
             print(error)
+            fatalError()
+        } catch let error as NSError {
+            print(error.debugDescription)
             fatalError()
         }
     }

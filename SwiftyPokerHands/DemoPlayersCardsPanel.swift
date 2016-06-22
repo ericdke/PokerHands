@@ -15,7 +15,7 @@ class SPKPlayerAndCardsPanel: NSPanel {
     
     let settings = SPKSettings.sharedInstance
     
-    @IBAction func buttonCLOSE(sender: NSButton) {
+    @IBAction func buttonCLOSE(_ sender: NSButton) {
         guard let p1c1SuitTitle = p1c1Suit.titleOfSelectedItem,
             p1c1RankTitle = p1c1Rank.titleOfSelectedItem,
             p1c2SuitTitle = p1c2Suit.titleOfSelectedItem,
@@ -23,7 +23,9 @@ class SPKPlayerAndCardsPanel: NSPanel {
             p2c1SuitTitle = p2c1Suit.titleOfSelectedItem,
             p2c1RankTitle = p2c1Rank.titleOfSelectedItem,
             p2c2SuitTitle = p2c2Suit.titleOfSelectedItem,
-            p2c2RankTitle = p2c2Rank.titleOfSelectedItem else { return }
+            p2c2RankTitle = p2c2Rank.titleOfSelectedItem else {
+                return
+        }
         
         settings.player1Card1Suit = p1c1SuitTitle
         settings.player1Card1Rank = p1c1RankTitle
@@ -38,20 +40,20 @@ class SPKPlayerAndCardsPanel: NSPanel {
         self.orderOut(nil)
     }
     
-    @IBAction func p1RandomButton(sender: NSButton) {
+    @IBAction func p1RandomButton(_ sender: NSButton) {
         let boo = !Bool(sender.state)
-        p1c1Suit.enabled = boo
-        p1c1Rank.enabled = boo
-        p1c2Suit.enabled = boo
-        p1c2Rank.enabled = boo
+        p1c1Suit.isEnabled = boo
+        p1c1Rank.isEnabled = boo
+        p1c2Suit.isEnabled = boo
+        p1c2Rank.isEnabled = boo
     }
     
-    @IBAction func p2RandomButton(sender: NSButton) {
+    @IBAction func p2RandomButton(_ sender: NSButton) {
         let boo = !Bool(sender.state)
-        p2c1Suit.enabled = boo
-        p2c1Rank.enabled = boo
-        p2c2Suit.enabled = boo
-        p2c2Rank.enabled = boo
+        p2c1Suit.isEnabled = boo
+        p2c1Rank.isEnabled = boo
+        p2c2Suit.isEnabled = boo
+        p2c2Rank.isEnabled = boo
     }
     
 }

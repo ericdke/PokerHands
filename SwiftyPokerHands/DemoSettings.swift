@@ -14,37 +14,41 @@ class SPKSettings {
     var player2Card2Rank = ""
     var player2Random = false
     
-    var gameMode: GameMode = .Random
+    var gameMode: GameMode = .random
     
     var player1Cards: [Card] {
-        return player1Random ? [] : getPlayerCards(.Player1)
+        return player1Random ? [] : getPlayerCards(for: .player1)
     }
     
     var player2Cards: [Card] {
-        return player2Random ? [] : getPlayerCards(.Player2)
+        return player2Random ? [] : getPlayerCards(for: .player2)
     }
     
-    private func getPlayerCards(type: PersonType) -> [Card] {
+    private func getPlayerCards(for type: PersonType) -> [Card] {
         switch type {
-        case .Player1:
-            let card1 = Card(suit: getSuit(player1Card1Suit), rank: getRank(player1Card1Rank))
-            let card2 = Card(suit: getSuit(player1Card2Suit), rank: getRank(player1Card2Rank))
+        case .player1:
+            let card1 = Card(suit: getSuit(in: player1Card1Suit),
+                             rank: getRank(in: player1Card1Rank))
+            let card2 = Card(suit: getSuit(in: player1Card2Suit),
+                             rank: getRank(in: player1Card2Rank))
             return [card1, card2]
-        case .Player2:
-            let card1 = Card(suit: getSuit(player2Card1Suit), rank: getRank(player2Card1Rank))
-            let card2 = Card(suit: getSuit(player2Card2Suit), rank: getRank(player2Card2Rank))
+        case .player2:
+            let card1 = Card(suit: getSuit(in: player2Card1Suit),
+                             rank: getRank(in: player2Card1Rank))
+            let card2 = Card(suit: getSuit(in: player2Card2Suit),
+                             rank: getRank(in: player2Card2Rank))
             return [card1, card2]
         default:
             return []
         }
     }
     
-    private func getSuit(label: String) -> String {
+    private func getSuit(in label: String) -> String {
         // forced because label will be checked by the caller for not being empty
         return String(label.characters.first!)
     }
     
-    private func getRank(rank: String) -> String {
+    private func getRank(in rank: String) -> String {
         switch rank {
             case "Ace":
             return "A"

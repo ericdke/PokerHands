@@ -1,4 +1,4 @@
-struct Table {
+public struct Table {
 
     var dealtCards = [Card]()
 
@@ -23,11 +23,11 @@ struct Table {
         return dealtCards[4].description
     }
 
-    mutating func addCards(cards: [Card]) {
+    mutating func add(cards: [Card]) {
         dealtCards += cards
     }
 
-    mutating func addToBurntCards(card: Card) {
+    mutating func addToBurnt(card: Card) {
         burnt.append(card)
     }
 

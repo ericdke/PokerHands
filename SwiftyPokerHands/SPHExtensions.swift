@@ -1,18 +1,28 @@
-import Cocoa
+#if os(Linux)
+    import Glibc
+#else
+    import Foundation
+#endif
 
-func ==(lhs: Card, rhs: Card) -> Bool {
+public func ==(lhs: Card, rhs: Card) -> Bool {
     if lhs.rank == rhs.rank && lhs.suit == rhs.suit {
         return true
     }
     return false
 }
 
-extension MutableCollectionType where Index == Int {
+public extension MutableCollection where Index == Int {
     
-    mutating func shuffleInPlace() {
-        if count < 2 { return }
-        for i in 0..<count - 1 {
-            let j = Int(arc4random_uniform(UInt32(count - i))) + i
+    public mutating func shuffleInPlace() {
+        let c = Int(count.toIntMax())
+        if c < 2 { return }
+        for i in 0..<c - 1 {
+            let j:Int
+            #if os(Linux)
+                j = Int(random() % c - i) + i
+            #else
+                j = Int(arc4random_uniform(UInt32(c - i))) + i
+            #endif
             if i != j {
                 swap(&self[i], &self[j])
             }
@@ -21,54 +31,54 @@ extension MutableCollectionType where Index == Int {
     
 }
 
-protocol CanTakeCard {
+public protocol CanTakeCard {
     
     var cards: [Card] { get set }
     mutating func takeOneCard() -> Card?
     
 }
 
-extension CanTakeCard {
+public extension CanTakeCard {
     
-    mutating func takeOneCard() -> Card? {
+    public mutating func takeOneCard() -> Card? {
         guard cards.count > 0 else { return nil }
         return cards.takeOne()
     }
     
 }
 
-protocol SPHCardsDebug {
+public protocol SPHCardsDebug {
     
     func errorNotEnoughCards() -> [Card]
-    func error(message: String)
+    func error(_ message: String)
     
 }
 
-extension SPHCardsDebug {
+public extension SPHCardsDebug {
     
-    func errorNotEnoughCards() -> [Card] {
+    public func errorNotEnoughCards() -> [Card] {
         error("not enough cards")
         return []
     }
     
-    func error(message: String) {
-        NSLog("ERROR: %@", message)
+    public func error(_ message: String) {
+        print("ERROR: \(message)")
     }
     
 }
 
-extension SequenceType where Generator.Element == Card {
+public extension Sequence where Iterator.Element == Card {
     
-    var descriptions: [String] {
+    public var descriptions: [String] {
         return self.map { $0.description }
     }
     
-    var spacedDescriptions: String {
-        return self.descriptions.joinWithSeparator(" ")
+    public var spacedDescriptions: String {
+        return self.descriptions.joined(separator: " ")
     }
     
-    func indexOf(card: Card) -> Int? {
-        for (index, deckCard) in self.enumerate() {
+    public func index(of card: Card) -> Int? {
+        for (index, deckCard) in self.enumerated() {
             if deckCard == card {
                 return index
             }
@@ -76,23 +86,23 @@ extension SequenceType where Generator.Element == Card {
         return nil
     }
     
-    func joinNames(with string: String) -> String {
-        return self.map({ $0.name }).joinWithSeparator(string)
+    public func joinNames(with string: String) -> String {
+        return self.map({ $0.name }).joined(separator: string)
     }
     
 }
 
-extension Range {
+public extension CountableRange {
     
-    var array: [Element] {
+    public var array: [Element] {
         return self.map { $0 }
     }
     
 }
 
-extension Int {
+public extension Int {
     
-    func times(f: () -> ()) {
+    public func times(_ f: () -> ()) {
         if self > 0 {
             for _ in 0..<self {
                 f()
@@ -100,7 +110,7 @@ extension Int {
         }
     }
     
-    func times(@autoclosure f: () -> ()) {
+    public func times(_ f: @autoclosure () -> ()) {
         if self > 0 {
             for _ in 0..<self {
                 f()
@@ -110,17 +120,23 @@ extension Int {
     
 }
 
-extension Array {
+public extension Array {
     
-    mutating func takeOne() -> Element {
-        let index = Int(arc4random_uniform(UInt32(self.count)))
+    public mutating func takeOne() -> Element {
+        let index:Int
+        #if os(Linux)
+            // TODO: find a better way
+            index = getPseudoRandomNumber(self.count)
+        #else
+            index = Int(arc4random_uniform(UInt32(self.count)))
+        #endif
         let item = self[index]
-        self.removeAtIndex(index)
+        self.remove(at: index)
         return item
     }
     
     // adapted from ExSwift
-    func permutation(length: Int) -> [[Element]] {
+    public func permutation(_ length: Int) -> [[Element]] {
         if length < 0 || length > self.count {
             return []
         } else if length == 0 {
@@ -137,12 +153,12 @@ extension Array {
         }
     }
     // adapted from ExSwift
-    private func permutationHelper(n: Int, inout array: [Element], inout endArray: [[Element]]) -> [[Element]] {
+    private func permutationHelper(_ n: Int, array: inout [Element], endArray: inout [[Element]]) -> [[Element]] {
         if n == 1 {
             endArray += [array]
         }
-        for i in 0 ..< n {
-            permutationHelper(n - 1, array: &array, endArray: &endArray)
+        for i in 0..<n {
+            _ = permutationHelper(n - 1, array: &array, endArray: &endArray)
             let j = n % 2 == 0 ? i : 0;
             let temp: Element = array[j]
             array[j] = array[n - 1]
@@ -151,7 +167,7 @@ extension Array {
         return endArray
     }
     // adapted from ExSwift
-    func combination(length: Int) -> [[Element]] {
+    public func combination(_ length: Int) -> [[Element]] {
         if length < 0 || length > self.count {
             return []
         }
@@ -179,5 +195,5 @@ extension Array {
         }
         return combinations
     }
-
+    
 }

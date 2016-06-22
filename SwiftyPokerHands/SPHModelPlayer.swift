@@ -1,6 +1,6 @@
 import Foundation
 
-struct Player: CanTakeCard {
+public struct Player: CanTakeCard {
 
     init() {}
 
@@ -10,29 +10,29 @@ struct Player: CanTakeCard {
 
     var name: String?
 
-    var historyOfDealtHoldemCards = [(Card, Card, NSDate)]()
+    var historyOfDealtCards = [(Card, Card, Date)]()
     
     var frequentHands = [String:Int]()
 
-    var holdemHand: (HandRank, [String])?
+    var hand: (HandRank, [String])?
     
-    var holdemHandDescription: String? {
-        return holdemHand?.1.joinWithSeparator(" ")
+    var handDescription: String? {
+        return hand?.1.joined(separator: " ")
     }
     
-    var holdemHandNameDescription: String? {
-        return holdemHand?.0.name.rawValue.lowercaseString
+    var handNameDescription: String? {
+        return hand?.0.name.rawValue.lowercased()
     }
 
     var cardsHistory: String {
-        let mapped = historyOfDealtHoldemCards.map { $0.0.description + " " + $0.1.description }
-        return mapped.joinWithSeparator(", ")
+        let mapped = historyOfDealtCards.map { $0.0.description + " " + $0.1.description }
+        return mapped.joined(separator: ", ")
     }
 
-    var cards = [Card]() {
+    public var cards = [Card]() {
         didSet {
-            let tu = (self.cards[0], self.cards[1], NSDate())
-            historyOfDealtHoldemCards.append(tu)
+            let tu = (cards[0], cards[1], Date())
+            historyOfDealtCards.append(tu)
             let fqname = "\(tu.0.description),\(tu.1.description)"
             if frequentHands[fqname] == nil {
                 frequentHands[fqname] = 1
@@ -55,13 +55,13 @@ struct Player: CanTakeCard {
     }
     
     var lastDealtHandReadableDate: String? {
-        guard let date = historyOfDealtHoldemCards.last?.2 else { return nil }
-        let formatter = NSDateFormatter()
+        guard let date = historyOfDealtCards.last?.2 else { return nil }
+        let formatter = DateFormatter()
         formatter.dateFormat = "yyyy/MM/dd HH:mm:ss:SSS"
-        return formatter.stringFromDate(date)
+        return formatter.string(from: date)
     }
     
-    var lastDealtHandDate: NSDate? {
-        return historyOfDealtHoldemCards.last?.2
+    var lastDealtHandDate: Date? {
+        return historyOfDealtCards.last?.2
     }
 }

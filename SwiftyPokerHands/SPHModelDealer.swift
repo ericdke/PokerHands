@@ -1,6 +1,6 @@
 import Cocoa
 
-struct Dealer: SPHCardsDebug {
+public struct Dealer: SPHCardsDebug {
 
     var evaluator: Evaluator
 
@@ -66,49 +66,49 @@ struct Dealer: SPHCardsDebug {
         currentDeck.shuffle()
     }
     
-    mutating func removeCards(inout player: Player) {
+    mutating func removeCards(from player: inout Player) {
         player.cards = []
     }
 
-    mutating func deal(numberOfCards: Int) -> [Card] {
-        return currentDeck.takeCards(numberOfCards)
+    mutating func deal(number: Int) -> [Card] {
+        return currentDeck.takeCards(number: number)
     }
 
-    mutating func dealHoldemHand() -> [Card] {
-        return deal(2)
+    mutating func dealHand() -> [Card] {
+        return deal(number: 2)
     }
 
-    mutating func dealHoldemHandTo(inout player: Player) {
-        player.cards = dealHoldemHand()
+    mutating func dealHand(to player: inout Player) {
+        player.cards = dealHand()
     }
     
-    mutating func dealHoldemCards(cards: [String]) -> [Card] {
-        let upCardChars = cards.map({$0.uppercaseString.characters.map({String($0)})})
+    mutating func deal(cards: [String]) -> [Card] {
+        let upCardChars = cards.map({$0.uppercased().characters.map({String($0)})})
         var cardsToDeal = [Card]()
         for cardChars in upCardChars {
             let cardObj = Card(suit: cardChars[1], rank: cardChars[0])
-            guard let indexToRemove = currentDeck.cards.indexOf(cardObj) else {
+            guard let index = currentDeck.cards.index(of: cardObj) else {
                 NSLog("%@", "ERROR: \(cardObj) is not in the deck")
                 break
             }
-            currentDeck.cards.removeAtIndex(indexToRemove)
+            currentDeck.cards.remove(at: index)
             cardsToDeal.append(cardObj)
         }
         return cardsToDeal
     }
     
-    mutating func dealHoldemCardsTo(inout player: Player, cards: [String]) {
-        player.cards = dealHoldemCards(cards)
+    mutating func deal(cards: [String], to player: inout Player) {
+        player.cards = deal(cards: cards)
     }
     
-    mutating func dealHoldemCardsTo(inout player: Player, cards: [Card]) {
+    mutating func deal(cards: [Card], to player: inout Player) {
         var cardsToDeal = [Card]()
         for card in cards {
-            guard let indexToRemove = currentDeck.cards.indexOf(card) else {
+            guard let indexToRemove = currentDeck.cards.index(of: card) else {
                 NSLog("%@", "ERROR: \(card) is not in the deck")
                 break
             }
-            currentDeck.cards.removeAtIndex(indexToRemove)
+            currentDeck.cards.remove(at: indexToRemove)
             cardsToDeal.append(card)
         }
         player.cards = cardsToDeal
@@ -117,14 +117,14 @@ struct Dealer: SPHCardsDebug {
     mutating func dealFlop() -> [Card] {
         table.dealtCards = []
         table.burnt = []
-        let dealt = dealWithBurning(3)
-        table.addCards(dealt)
+        let dealt = dealWithBurning(number: 3)
+        table.add(cards: dealt)
         return dealt
     }
 
     mutating func dealTurn() -> [Card] {
-        let dealt = dealWithBurning(1)
-        table.addCards(dealt)
+        let dealt = dealWithBurning(number: 1)
+        table.add(cards: dealt)
         return dealt
     }
 
@@ -136,43 +136,47 @@ struct Dealer: SPHCardsDebug {
         return currentDeck.takeOneCard()
     }
 
-    private mutating func dealWithBurning(numberOfCardsToDeal: Int) -> [Card] {
-        guard let burned = burn() else { return errorNotEnoughCards() }
-        table.addToBurntCards(burned)
-        return deal(numberOfCardsToDeal)
+    private mutating func dealWithBurning(number: Int) -> [Card] {
+        guard let burned = burn() else {
+            return errorNotEnoughCards()
+        }
+        table.addToBurnt(card: burned)
+        return deal(number: number)
     }
 
-    mutating func evaluateHoldemHandAtRiverFor(inout player: Player) {
-        player.holdemHand = evaluateHoldemHandAtRiver(player)
+    mutating func evaluateHandAtRiver(for player: inout Player) {
+        player.hand = evaluateHandAtRiver(player: player)
     }
 
-    func evaluateHoldemHandAtRiver(player: Player) -> (HandRank, [String]) {
+    func evaluateHandAtRiver(player: Player) -> (HandRank, [String]) {
         let sevenCards = table.dealtCards + player.cards
         let cardsReps = sevenCards.map({ $0.description })
         // all 5 cards combinations from the 7 cards
         let perms = cardsReps.permutation(5)
         // TODO: do the permutations with rank/else instead of literal cards descriptions
-        let sortedPerms = perms.map({ $0.sort(<) })
+        let sortedPerms = perms.map({ $0.sorted(isOrderedBefore: <) })
         let permsSet = NSSet(array: sortedPerms)
         let uniqs = Array(permsSet).map({ $0 as! [String] })
         var handsResult = [(HandRank, [String])]()
         for hand in uniqs {
-            let h = evaluator.evaluate(hand)
-            handsResult.append((h, hand))
+            let h = evaluator.evaluate(cards: hand)
+            handsResult.append(
+                (h, hand)
+            )
         }
-        handsResult.sortInPlace({ $0.0 < $1.0 })
+        handsResult.sort(isOrderedBefore: { $0.0 < $1.0 })
         let bestHand = handsResult.first
         return bestHand!
     }
 
-    mutating func updateHeadsUpWinner(player1 player1: Player, player2: Player) {
+    mutating func updateHeadsUpWinner(player1: Player, player2: Player) {
         currentHandWinner = findHeadsUpWinner(player1: player1, player2: player2)
     }
 
-    func findHeadsUpWinner(player1 player1: Player, player2: Player) -> Player {
-        if player1.holdemHand!.0 < player2.holdemHand!.0 {
+    func findHeadsUpWinner(player1: Player, player2: Player) -> Player {
+        if player1.hand!.0 < player2.hand!.0 {
             return player1 }
-        else if player1.holdemHand!.0 == player2.holdemHand!.0 {
+        else if player1.hand!.0 == player2.hand!.0 {
             return Player(name: "SPLIT") }
         else {
             return player2

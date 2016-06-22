@@ -1,6 +1,6 @@
 import Foundation
 
-struct Card {
+public struct Card {
 
     let suit: String
 
@@ -50,7 +50,7 @@ struct Card {
     }
     
     var fileName: String {
-        let temp = name.stringByReplacingOccurrencesOfString(" ", withString: "_").lowercaseString
+        let temp = name.replacingOccurrences(of: " ", with: "_").lowercased()
         return "\(temp)_w.png"
     }
     

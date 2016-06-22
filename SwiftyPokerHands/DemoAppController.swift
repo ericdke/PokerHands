@@ -7,11 +7,11 @@
 import Cocoa
 
 enum GameMode {
-    case Random, Custom
+    case random, custom
 }
 
 enum PersonType {
-    case Player1, Player2, Dealer
+    case player1, player2, dealer
 }
 
 final class AppController: NSObject, NSTableViewDataSource, NSTableViewDelegate {
@@ -31,11 +31,11 @@ final class AppController: NSObject, NSTableViewDataSource, NSTableViewDelegate 
     @IBOutlet weak var progressBar: NSProgressIndicator!
     
     
-    @IBAction func radioButtonsAction(sender: NSButton) {
+    @IBAction func radioButtonsAction(_ sender: NSButton) {
         if sender.tag == 0 {
-            settings.gameMode = .Random
+            settings.gameMode = .random
         } else {
-            settings.gameMode = .Custom
+            settings.gameMode = .custom
             window.beginSheet(playerAndCardsPanel, completionHandler: { _ in })
         }
     }
@@ -49,23 +49,26 @@ final class AppController: NSObject, NSTableViewDataSource, NSTableViewDelegate 
     var cardsImages = [String:NSImage]()
 
     // TODO: put the tableView in its own view + controller
-    func numberOfRowsInTableView(tableView: NSTableView) -> Int {
+    func numberOfRows(in tableView: NSTableView) -> Int {
         return results.count
     }
 
-    func tableView(tableView: NSTableView, viewForTableColumn tableColumn: NSTableColumn?, row: Int) -> NSView? {
+    func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
 
-        guard let cellView = tableView.makeViewWithIdentifier("roundsColumn", owner: self) as? SPKHandTableCellView
+        guard let cellView = tableView.make(withIdentifier: "roundsColumn", owner: self) as? SPKHandTableCellView
             else { return nil }
 
         let result = results[row]
         
-        guard let name1 = result.player1.name, let name2 = result.player2.name,
-            let winnerName = result.dealer.currentHandWinner?.name,
-            let player1CardsImages = getImagesForCards(result.player1.cards),
-            let player2CardsImages = getImagesForCards(result.player2.cards),
-            let tableCardsImages = getImagesForCards(result.dealer.table.dealtCards)
-            else { return nil }
+        guard let name1 = result.player1.name,
+            name2 = result.player2.name,
+            winnerName = result.dealer.currentHandWinner?.name,
+            player1CardsImages = getImages(for: result.player1.cards),
+            player2CardsImages = getImages(for: result.player2.cards),
+            tableCardsImages = getImages(for: result.dealer.table.dealtCards)
+            else {
+                return nil
+        }
         
         cellView.textField?.stringValue = "\(name1): \(result.player1.holeCards)"
         cellView.label1.stringValue = "\(name2): \(result.player2.holeCards)"
@@ -73,10 +76,12 @@ final class AppController: NSObject, NSTableViewDataSource, NSTableViewDelegate 
         if winnerName == "SPLIT" {
             cellView.label3.stringValue = "Split! This hand is canceled."
         } else {
-            guard let winningHand = result.dealer.currentHandWinner?.holdemHandDescription,
-                let winningHandName = result.dealer.currentHandWinner?.holdemHandNameDescription
-                else { return nil }
-            cellView.label3.stringValue = "\(winnerName.uppercaseString) wins with \(winningHandName) (\(winningHand))"
+            guard let winningHand = result.dealer.currentHandWinner?.handDescription,
+                winningHandName = result.dealer.currentHandWinner?.handNameDescription
+                else {
+                    return nil
+            }
+            cellView.label3.stringValue = "\(winnerName.uppercased()) wins with \(winningHandName) (\(winningHand))"
         }
 
         cellView.card1Player1.image = player1CardsImages[0]
@@ -94,14 +99,16 @@ final class AppController: NSObject, NSTableViewDataSource, NSTableViewDelegate 
         return cellView
     }
     
-    func getImagesForCards(cards: [Card]) -> [NSImage]? {
+    func getImages(for cards: [Card]) -> [NSImage]? {
         var imgs = [NSImage]()
         for card in cards {
             let name = card.fileName
             if let img = cardsImages[name] {
                 imgs.append(img)
             } else {
-                guard let img = NSImage(named: name) else { return nil }
+                guard let img = NSImage(named: name) else {
+                    return nil
+                }
                 cardsImages[name] = img
                 imgs.append(img)
             }
@@ -109,19 +116,19 @@ final class AppController: NSObject, NSTableViewDataSource, NSTableViewDelegate 
         return imgs
     }
 
-    @IBAction func goButtonClicked(sender: NSButton) {
+    @IBAction func goButtonClicked(_ sender: NSButton) {
         if !roundsTextField.stringValue.isEmpty && roundsTextField.integerValue != 0 {
-            playGCD(roundsTextField.integerValue)
+            playGCD(times: roundsTextField.integerValue)
         } else {
-            playGCD(100)
+            playGCD(times: 100)
         }
     }
     
-    func playGCD(numberOfHands: Int) {
-        progressBar.hidden = false
+    func playGCD(times: Int) {
+        progressBar.isHidden = false
         progressBar.doubleValue = 1.0
-        progressBar.maxValue = Double(numberOfHands)
-        gobutton.enabled = false
+        progressBar.maxValue = Double(times)
+        gobutton.isEnabled = false
         results = []
         roundsCountLabel.integerValue = 0
         player1ScoreLabel.integerValue = 0
@@ -132,69 +139,68 @@ final class AppController: NSObject, NSTableViewDataSource, NSTableViewDelegate 
         let deck = Dealer().currentDeck
         var customPlayer1Cards = [Card]()
         var customPlayer2Cards = [Card]()
-        if settings.gameMode == .Custom {
+        if settings.gameMode == .custom {
             customPlayer1Cards = settings.player1Cards
             customPlayer2Cards = settings.player2Cards
         }
         let eval = Evaluator()
         // go in background
-        let q1: dispatch_queue_t
-        let q2: dispatch_queue_t
-        if #available(OSX 10.10, *) {
-            q1 = dispatch_get_global_queue(QOS_CLASS_USER_INTERACTIVE, 0)
-            q2 = dispatch_get_global_queue(QOS_CLASS_USER_INITIATED, 0)
-        } else {
-            q1 = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)
-            q2 = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
-        }
-
-        dispatch_async(q1) {
+        let queue = DispatchQueue.global(attributes: DispatchQueue.GlobalAttributes(rawValue: DispatchQueueAttributes.qosUserInteractive.rawValue))
+        queue.async {
             // run a loop of background tasks
-            dispatch_apply(numberOfHands, q2, { (index) -> Void in
+            DispatchQueue.concurrentPerform(iterations: times, execute: { (index) -> Void in
                 // TODO: in this example we create new players and dealer each time, but we should refactor to use a safe-thread version of one single instance of each object so we can have player statistics, dealer and table stats, etc (will probably have to implement read-write barrier in our structs)
                 var dealer = Dealer(deck: deck, evaluator: eval)
                 var (player1, player2) = (Player(name: name1), Player(name: name2))
                 
-                if self.settings.gameMode == .Random {
-                    dealer.dealHoldemHandTo(&player1)
-                    dealer.dealHoldemHandTo(&player2)
+                if self.settings.gameMode == .random {
+                    dealer.dealHand(to: &player1)
+                    dealer.dealHand(to: &player2)
                 } else {
                     // custom cards first! otherwise the random func could deal one of the custom cards
                     if !customPlayer1Cards.isEmpty {
-                        dealer.dealHoldemCardsTo(&player1, cards: customPlayer1Cards)
+                        dealer.deal(cards: customPlayer1Cards, to: &player1)
                     }
                     if !customPlayer2Cards.isEmpty {
-                        dealer.dealHoldemCardsTo(&player2, cards: customPlayer2Cards)
+                        dealer.deal(cards: customPlayer2Cards, to: &player2)
                     }
                     if customPlayer1Cards.isEmpty {
-                        dealer.dealHoldemHandTo(&player1)
+                        dealer.dealHand(to: &player1)
                     }
                     if customPlayer2Cards.isEmpty {
-                        dealer.dealHoldemHandTo(&player2)
+                        dealer.dealHand(to: &player2)
                     }
                 }
                 
-                dealer.dealFlop()
-                dealer.dealTurn()
-                dealer.dealRiver()
-                dealer.evaluateHoldemHandAtRiverFor(&player1)
-                dealer.evaluateHoldemHandAtRiverFor(&player2)
+                _ = dealer.dealFlop()
+                _ = dealer.dealTurn()
+                _ = dealer.dealRiver()
+                
+                dealer.evaluateHandAtRiver(for: &player1)
+                dealer.evaluateHandAtRiver(for: &player2)
+                
                 dealer.updateHeadsUpWinner(player1: player1, player2: player2)
-                dispatch_async(dispatch_get_main_queue()) {
-                    self.results.append((dealer, player1, player2))
-                    self.endOfHand((dealer, player1, player2))
+                
+                DispatchQueue.main.async {
+                    let p = (dealer, player1, player2)
+                    self.results.append(p)
+                    self.endOfHand(people: p)
                 }
             })
             // this executes _after_ the loop
-            dispatch_async(dispatch_get_main_queue()) {
-                self.progressBar.hidden = true
-                self.gobutton.enabled = true
+            DispatchQueue.main.async {
+                self.progressBar.isHidden = true
+                self.gobutton.isEnabled = true
             }
         }
     }
     
     func endOfHand(people: DealerAndPlayers) {
-        guard let name1 = people.player1.name, name2 = people.player2.name else { print("ERROR with player names");return }
+        guard let name1 = people.player1.name,
+            name2 = people.player2.name else {
+                print("ERROR with player names")
+                return
+        }
         for (name, value) in people.dealer.scores {
             if name == name1 {
                 player1ScoreLabel.integerValue += value

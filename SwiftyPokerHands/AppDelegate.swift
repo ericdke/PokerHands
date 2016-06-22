@@ -10,12 +10,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @IBOutlet weak var window: NSWindow!
 
 
-    func applicationDidFinishLaunching(aNotification: NSNotification) {
+    func applicationDidFinishLaunching(_ aNotification: Notification) {
         window.title = "Swifty Poker Hands"
-        window.backgroundColor = NSColor.whiteColor()
+        window.backgroundColor = NSColor.white()
     }
 
-    func applicationWillTerminate(aNotification: NSNotification) {
+    func applicationWillTerminate(_ aNotification: Notification) {
 
     }
 
