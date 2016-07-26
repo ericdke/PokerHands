@@ -1,13 +1,13 @@
 
 public struct Deck: CanTakeCard, SPHCardsDebug {
-
+    
     let suits = ["♠","♣","♥","♦"]
     let ranks = ["A","K","Q","J","T","9","8","7","6","5","4","3","2"]
-
+    
     public var cards = [Card]()
-
+    
     private let capacity = 52
-
+    
     init() {
         for thisSuit in suits {
             for thisRank in ranks {
@@ -17,7 +17,7 @@ public struct Deck: CanTakeCard, SPHCardsDebug {
             }
         }
     }
-
+    
     mutating func shuffle() {
         cards.shuffleInPlace()
     }
@@ -27,16 +27,16 @@ public struct Deck: CanTakeCard, SPHCardsDebug {
             return errorNotEnoughCards()
         }
         var c = [Card]()
-        number.times {
+        for _ in 1...number {
             c.append(self.cards.takeOne())
         }
         return c
     }
-
+    
     var count: Int {
         return cards.count
     }
-
+    
     var dealt: Int {
         return capacity - cards.count
     }

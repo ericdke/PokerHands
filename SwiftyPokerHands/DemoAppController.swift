@@ -1,7 +1,7 @@
 //  Created by ERIC DEJONCKHEERE on 27/06/2015.
 //  Copyright (c) 2015 Eric Dejonckheere. All rights reserved.
 //
-//  SWIFT 2
+//  SWIFT 3
 //
 
 import Cocoa
@@ -15,7 +15,7 @@ enum PersonType {
 }
 
 final class AppController: NSObject, NSTableViewDataSource, NSTableViewDelegate {
-
+    
     @IBOutlet weak var window: NSWindow!
     @IBOutlet weak var playerAndCardsPanel: NSPanel!
     @IBOutlet weak var handsTableView: NSTableView!
@@ -42,30 +42,30 @@ final class AppController: NSObject, NSTableViewDataSource, NSTableViewDelegate 
     
     let settings = SPKSettings.sharedInstance
     let byteRanks = ByteRanks.sharedInstance
-
+    
     typealias DealerAndPlayers = (dealer: Dealer, player1: Player, player2: Player)
-
+    
     var results = [DealerAndPlayers]()
     var cardsImages = [String:NSImage]()
-
+    
     // TODO: put the tableView in its own view + controller
     func numberOfRows(in tableView: NSTableView) -> Int {
         return results.count
     }
-
+    
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
-
+        
         guard let cellView = tableView.make(withIdentifier: "roundsColumn", owner: self) as? SPKHandTableCellView
             else { return nil }
-
+        
         let result = results[row]
         
         guard let name1 = result.player1.name,
-            name2 = result.player2.name,
-            winnerName = result.dealer.currentHandWinner?.name,
-            player1CardsImages = getImages(for: result.player1.cards),
-            player2CardsImages = getImages(for: result.player2.cards),
-            tableCardsImages = getImages(for: result.dealer.table.dealtCards)
+            let name2 = result.player2.name,
+            let winnerName = result.dealer.currentHandWinner?.name,
+            let player1CardsImages = getImages(for: result.player1.cards),
+            let player2CardsImages = getImages(for: result.player2.cards),
+            let tableCardsImages = getImages(for: result.dealer.table.dealtCards)
             else {
                 return nil
         }
@@ -77,13 +77,13 @@ final class AppController: NSObject, NSTableViewDataSource, NSTableViewDelegate 
             cellView.label3.stringValue = "Split! This hand is canceled."
         } else {
             guard let winningHand = result.dealer.currentHandWinner?.handDescription,
-                winningHandName = result.dealer.currentHandWinner?.handNameDescription
+                let winningHandName = result.dealer.currentHandWinner?.handNameDescription
                 else {
                     return nil
             }
             cellView.label3.stringValue = "\(winnerName.uppercased()) wins with \(winningHandName) (\(winningHand))"
         }
-
+        
         cellView.card1Player1.image = player1CardsImages[0]
         cellView.card2Player1.image = player1CardsImages[1]
         
@@ -115,7 +115,7 @@ final class AppController: NSObject, NSTableViewDataSource, NSTableViewDelegate 
         }
         return imgs
     }
-
+    
     @IBAction func goButtonClicked(_ sender: NSButton) {
         if !roundsTextField.stringValue.isEmpty && roundsTextField.integerValue != 0 {
             playGCD(times: roundsTextField.integerValue)
@@ -197,7 +197,7 @@ final class AppController: NSObject, NSTableViewDataSource, NSTableViewDelegate 
     
     func endOfHand(people: DealerAndPlayers) {
         guard let name1 = people.player1.name,
-            name2 = people.player2.name else {
+            let name2 = people.player2.name else {
                 print("ERROR with player names")
                 return
         }
@@ -219,5 +219,5 @@ final class AppController: NSObject, NSTableViewDataSource, NSTableViewDelegate 
         let name2 = player2TextField.stringValue.isEmpty ? "Annette" : player2TextField.stringValue
         return (name1, name2)
     }
-
+    
 }

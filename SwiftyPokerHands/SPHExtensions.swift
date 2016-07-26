@@ -100,26 +100,6 @@ public extension CountableRange {
     
 }
 
-public extension Int {
-    
-    public func times(_ f: () -> ()) {
-        if self > 0 {
-            for _ in 0..<self {
-                f()
-            }
-        }
-    }
-    
-    public func times(_ f: @autoclosure () -> ()) {
-        if self > 0 {
-            for _ in 0..<self {
-                f()
-            }
-        }
-    }
-    
-}
-
 public extension Array {
     
     public mutating func takeOne() -> Element {

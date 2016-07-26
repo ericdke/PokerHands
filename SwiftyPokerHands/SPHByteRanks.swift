@@ -22,23 +22,23 @@ final public class ByteRanks {
     
     init() {
         do {
-            let bundle = Bundle.main()
+            let bundle = Bundle.main
             guard let fpath = bundle.pathForResource("flushes_bytes", ofType: "json"),
-                upath = bundle.pathForResource("uniqueToRanks_bytes", ofType: "json"),
-                ppath = bundle.pathForResource("primeProductToCombination_bytes", ofType: "json"),
-                cpath = bundle.pathForResource("combinationToRank_bytes", ofType: "json") else {
+                let upath = bundle.pathForResource("uniqueToRanks_bytes", ofType: "json"),
+                let ppath = bundle.pathForResource("primeProductToCombination_bytes", ofType: "json"),
+                let cpath = bundle.pathForResource("combinationToRank_bytes", ofType: "json") else {
                     throw SPHError.CouldNotFindJSONFile
             }
             guard let fdata = try? Data(contentsOf: URL(fileURLWithPath: fpath)),
-                udata = try? Data(contentsOf: URL(fileURLWithPath: upath)),
-                pdata = try? Data(contentsOf: URL(fileURLWithPath: ppath)),
-                cdata = try? Data(contentsOf: URL(fileURLWithPath: cpath)) else {
+                let udata = try? Data(contentsOf: URL(fileURLWithPath: upath)),
+                let pdata = try? Data(contentsOf: URL(fileURLWithPath: ppath)),
+                let cdata = try? Data(contentsOf: URL(fileURLWithPath: cpath)) else {
                     throw SPHError.CouldNotLoadJSONFile
             }
             guard let ujson = try JSONSerialization.jsonObject(with: udata, options: []) as? [Int],
-                fjson = try JSONSerialization.jsonObject(with: fdata, options: []) as? [Int],
-                pjson = try JSONSerialization.jsonObject(with: pdata, options: []) as? [Int],
-                cjson = try JSONSerialization.jsonObject(with: cdata, options: []) as? [Int] else {
+                let fjson = try JSONSerialization.jsonObject(with: fdata, options: []) as? [Int],
+                let pjson = try JSONSerialization.jsonObject(with: pdata, options: []) as? [Int],
+                let cjson = try JSONSerialization.jsonObject(with: cdata, options: []) as? [Int] else {
                     throw SPHError.CouldNotConvertJSONFile
             }
             self.flushes = fjson
