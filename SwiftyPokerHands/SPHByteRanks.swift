@@ -7,7 +7,7 @@ import Foundation
 
 final public class ByteRanks {
     
-    enum SPHError: String, ErrorProtocol {
+    enum SPHError: String, Error {
         case CouldNotFindJSONFile = "FATAL ERROR: Could not find init files in app bundle"
         case CouldNotLoadJSONFile = "FATAL ERROR: Could not load init files from app bundle"
         case CouldNotConvertJSONFile = "FATAL ERROR: Could not read init files from app bundle"
@@ -23,10 +23,10 @@ final public class ByteRanks {
     init() {
         do {
             let bundle = Bundle.main
-            guard let fpath = bundle.pathForResource("flushes_bytes", ofType: "json"),
-                let upath = bundle.pathForResource("uniqueToRanks_bytes", ofType: "json"),
-                let ppath = bundle.pathForResource("primeProductToCombination_bytes", ofType: "json"),
-                let cpath = bundle.pathForResource("combinationToRank_bytes", ofType: "json") else {
+            guard let fpath = bundle.path(forResource: "flushes_bytes", ofType: "json"),
+                let upath = bundle.path(forResource: "uniqueToRanks_bytes", ofType: "json"),
+                let ppath = bundle.path(forResource: "primeProductToCombination_bytes", ofType: "json"),
+                let cpath = bundle.path(forResource: "combinationToRank_bytes", ofType: "json") else {
                     throw SPHError.CouldNotFindJSONFile
             }
             guard let fdata = try? Data(contentsOf: URL(fileURLWithPath: fpath)),

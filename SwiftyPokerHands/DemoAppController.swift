@@ -145,8 +145,7 @@ final class AppController: NSObject, NSTableViewDataSource, NSTableViewDelegate 
         }
         let eval = Evaluator()
         // go in background
-        let queue = DispatchQueue.global(attributes: DispatchQueue.GlobalAttributes(rawValue: DispatchQueueAttributes.qosUserInteractive.rawValue))
-        queue.async {
+        DispatchQueue.global(qos: .background).async {
             // run a loop of background tasks
             DispatchQueue.concurrentPerform(iterations: times, execute: { (index) -> Void in
                 // TODO: in this example we create new players and dealer each time, but we should refactor to use a safe-thread version of one single instance of each object so we can have player statistics, dealer and table stats, etc (will probably have to implement read-write barrier in our structs)

@@ -103,9 +103,9 @@ final public class Evaluator {
     func evaluate(cards: [String]) -> HandRank {
         let cardValues = cards.map { self.deck.as_binary($0) }
 
-        let handIndex = cardValues.reduce(0,combine:|) >> 16
+        let handIndex = cardValues.reduce(0,|) >> 16
 
-        let isFlush:Bool = (cardValues.reduce(0xF000,combine:&)) != 0
+        let isFlush:Bool = (cardValues.reduce(0xF000,&)) != 0
 
         if isFlush {
             let flushRank = byteRanks.flushes[handIndex]
@@ -118,7 +118,7 @@ final public class Evaluator {
             return HandRank(rank:unique5Candidate)
         }
 
-        let primeProduct = cardValues.map { $0 & 0xFF }.reduce(1, combine:*)
+        let primeProduct = cardValues.map { $0 & 0xFF }.reduce(1, *)
 
         let combination = byteRanks.primeProductToCombination.index(of: primeProduct)!
         return HandRank(rank: byteRanks.combinationToRank[combination])

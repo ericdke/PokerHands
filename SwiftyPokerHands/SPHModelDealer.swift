@@ -154,7 +154,7 @@ public struct Dealer: SPHCardsDebug {
         // all 5 cards combinations from the 7 cards
         let perms = cardsReps.permutation(5)
         // TODO: do the permutations with rank/else instead of literal cards descriptions
-        let sortedPerms = perms.map({ $0.sorted(isOrderedBefore: <) })
+        let sortedPerms = perms.map({ $0.sorted(by: <) })
         let permsSet = NSSet(array: sortedPerms)
         let uniqs = Array(permsSet).map({ $0 as! [String] })
         var handsResult = [(HandRank, [String])]()
@@ -164,7 +164,7 @@ public struct Dealer: SPHCardsDebug {
                 (h, hand)
             )
         }
-        handsResult.sort(isOrderedBefore: { $0.0 < $1.0 })
+        handsResult.sort(by: { $0.0 < $1.0 })
         let bestHand = handsResult.first
         return bestHand!
     }

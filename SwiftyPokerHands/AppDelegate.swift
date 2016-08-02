@@ -11,8 +11,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        window.title = "Swifty Poker Hands"
-        window.backgroundColor = NSColor.white()
+        window.title = "Poker Hands"
+        window.backgroundColor = NSColor.white
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {
