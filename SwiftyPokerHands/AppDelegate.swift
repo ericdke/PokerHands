@@ -4,6 +4,12 @@
 
 import Cocoa
 
+extension Bool {
+    public init(_ value: Int) {
+        self.init(value > 0)
+    }
+}
+
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
 
