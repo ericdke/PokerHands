@@ -55,7 +55,7 @@ final class AppController: NSObject, NSTableViewDataSource, NSTableViewDelegate 
     
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
         
-        guard let cellView = tableView.make(withIdentifier: "roundsColumn", owner: self) as? SPKHandTableCellView
+        guard let cellView = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "roundsColumn"), owner: self) as? SPKHandTableCellView
             else { return nil }
         
         let result = results[row]
@@ -106,7 +106,7 @@ final class AppController: NSObject, NSTableViewDataSource, NSTableViewDelegate 
             if let img = cardsImages[name] {
                 imgs.append(img)
             } else {
-                guard let img = NSImage(named: name) else {
+                guard let img = NSImage(named: NSImage.Name(rawValue: name)) else {
                     return nil
                 }
                 cardsImages[name] = img

@@ -14,7 +14,7 @@ public func ==(lhs: Card, rhs: Card) -> Bool {
 public extension MutableCollection where Index == Int {
     
     public mutating func shuffleInPlace() {
-        let c = Int(count.toIntMax())
+        let c = Int(count)
         if c < 2 { return }
         for i in 0..<c - 1 {
             let j:Int
@@ -24,7 +24,7 @@ public extension MutableCollection where Index == Int {
                 j = Int(arc4random_uniform(UInt32(c - i))) + i
             #endif
             if i != j {
-                swap(&self[i], &self[j])
+                self.swapAt(i, j)
             }
         }
     }

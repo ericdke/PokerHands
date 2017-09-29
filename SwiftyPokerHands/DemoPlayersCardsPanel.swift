@@ -35,13 +35,13 @@ class SPKPlayerAndCardsPanel: NSPanel {
         settings.player2Card1Rank = p2c1RankTitle
         settings.player2Card2Suit = p2c2SuitTitle
         settings.player2Card2Rank = p2c2RankTitle
-        settings.player1Random = Bool(p1Random.state)
-        settings.player2Random = Bool(p2Random.state)
+        settings.player1Random = p1Random.state == .on
+        settings.player2Random = p2Random.state == .on
         self.orderOut(nil)
     }
     
     @IBAction func p1RandomButton(_ sender: NSButton) {
-        let boo = !Bool(sender.state)
+        let boo = sender.state == .off
         p1c1Suit.isEnabled = boo
         p1c1Rank.isEnabled = boo
         p1c2Suit.isEnabled = boo
@@ -49,7 +49,7 @@ class SPKPlayerAndCardsPanel: NSPanel {
     }
     
     @IBAction func p2RandomButton(_ sender: NSButton) {
-        let boo = !Bool(sender.state)
+        let boo = sender.state == .off
         p2c1Suit.isEnabled = boo
         p2c1Rank.isEnabled = boo
         p2c2Suit.isEnabled = boo
