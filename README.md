@@ -1,4 +1,4 @@
-![](https://img.shields.io/badge/Swift-3-orange.svg?style=flat)
+![](https://img.shields.io/badge/Swift-4-green.svg?style=flat)
 
 ## Holdem Poker Hand Simulator
 
