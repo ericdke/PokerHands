@@ -4,7 +4,7 @@
 
 Mixing several techniques in Swift to evaluate a Holdem poker hand.
 
-![Swifty Poker Hands](https://www.evernote.com/shard/s89/sh/3f391e4f-3ba4-45ee-b4f6-cdaa8a85628f/8c3ded92bfda886b/res/7971889e-0eab-4f56-971c-51731ef3274e/skitch.png)
+![Swifty Poker Hands](https://monosnap.com/file/cvebqCKISBpZDNwpN6cKarT6QDmx6S.png)
 
 ## Techniques
 
@@ -23,6 +23,8 @@ Mixing several techniques in Swift to evaluate a Holdem poker hand.
 ## Demo app
 
 A table view of a two-player hands simulator. Two players, with random or custom cards, go all-in each round.
+
+There's a binary in the Resources folder.
 
 ## Credits
 
