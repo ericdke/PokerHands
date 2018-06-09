@@ -171,9 +171,9 @@ final class AppController: NSObject, NSTableViewDataSource, NSTableViewDelegate 
                     }
                 }
                 
-                _ = dealer.dealFlop()
-                _ = dealer.dealTurn()
-                _ = dealer.dealRiver()
+                dealer.dealFlop()
+                dealer.dealTurn()
+                dealer.dealRiver()
                 
                 dealer.evaluateHandAtRiver(for: &player1)
                 dealer.evaluateHandAtRiver(for: &player2)

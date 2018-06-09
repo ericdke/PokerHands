@@ -45,7 +45,7 @@ class SPKSettings {
     
     private func getSuit(in label: String) -> String {
         // forced because label will be checked by the caller for not being empty
-        return String(label.characters.first!)
+        return String(label.first!)
     }
     
     private func getRank(in rank: String) -> String {

@@ -11,26 +11,6 @@ public func ==(lhs: Card, rhs: Card) -> Bool {
     return false
 }
 
-public extension MutableCollection where Index == Int {
-    
-    public mutating func shuffleInPlace() {
-        let c = Int(count)
-        if c < 2 { return }
-        for i in 0..<c - 1 {
-            let j:Int
-            #if os(Linux)
-                j = Int(random() % c - i) + i
-            #else
-                j = Int(arc4random_uniform(UInt32(c - i))) + i
-            #endif
-            if i != j {
-                self.swapAt(i, j)
-            }
-        }
-    }
-    
-}
-
 public protocol CanTakeCard {
     
     var cards: [Card] { get set }
