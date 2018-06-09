@@ -130,6 +130,7 @@ final class AppController: NSObject, NSTableViewDataSource, NSTableViewDelegate 
         progressBar.maxValue = Double(times)
         gobutton.isEnabled = false
         results = []
+        handsTableView.reloadData()
         roundsCountLabel.integerValue = 0
         player1ScoreLabel.integerValue = 0
         player2ScoreLabel.integerValue = 0
