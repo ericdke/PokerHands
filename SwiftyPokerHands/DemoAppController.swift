@@ -195,22 +195,22 @@ final class AppController: NSObject, NSTableViewDataSource, NSTableViewDelegate 
     }
     
     func endOfHand(people: DealerAndPlayers) {
-        guard let name1 = people.player1.name,
-            let name2 = people.player2.name else {
+        guard let name1 = people.player1.name else {
                 print("ERROR with player names")
                 return
         }
         for (name, value) in people.dealer.scores {
             if name == name1 {
                 player1ScoreLabel.integerValue += value
-            } else if name == name2 {
+            } else {
                 player2ScoreLabel.integerValue += value
             }
         }
         roundsCountLabel.integerValue += 1
         progressBar.doubleValue += 1
-        handsTableView.reloadData()
-        handsTableView.scrollRowToVisible(self.results.count - 1)
+        let c = self.results.count - 1
+        handsTableView.insertRows(at: IndexSet(integer: c), withAnimation: [])
+        handsTableView.scrollRowToVisible(c)
     }
     
     var playerNames: (String, String) {
