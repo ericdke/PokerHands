@@ -19,7 +19,7 @@ public struct Deck: CanTakeCard, SPHCardsDebug {
     }
     
     mutating func shuffle() {
-        cards.shuffleInPlace()
+        cards.shuffle()
     }
     
     mutating func takeCards(number: Int) -> [Card] {

@@ -83,7 +83,7 @@ public struct Dealer: SPHCardsDebug {
     }
     
     mutating func deal(cards: [String]) -> [Card] {
-        let upCardChars = cards.map({$0.uppercased().characters.map({String($0)})})
+        let upCardChars = cards.map({$0.uppercased().map({String($0)})})
         var cardsToDeal = [Card]()
         for cardChars in upCardChars {
             let cardObj = Card(suit: cardChars[1], rank: cardChars[0])
@@ -114,7 +114,7 @@ public struct Dealer: SPHCardsDebug {
         player.cards = cardsToDeal
     }
 
-    mutating func dealFlop() -> [Card] {
+    @discardableResult mutating func dealFlop() -> [Card] {
         table.dealtCards = []
         table.burnt = []
         let dealt = dealWithBurning(number: 3)
@@ -122,13 +122,13 @@ public struct Dealer: SPHCardsDebug {
         return dealt
     }
 
-    mutating func dealTurn() -> [Card] {
+    @discardableResult mutating func dealTurn() -> [Card] {
         let dealt = dealWithBurning(number: 1)
         table.add(cards: dealt)
         return dealt
     }
 
-    mutating func dealRiver() -> [Card] {
+    @discardableResult mutating func dealRiver() -> [Card] {
         return dealTurn()
     }
 
