@@ -1,3 +1,8 @@
+See the new version at https://github.com/ericdke/PokerHands2
+
+---
+
+
 ![](https://img.shields.io/badge/Swift-4.2-green.svg?style=flat)
 
 ## Holdem Poker Hand Simulator
